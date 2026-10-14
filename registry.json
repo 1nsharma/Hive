@@ -297,8 +297,8 @@
       ],
       "status": "working",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792008300000
+      "archived": true,
+      "lastSeen": 1792017292230
     },
     "kelly-support": {
       "id": "kelly-support",
