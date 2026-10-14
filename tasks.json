@@ -1,8 +1,19 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "title": "Set up missing local tooling (uv, mempalace, claude-code)",
+      "assignee": "god",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-1",
+      "createdAt": "2026-10-14T18:48:10.446Z",
+      "doneAt": "2026-10-14T18:48:10.446Z",
+      "updatedAt": "2026-10-14T18:48:10.446Z"
+    }
+  ],
   "ticket": {
     "prefix": "DSK",
-    "next": 1,
+    "next": 2,
     "aliases": {}
   }
 }
