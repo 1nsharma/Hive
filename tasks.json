@@ -69,11 +69,46 @@
       "createdAt": "2026-10-14T19:28:59.725Z",
       "startedAt": "2026-10-14T19:28:59.725Z",
       "updatedAt": "2026-10-14T19:28:59.725Z"
+    },
+    {
+      "title": "Vercel Landing Page Deployment & GitHub Sync for Hero Products",
+      "assignee": "worker-manager",
+      "status": "doing",
+      "priority": "high",
+      "id": "DSK-8",
+      "createdAt": "2026-10-14T19:34:34.393Z",
+      "startedAt": "2026-10-14T19:34:34.393Z",
+      "updatedAt": "2026-10-14T19:34:34.393Z"
+    },
+    {
+      "title": "Domain Block Senior/Junior Role Allocation & Knowledge Matrix",
+      "assignee": "worker-hr",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-9",
+      "createdAt": "2026-10-14T19:34:34.393Z",
+      "doneAt": "2026-10-14T19:34:34.393Z",
+      "updatedAt": "2026-10-14T19:34:34.393Z"
+    },
+    {
+      "title": "Founder Business Bank Account & Legal KYC Integration",
+      "assignee": "god",
+      "status": "blocked",
+      "priority": "high",
+      "humanQA": [
+        {
+          "q": "**Please complete your business banking, KYC verification, and inject API keys directly.**\n\nAI agents cannot legally access personal bank accounts, initiate money transfers, or sign KYC documents.\n\n- Complete KYC on your bank / Stripe / Razorpay merchant account.\n- Add production API tokens (`VERCEL_TOKEN`, `COMPOSIO_API_KEY`) to `$AGENT_DIR/.env`.\n- Authorize financial disbursements from your personal banking app.",
+          "askedAt": "2026-10-14T19:35:00.000Z"
+        }
+      ],
+      "id": "DSK-10",
+      "createdAt": "2026-10-14T19:34:34.393Z",
+      "updatedAt": "2026-10-14T19:34:34.393Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 8,
+    "next": 11,
     "aliases": {}
   }
 }

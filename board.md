@@ -17,23 +17,37 @@ _Shared plans live here. The god agent is the scribe._
 
 ---
 
-## 🗂️ Desktop Folder Architecture & Domain Mapping
+## 👥 Domain Team Structure: Senior & Junior Role Allocation
 
-| Domain / Vertical | Primary Canonical Repositories | Secondary / Duplicate / In-Progress Folders | Status & Action |
-| :--- | :--- | :--- | :--- |
-| **01. Master Holding** | `akafolder` (holds master portfolio, manifests, 8 verticals) | `AI Super intellegnce company...` | Active blueprint & parent holding. |
-| **02. Commerce & Retail (MSME)** | `DukaanMitra-OS` (Git repo, Next.js/React + Python) | `Dukaanmitra.in-dukaan`, `dukaan imple` | Consolidate variations into `DukaanMitra-OS`. |
-| **03. Logistics & Fleet** | `Truckwala24x7` (Full-stack portal) | `Truckwala_Web` | Merge frontend + backend into unified monorepo. |
-| **04. CleanTech & Microgrids** | `solar-hub` (Mobile/Expo & Web) | `solar_wallet`, `.solarhub-agent-workspaces` | Integrate wallet & energy credits into `solar-hub`. |
-| **05. PetCare & VetTech** | `petsjanu.com` (Web & Mobile platform) | `Pets--main`, `Pets--main.zip` | Archive duplicate zip; retain `petsjanu.com`. |
-| **06. GovTech & Security** | `proofledger-ai-aemy` (Audit engine) | `DIP vision`, `narendra_modi_-_prime_minister_of_india` | High-security identity & vision modules. |
-| **07. Engineering & DevOps** | `gitforge` (Internal git forge / dashboard) | `hive` (Munder Difflin agent orchestration floor) | Tooling & operational backbone. |
-| **08. Assets & Archives** | `images`, `textures` | `images.zip`, `0`, `.js`, `scene.bin`, `scene.gltf` | Safe archival into designated asset stores. |
+| Domain Block | Primary Scope & Repositories | Senior Technical Lead | Junior Engineer / Specialist | Immediate Go-To-Market Objective |
+| :--- | :--- | :--- | :--- | :--- |
+| **01. Master Holding** | `akafolder`, `aemy-enterprise-os` | Chief Architect (`manager`) | Knowledge Scribe (`server-ai`) | Central monorepo & cross-app SDKs. |
+| **02. Commerce & MSME** | `DukaanMitra-OS`, `MitraOS` | Senior Full-Stack Lead | Junior WhatsApp Integrator | Deploy Vercel landing page & pilot merchant signup. |
+| **03. Logistics & Fleet** | `Truckwala24x7`, `Truckwala_Web` | Senior Fleet Architect | Junior Diagnostics Dev | Launch breakdown assistance hotline page. |
+| **04. CleanTech** | `solar-hub`, `solar_wallet` | Senior Microgrid Architect | Junior Mobile / Expo Dev | Rooftop solar calculator & subsidy portal. |
+| **05. PetCare** | `petsjanu.com`, `PetGuardian` | Senior PetTech Engineer | Junior PWA Dev | NFC digital tag simulation & booking UI. |
+| **06. GovTech & Security**| `proofledger-ai-aemy`, `DIP vision` | Senior Cryptographic Lead | Junior Vision Engineer | Verification engine & audit proof ledger. |
+| **07. DevOps & Automation**| `gitforge`, `hive` floor | Lead DevOps Engineer | Junior Automation Runner | Automated Vercel & GitHub CI/CD pipelines. |
+| **08. Media & Ventures** | `Desi Arcade`, `DupperAI` | Senior Creative Dev | Junior Content Dev | Interactive games & AI content generation. |
 
 ---
 
-## 🚀 Active Objectives & Assignments
-1. **Cloud AI Server Room Access (Server AI - `DSK-6`)**: Active at station `server`, serving all agents with unified repo data access.
-2. **Deduplication & Sanitization (Worker John - `DSK-4`)**: Scanning and isolating redundant copies without data loss.
-3. **Git Infrastructure & Monorepo Planning (Worker Manager - `DSK-5`)**: Verifying Git health and multi-repo interconnections.
-4. **HR & Ideas Incubator (Worker HR - `DSK-7`)**: Structuring the complete ideas backlog and talent architecture for all 8 domains.
+## 🚀 Commercialization & Vercel Go-To-Market Roadmap
+1. **GitHub & Vercel Pipelines (`DSK-8`)**:
+   - Push canonical builds of `DukaanMitra-OS` and `Truckwala24x7` to GitHub.
+   - Deploy production preview pages on Vercel CLI (`vercel`).
+2. **Growth & Discovery (LinkedIn & Composio)**:
+   - Automated LinkedIn outreach blueprints for B2B fleet owners and Kirana associations.
+   - Composio integration for multi-tool actions (Slack, GitHub, WhatsApp, Gmail).
+3. **Banking & KYC Operations (`DSK-10` - Blocked on Human)**:
+   - Founder connects legal merchant accounts (Stripe / Razorpay / Bank) directly for revenue collection.
+
+---
+
+## 📋 Active Tasks Ledger
+- `DSK-4`: Portfolio Deduplication (`worker-john`) — **Doing**
+- `DSK-5`: Git Infrastructure & Monorepo Plan (`worker-manager`) — **Doing**
+- `DSK-7`: HR & Ideas Pipeline (`worker-hr`) — **Doing**
+- `DSK-8`: Vercel Landing Page Deployment (`worker-manager`) — **Doing**
+- `DSK-9`: Senior/Junior Role Allocation (`worker-hr`) — **Done**
+- `DSK-10`: Founder Business Banking & KYC — **Blocked on Human**

@@ -50,7 +50,7 @@
       "intervalMs": 120000,
       "kind": "heartbeat",
       "createdBy": "",
-      "lastFiredAt": "2026-10-14T19:30:01.840Z"
+      "lastFiredAt": "2026-10-14T19:34:01.988Z"
     }
   ],
   "slack": {
