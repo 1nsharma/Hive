@@ -49,8 +49,8 @@
       ],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792004000000
+      "archived": true,
+      "lastSeen": 1792017240916
     },
     "server-ai": {
       "id": "server-ai",
