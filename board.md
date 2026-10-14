@@ -72,7 +72,7 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-11`: Deploy 200-Agent Enterprise Swarm Architecture (`god`) — **Done**
 - `DSK-12`: Activate Division 02 Commerce Lead (DukaanMitra Vercel Build) (`lead-retail`) — **Done** (Vite + ONDC Munim compiled)
 - `DSK-13`: Activate Division 03 Logistics Lead (TruckWala Monorepo Build) (`lead-logistics`) — **Done** (Production `dist/` compiled)
-- `DSK-14`: Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration) (`lead-cleantech`) — **Doing**
+- `DSK-14`: Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration) (`lead-cleantech`) — **Done** (Unified Microgrid Architecture & Expo Screen)
 - `DSK-15`: Activate Division 07 GovTech Lead (ProofLedger Verification) (`lead-govtech`) — **Doing**
 - `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Doing**
 - `DSK-17`: B2B Client Research, Company Registration & Authority Compliance Pipeline (`client-research`) — **Done** ([`CLIENT_RESEARCH_DATABASE.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_RESEARCH_DATABASE.md))

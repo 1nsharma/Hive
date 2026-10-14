@@ -387,8 +387,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792010355621
+      "archived": true,
+      "lastSeen": 1792011592642
     },
     "worker-lead-govtech": {
       "id": "worker-lead-govtech",
@@ -399,8 +399,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792010408896
+      "archived": true,
+      "lastSeen": 1792011719971
     },
     "worker-lead-logistics": {
       "id": "worker-lead-logistics",

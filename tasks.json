@@ -154,12 +154,13 @@
     {
       "title": "Activate Division 07 GovTech Lead (ProofLedger Verification)",
       "assignee": "lead-govtech",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-15",
       "createdAt": "2026-10-14T19:44:48.314Z",
       "startedAt": "2026-10-14T19:44:48.314Z",
-      "updatedAt": "2026-10-14T19:44:48.314Z"
+      "doneAt": "2026-10-14T21:02:00.000Z",
+      "updatedAt": "2026-10-14T21:01:46.090Z"
     },
     {
       "title": "Activate Division 08 Media Lead (Desi Arcade Game Pipeline)",
