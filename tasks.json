@@ -120,12 +120,13 @@
     {
       "title": "Activate Division 02 Commerce Lead (DukaanMitra Vercel Build)",
       "assignee": "lead-retail",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-12",
       "createdAt": "2026-10-14T19:44:48.314Z",
       "startedAt": "2026-10-14T19:44:48.314Z",
-      "updatedAt": "2026-10-14T19:44:48.314Z"
+      "doneAt": "2026-10-14T20:28:00.000Z",
+      "updatedAt": "2026-10-14T20:28:13.132Z"
     },
     {
       "title": "Activate Division 03 Logistics Lead (TruckWala Monorepo Build)",
