@@ -223,8 +223,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792007524699
+      "archived": true,
+      "lastSeen": 1792009786550
     },
     "client-research": {
       "id": "client-research",
@@ -233,7 +233,13 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Enterprise Client Research & Authority Verification Lead — MCA, ROC, GSTIN, MSME Udyam",
-      "capabilities": ["research", "mca", "gstin", "registry", "lead-gen"],
+      "capabilities": [
+        "research",
+        "mca",
+        "gstin",
+        "registry",
+        "lead-gen"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -246,7 +252,13 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Client Calling & Gmail Outreach Deal Closer — B2B Calling Scripts, Gmail Sequences, Deal Closing",
-      "capabilities": ["calling", "outreach", "gmail", "closing", "crm"],
+      "capabilities": [
+        "calling",
+        "outreach",
+        "gmail",
+        "closing",
+        "crm"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -259,7 +271,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Cost Economics, Pricing Engine & Hyperlocal Delivery Analytics Specialist",
-      "capabilities": ["analytics", "pricing", "costing", "metrics"],
+      "capabilities": [
+        "analytics",
+        "pricing",
+        "costing",
+        "metrics"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -272,7 +289,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Statutory Governance, Contract SLA Review & Legal Guardrails Officer",
-      "capabilities": ["legal", "compliance", "sla", "contracts"],
+      "capabilities": [
+        "legal",
+        "compliance",
+        "sla",
+        "contracts"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -285,7 +307,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Customer Experience, Voice AI Conversation Scripts & Omnichannel Social Engagement Lead",
-      "capabilities": ["support", "voice-ai", "social", "retention"],
+      "capabilities": [
+        "support",
+        "voice-ai",
+        "social",
+        "retention"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -298,7 +325,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Hardware Procurement, DISCOM Vendor Relations & Supply Chain Expediter",
-      "capabilities": ["procurement", "hardware", "discom", "vendors"],
+      "capabilities": [
+        "procurement",
+        "hardware",
+        "discom",
+        "vendors"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -311,11 +343,28 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Floor Concierge, Inbound Client Call Triage & Executive Communication Lead",
-      "capabilities": ["reception", "triage", "comms", "routing"],
+      "capabilities": [
+        "reception",
+        "triage",
+        "comms",
+        "routing"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792008300000
+    },
+    "worker-client-closer": {
+      "id": "worker-client-closer",
+      "name": "Andy (Client Closer)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792009787449
     }
   }
 }
