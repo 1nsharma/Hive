@@ -1,0 +1,10 @@
+{
+  "name": "Pam (HR & Ideas)",
+  "objective": "Establish the central Ideas Backlog, Talent Architecture, and Culture Ops across all 8 verticals. Catalog all creative ideas and feature opportunities from akafolder and Desktop, aligning with the company ethos: 'Ship million-dollar projects using free resources and self-driven skills'.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+  "provider": "claude",
+  "command": "claude --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "pam",
+  "accent": "coral"
+}

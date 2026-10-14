@@ -49,11 +49,31 @@
       "createdAt": "2026-10-14T19:21:20.738Z",
       "startedAt": "2026-10-14T19:21:20.738Z",
       "updatedAt": "2026-10-14T19:21:20.738Z"
+    },
+    {
+      "title": "Establish Cloud AI Server Room & Centralized Data Access",
+      "assignee": "server-ai",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-6",
+      "createdAt": "2026-10-14T19:28:59.725Z",
+      "doneAt": "2026-10-14T19:28:59.725Z",
+      "updatedAt": "2026-10-14T19:28:59.725Z"
+    },
+    {
+      "title": "HR & Ideas Pipeline: Structure Cross-Domain Backlog & Talent Operations",
+      "assignee": "worker-hr",
+      "status": "doing",
+      "priority": "high",
+      "id": "DSK-7",
+      "createdAt": "2026-10-14T19:28:59.725Z",
+      "startedAt": "2026-10-14T19:28:59.725Z",
+      "updatedAt": "2026-10-14T19:28:59.725Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 6,
+    "next": 8,
     "aliases": {}
   }
 }

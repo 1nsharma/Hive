@@ -2,10 +2,18 @@
 
 _Shared plans live here. The god agent is the scribe._
 
-## 🏛️ Executive Roster & Team Structure
-- **Michael (`god`)**: Sovereign Floor Orchestrator — Triages human requests, manages floor policy, delegates work, and maintains kanban/board.
-- **Manager (`manager` / Dwight)**: Engineering Manager & Master Systems Architect — Git operations lead, repository orchestration, all provider tools coordinator (Claude Code, Antigravity, Node, Python, MemPalace).
-- **John (`john` / Jim)**: Portfolio Cleaner & Code Hygiene Lead — Dedicated to deduplicating loose desktop directories, isolating obsolete archive files, and consolidating into clean monorepo packages.
+> ### 💎 COMPANY MISSION & MASTER DIRECTIVE
+> **"This company ships million-dollar projects using free resources and self-driven skills across every domain!"**  
+> *(Zero waste, maximum speed, sovereign autonomy, and high-level inter-resource execution.)*
+
+---
+
+## 🏛️ Executive Roster & Team Stations
+- **Michael (`god`)** [Station: `desk`]: Sovereign Floor Orchestrator — Triages human requests, manages floor policy, delegates work, and maintains kanban/board.
+- **Server AI (`server-ai`)** [Station: `server`]: Central Cloud AI Room & Data Store — Provides unified data access across all Desktop repos, MemPalace semantic store, Knowledge Graph, and broker connections.
+- **Manager (`manager` / Dwight)** [Station: `desk`]: Engineering Manager & Master Systems Architect — Git operations lead, repository orchestration, all provider tools coordinator (Claude Code, Antigravity, Node, Python, MemPalace).
+- **John (`john` / Jim)** [Station: `desk`]: Portfolio Cleaner & Code Hygiene Lead — Dedicated to deduplicating loose desktop directories, isolating obsolete archive files, and consolidating into clean monorepo packages.
+- **Pam (`hr`)** [Station: `desk`]: HR, Talent Acquisition & Creative Ideas Officer — Central ideas backlog incubator, HireSaathi integration, team alignment, and culture ops.
 
 ---
 
@@ -24,7 +32,8 @@ _Shared plans live here. The god agent is the scribe._
 
 ---
 
-## 🚀 Active Objectives
-1. **Deduplication Pass (John)**: Identify and safely quarantine duplicate projects (`Dukaanmitra.in-dukaan`, `.zip` archives) without data loss.
-2. **Git & Provider Tools Sync (Manager)**: Ensure Git repos have clean branches, consistent remotes, and shared MCP / MemPalace configurations.
-3. **Execution Delivery (Michael)**: Monitor floor health, track kanban cards on `tasks.json`, and keep the team unblocked.
+## 🚀 Active Objectives & Assignments
+1. **Cloud AI Server Room Access (Server AI - `DSK-6`)**: Active at station `server`, serving all agents with unified repo data access.
+2. **Deduplication & Sanitization (Worker John - `DSK-4`)**: Scanning and isolating redundant copies without data loss.
+3. **Git Infrastructure & Monorepo Planning (Worker Manager - `DSK-5`)**: Verifying Git health and multi-repo interconnections.
+4. **HR & Ideas Incubator (Worker HR - `DSK-7`)**: Structuring the complete ideas backlog and talent architecture for all 8 domains.
