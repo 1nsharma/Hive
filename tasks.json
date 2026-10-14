@@ -143,12 +143,13 @@
     {
       "title": "Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration)",
       "assignee": "lead-cleantech",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-14",
       "createdAt": "2026-10-14T19:44:48.314Z",
       "startedAt": "2026-10-14T19:44:48.314Z",
-      "updatedAt": "2026-10-14T19:44:48.314Z"
+      "doneAt": "2026-10-14T20:57:00.000Z",
+      "updatedAt": "2026-10-14T20:57:45.301Z"
     },
     {
       "title": "Activate Division 07 GovTech Lead (ProofLedger Verification)",
