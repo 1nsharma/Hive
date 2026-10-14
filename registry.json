@@ -333,8 +333,8 @@
       ],
       "status": "working",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792008300000
+      "archived": true,
+      "lastSeen": 1792017299501
     },
     "erin-reception": {
       "id": "erin-reception",
