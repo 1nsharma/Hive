@@ -1,4 +1,4 @@
-<!-- Generated and managed by Munder Difflin. Local edits are replaced when the app starts. -->
+<!-- Generated and managed by Munder Difflin. Local edits may be replaced during hive bootstrap. -->
 
 # Claude Code commands
 

@@ -1,7 +1,7 @@
 {
   "note": "Written by the app. Read only; to change anything, see README.md.",
   "webhookServer": {
-    "running": true,
+    "running": false,
     "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net"
   },
   "webhookResponder": "",

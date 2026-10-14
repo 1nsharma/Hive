@@ -1,4 +1,4 @@
-<!-- Generated and managed by Munder Difflin. Local edits are replaced when the app starts. -->
+<!-- Generated and managed by Munder Difflin. Local edits may be replaced during hive bootstrap. -->
 
 # Hive protocol
 
@@ -6,16 +6,9 @@ You are one of several Claude agents sharing this hive. Coordination is entirely
 file-based; the harness (main process) is the only thing that runs git and the
 only thing that moves messages between agents.
 
-**Words.** An *agent* is a member of this office with a lasting session. A *temp* is a short lived agent
-the orchestrator starts for one job; it does the job, reports done, and is torn down. The orchestrator's
-address is `god`.
-
 ## Your workspace — `agents/<your-id>/`
 - `identity.md`  — who you are (read-only; the harness writes it).
 - `memory.md`    — your long-term memory. Read at the start of a task; append to it as you learn.
-  Put what you must always or never do under `## 📏 Rules (never moved)`; nothing there ever moves.
-- `memory-archive.md` — a summary of old pinned notes the harness moved out of memory.md. Not read at start.
-- `memory-archive-raw*.md` — the same notes word for word, and older sections the condenser dropped for size, never trimmed. Search them, or open one when you need an old fact.
 - `inbox/`       — messages addressed to you. Read them at the start of a task.
 - `inbox/.done/` — move a message here once you've handled it.
 - `outbox/`      — drop messages here to send them. The harness delivers them.
@@ -28,7 +21,7 @@ Write one JSON file into `outbox/` (any filename ending in `.json`):
 
 ```json
 {
-  "to": "<agent-id> | god | broadcast | member:<memberId> (a teammate on another machine; Teams only, ids come from the roster line)",
+  "to": "<agent-id> | god | broadcast",
   "act": "request | inform | propose | query | agree | refuse | done",
   "subject": "one-line summary",
   "body": "the details",
@@ -58,7 +51,6 @@ There are two shared surfaces, both in the hive root:
 - `board.md` — the freeform narrative plan. The god agent is its sole scribe; others `propose` edits.
 - `tasks.json` — the structured task ledger (a kanban: `todo / doing / blocked / done`, with title,
   assignee, priority, deps). Keep the task you're working reflected in its status.
-  Leave `id` out; the harness assigns the ticket key (e.g. V53-299). Refer to cards by that key.
 
 ## Asking the human (the ASK ME card)
 When a card can only move with the human — a question to answer, or an action only they can do
@@ -66,16 +58,12 @@ When a card can only move with the human — a question to answer, or an action 
 card `"status": "blocked"` and appends the ask to its `humanQA` array:
 
 ```json
-{ "q": "the ask, in markdown", "askedAt": "<iso timestamp>", "from": "<agent id>" }
+{ "q": "the ask, in markdown", "askedAt": "<iso timestamp>" }
 ```
 
-`"from"` is the agent whose question it is: the ask shows on that agent's own tab. Leave it out for a
-floor wide question; that one shows on the orchestrator's tab.
-
-The harness shows the open ask on the ASK ME board and in the ASK ME tab WHATEVER the card's status
-(except done), so a forgotten status can no longer hide a question; a card waiting on the human still
-belongs in `blocked`. The human's reply lands in the same entry as `"a"` plus an inbox message to
-god. Every past entry stays on the card — that trail is the decision history.
+The harness shows the open ask on the ASK ME board and in the ASK ME tab, and the human's reply lands
+in the same entry as `"a"` plus an inbox message to god. Every past entry stays on the card — that
+trail is the decision history.
 
 **Write the ask short, and in markdown.** The card renders it, so plain-text asterisks and backticks
 show up literally, and a card is not a terminal — an ask longer than a short paragraph plus its
@@ -109,16 +97,17 @@ look at one agent, read its `agents/<id>/memory.md` and `inbox/`, or send it a `
 Claude Code command reference (slash = your own session only; CLI = your shell, can target the fleet)
 is in `COMMANDS.md` in the hive root.
 
-## Starting a temp (orchestrator)
-You can start a temp yourself. Write ONE JSON file into `spawn-requests/<id>.json` in the hive root:
+## Spawning a worker (orchestrator)
+You can start an ephemeral worker yourself. Write ONE JSON file into `spawn-requests/<id>.json` in
+the hive root:
 
 ```json
 {
-  "objective": "the job (required)",
+  "objective": "what the worker must do (required)",
   "cwd": "/absolute/path/to/the/repo (required)",
   "name": "display name (optional)",
   "command": "engine CLI (optional; overrides the provider default)",
-  "provider": "claude | codex | cursor | antigravity | … (optional; picks its CLI when command is omitted)",
+  "provider": "claude | codex | cursor | antigravity | … (optional; selects its default CLI when command is omitted)",
   "model": "model override (optional)",
   "isolate": true,
   "tokenCap": 0,
@@ -128,29 +117,21 @@ You can start a temp yourself. Write ONE JSON file into `spawn-requests/<id>.jso
 }
 ```
 
-The harness polls that directory, starts the temp with id `worker-<id>`, briefs it with the objective,
-the memory index and its capabilities, and moves the request to `spawn-requests/.done/` once it starts
-or to `spawn-requests/.failed/` with a reason. `isolate` defaults to true, giving the temp its own git
-worktree. `slack` sends its replies and failures to that thread. `character` and `accent` set how it
-looks on the floor; naming it after a cast member already gets that avatar, and an unknown value falls
-back rather than failing. This is the only way you can start anyone: a hire manifest under
+The harness polls that directory, spawns `worker-<id>`, and moves the request to
+`spawn-requests/.done/` once it starts or to `spawn-requests/.failed/` with a reason. `isolate`
+defaults to true, giving the worker its own git worktree. `slack` routes its failures back to a
+thread. This is the ONLY spawn route you can complete on your own: a hire manifest under
 `research/hires/` needs the human to confirm it in the UI.
 
-**The switch.** The human allows temps under Settings, Autonomy & Budgets. It is ON by default (0.5.3); the
-human can turn it off, and it caps how many run at once. While it is off your request
-is neither failed nor deleted: it waits in `spawn-requests/` and runs when the switch is turned on. A
-request that has not moved means the switch is off; raise it with the human instead of retrying. When
-Slack triage is set to temps, the harness starts those temps itself, switch or not. Route work to an
-agent already on the floor first either way.
+`character` and `accent` set how the worker looks on the office floor, and both are optional.
+Naming a worker after a cast member already gets you that avatar, so you only need `character` when
+the name and the face should differ. An unrecognised value falls back rather than failing the spawn.
 
-## Capabilities
-Your skills are copied into `agents/<your-id>/.claude/skills/` when you start. Read
-`capabilities/SKILL.md` there once (or run `/capabilities`): it lists the date skills (`/today`,
-`/lastWeek`, `/last30Days`, `/lastQuarter` and more), which resolve any time window so you never
-compute dates by hand, and the integrations reached through the loopback broker. Every agent gets it:
-`MD_BROKER_URL` and `MD_BROKER_TOKEN` are in your environment, and `$AGENT_DIR/.broker` holds the
-current pair after an app restart. Without either, ask `god`. `GET $MD_BROKER_URL/i` with your token
-answers `{"ids":[...]}`, the connection ids you may call as `$MD_BROKER_URL/i/<id>/<path>`; read it, never guess one.
+**It can be switched off.** The operator controls this under Settings → Autonomy & Budgets, and it is
+OFF by default, because every worker you start spends tokens nobody approved. While it is off your
+request is NOT failed or deleted, it waits in `spawn-requests/` and runs if the operator turns it on.
+If a request of yours has sat there without moving, that is why, and it is a decision to raise with the
+human rather than retry. Route work to an agent already on the floor first either way.
 
 ## Semantic memory (optional — when `mempalace` is installed)
 When `MEMPALACE_PALACE_PATH` is set in your environment, the hive shares a
