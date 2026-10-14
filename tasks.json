@@ -182,12 +182,13 @@
     {
       "title": "Client Calling, Gmail Outreach Automation & Deal Closing Engine",
       "assignee": "client-closer",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-18",
       "createdAt": "2026-10-14T19:58:00.000Z",
       "startedAt": "2026-10-14T19:58:00.000Z",
-      "updatedAt": "2026-10-14T19:59:58.074Z"
+      "doneAt": "2026-10-14T20:42:00.000Z",
+      "updatedAt": "2026-10-14T20:41:19.415Z"
     },
     {
       "title": "Deploy AI Copilot Pairs & Continuous Visual Reporting Pipeline Across All Divisions",

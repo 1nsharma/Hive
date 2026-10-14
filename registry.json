@@ -187,8 +187,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792005639879
+      "archived": true,
+      "lastSeen": 1792010355105
     },
     "worker-manager": {
       "id": "worker-manager",
@@ -199,8 +199,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792005641989
+      "archived": true,
+      "lastSeen": 1792010406230
     },
     "worker-hr": {
       "id": "worker-hr",
@@ -211,8 +211,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792006108000
+      "archived": true,
+      "lastSeen": 1792010349644
     },
     "worker-lead-retail": {
       "id": "worker-lead-retail",
@@ -363,8 +363,56 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
+      "archived": true,
+      "lastSeen": 1792010514332
+    },
+    "worker-client-research": {
+      "id": "worker-client-research",
+      "name": "Phyllis (Client Research Lead)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
       "archived": false,
-      "lastSeen": 1792009787449
+      "lastSeen": 1792010350479
+    },
+    "worker-lead-cleantech": {
+      "id": "worker-lead-cleantech",
+      "name": "Stanley (CleanTech Lead)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\solar-hub",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792010355621
+    },
+    "worker-lead-govtech": {
+      "id": "worker-lead-govtech",
+      "name": "Creed (GovTech Lead)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\proofledger-ai-aemy",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792010408896
+    },
+    "worker-lead-logistics": {
+      "id": "worker-lead-logistics",
+      "name": "Darryl (Logistics Lead)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\Truckwala24x7",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792010518463
     }
   }
 }
