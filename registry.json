@@ -411,8 +411,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792010518463
+      "archived": true,
+      "lastSeen": 1792012327414
     },
     "worker-lead-media": {
       "id": "worker-lead-media",
@@ -423,8 +423,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792010998704
+      "archived": true,
+      "lastSeen": 1792012260530
     }
   }
 }
