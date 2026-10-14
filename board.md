@@ -74,7 +74,7 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-13`: Activate Division 03 Logistics Lead (TruckWala Monorepo Build) (`lead-logistics`) — **Done** (Production `dist/` compiled)
 - `DSK-14`: Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration) (`lead-cleantech`) — **Done** (Unified Microgrid Architecture & Expo Screen)
 - `DSK-15`: Activate Division 07 GovTech Lead (ProofLedger Verification) (`lead-govtech`) — **Done** (46/46 DIP Tests & Biometric Compliance Report)
-- `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Doing**
+- `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Done** (7 HTML5 Games & Folder 0 Vox AI Engine)
 - `DSK-17`: B2B Client Research, Company Registration & Authority Compliance Pipeline (`client-research`) — **Done** ([`CLIENT_RESEARCH_DATABASE.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_RESEARCH_DATABASE.md))
 - `DSK-18`: Client Calling, Gmail Outreach Automation & Deal Closing Engine (`client-closer`) — **Done** ([`CLIENT_OUTREACH_PLAYBOOK.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_OUTREACH_PLAYBOOK.md))
 - `DSK-19`: Deploy AI Copilot Pairs & Continuous Visual Reporting Pipeline (`god`) — **Done** ([`VISUAL_COMMAND_CENTER.html`](file:///C:/Users/18/OneDrive/Desktop/hive/VISUAL_COMMAND_CENTER.html))
