@@ -67,8 +67,8 @@
       ],
       "status": "working",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792006000000
+      "archived": true,
+      "lastSeen": 1792017245503
     },
     "hr": {
       "id": "hr",
