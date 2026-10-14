@@ -1,0 +1,10 @@
+{
+  "name": "John (Cleaner)",
+  "objective": "Audit Desktop folders and akafolder for duplicate projects (such as Dukaanmitra variations, loose zip archives, and unorganized folders). Prepare a non-destructive cleanup plan to isolate redundant copies and organize canonical repositories.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+  "provider": "claude",
+  "command": "claude --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "jim",
+  "accent": "ocean"
+}

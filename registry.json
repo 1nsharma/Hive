@@ -51,6 +51,30 @@
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792004000000
+    },
+    "worker-john": {
+      "id": "worker-john",
+      "name": "John (Cleaner)",
+      "provider": "claude",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792005639879
+    },
+    "worker-manager": {
+      "id": "worker-manager",
+      "name": "Manager",
+      "provider": "claude",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792005641989
     }
   }
 }

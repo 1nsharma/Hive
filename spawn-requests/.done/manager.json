@@ -1,0 +1,10 @@
+{
+  "name": "Manager",
+  "objective": "Inspect Git status, remotes, and branch health across all Desktop portfolio repositories (DukaanMitra-OS, Truckwala24x7, solar-hub, solar_wallet, petsjanu.com, proofledger-ai-aemy, gitforge). Formulate the unified master monorepo and inter-resource connection plan.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+  "provider": "claude",
+  "command": "claude --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "dwight",
+  "accent": "forest"
+}
