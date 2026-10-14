@@ -375,8 +375,8 @@
       "capabilities": [],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792010350479
+      "archived": true,
+      "lastSeen": 1792010997010
     },
     "worker-lead-cleantech": {
       "id": "worker-lead-cleantech",
@@ -413,6 +413,18 @@
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792010518463
+    },
+    "worker-lead-media": {
+      "id": "worker-lead-media",
+      "name": "Ryan (Media Lead)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\akafolder\\08_MEDIA_GAMING_AND_VENTURES",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792010998704
     }
   }
 }

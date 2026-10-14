@@ -1,8 +1,11 @@
 # Memory index
 
-Written 2026-10-14T20:41:59.163Z by the harness when a temp was spawned. 26 agents have been on this floor, 19 with notes worth reading.
+Written 2026-10-14T20:49:59.665Z by the harness when a temp was spawned. 27 agents have been on this floor, 20 with notes worth reading.
 Each entry is one agent: id, display name, role in brackets, state, size and last update on the first line, the absolute path of its memory file on the second.
 Read the memory of every agent your task names and of every agent whose role matches it. An entry marked empty holds only the seed header. Read only: you write to your own memory.md alone.
+
+client-research  Phyllis (Client Research Lead) (Enterprise Client Research & Authority Verification Lead — MCA, ROC, GSTIN, MSME Udyam)  active  2 KB  updated 2026-10-14 20:49 UTC
+  C:\Users\18\OneDrive\Desktop\hive\agents\client-research\memory.md
 
 god  Michael (god — runs the floor, triages requests, escalates only critical calls to you)  active  10 KB  updated 2026-10-14 20:13 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\god\memory.md
@@ -24,9 +27,6 @@ kevin-analytics  Kevin (Hyperlocal & Cost Analytics) (Cost Economics, Pricing En
 
 client-closer  Andy (Client Closer & Outreach) (Client Calling & Gmail Outreach Deal Closer — B2B Calling Scripts, Gmail Sequences, Deal Closing)  active  554 B  updated 2026-10-14 19:58 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\client-closer\memory.md
-
-client-research  Phyllis (Client Research Lead) (Enterprise Client Research & Authority Verification Lead — MCA, ROC, GSTIN, MSME Udyam)  active  554 B  updated 2026-10-14 19:58 UTC
-  C:\Users\18\OneDrive\Desktop\hive\agents\client-research\memory.md
 
 lead-cleantech  Stanley (Div 04 CleanTech Lead) (CleanTech & Energy Division Lead — SolarHub, SolarSync Microgrid)  active  258 B  updated 2026-10-14 19:43 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\lead-cleantech\memory.md
@@ -55,11 +55,17 @@ john  John (Jim - Cleaner) (Portfolio Cleaner & Sanitizer — deduplication, dir
 manager  Manager (Dwight) (Engineering Manager & Div 01 Lead — Git control, multi-repo design, all provider tools orchestrator)  active  636 B  updated 2026-10-14 18:57 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\manager\memory.md
 
+worker-client-research  Phyllis (Client Research Lead) (temp)  archived  2 KB  updated 2026-10-14 20:49 UTC
+  C:\Users\18\OneDrive\Desktop\hive\agents\worker-client-research\memory.md
+
 worker-client-closer  Andy (Client Closer) (temp)  archived  3 KB  updated 2026-10-14 20:41 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\worker-client-closer\memory.md
 
 worker-lead-retail  Angela (Retail Lead) (temp)  archived  3 KB  updated 2026-10-14 20:29 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\worker-lead-retail\memory.md
+
+worker-lead-media  Ryan (Media Lead) (temp)  empty  106 B  updated 2026-10-14 20:49 UTC
+  C:\Users\18\OneDrive\Desktop\hive\agents\worker-lead-media\memory.md
 
 worker-lead-logistics  Darryl (Logistics Lead) (temp)  empty  116 B  updated 2026-10-14 20:41 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\worker-lead-logistics\memory.md
@@ -69,9 +75,6 @@ worker-lead-govtech  Creed (GovTech Lead) (temp)  empty  111 B  updated 2026-10-
 
 worker-lead-cleantech  Stanley (CleanTech Lead) (temp)  empty  117 B  updated 2026-10-14 20:39 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\worker-lead-cleantech\memory.md
-
-worker-client-research  Phyllis (Client Research Lead) (temp)  empty  124 B  updated 2026-10-14 20:39 UTC
-  C:\Users\18\OneDrive\Desktop\hive\agents\worker-client-research\memory.md
 
 worker-hr  Pam (HR & Ideas) (temp)  empty  97 B  updated 2026-10-14 19:28 UTC
   C:\Users\18\OneDrive\Desktop\hive\agents\worker-hr\memory.md

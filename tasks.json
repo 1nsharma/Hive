@@ -44,12 +44,13 @@
     {
       "title": "Git Infrastructure & Master Monorepo Plan",
       "assignee": "worker-manager",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-5",
       "createdAt": "2026-10-14T19:21:20.738Z",
       "startedAt": "2026-10-14T19:21:20.738Z",
-      "updatedAt": "2026-10-14T19:21:20.738Z"
+      "doneAt": "2026-10-14T20:48:00.000Z",
+      "updatedAt": "2026-10-14T20:49:27.301Z"
     },
     {
       "title": "Establish Cloud AI Server Room & Centralized Data Access",

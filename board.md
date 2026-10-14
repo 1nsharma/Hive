@@ -63,20 +63,20 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-2`: Audit & Domain Inventory of all Desktop Folders — **Done**
 - `DSK-3`: Deploy Manager (Architect) and John (Cleaner) to Hive Floor — **Done**
 - `DSK-4`: Portfolio Deduplication (`worker-john`) — **Done** (Archived `dukaan imple` to `_ARCHIVE_LEGACY_VERSIONS`)
-- `DSK-5`: Git Infrastructure & Master Monorepo Plan (`worker-manager`) — **Doing**
+- `DSK-5`: Git Infrastructure & Master Monorepo Plan (`worker-manager`) — **Done** ([`MASTER_MONOREPO_GIT_INFRASTRUCTURE_PLAN.md`](file:///C:/Users/18/OneDrive/Desktop/hive/MASTER_MONOREPO_GIT_INFRASTRUCTURE_PLAN.md))
 - `DSK-6`: Establish Cloud AI Server Room & Central Data Access (`server-ai`) — **Done**
 - `DSK-7`: HR & Ideas Pipeline: Structure Cross-Domain Backlog (`worker-hr`) — **Done**
 - `DSK-8`: Vercel Landing Page Deployment & GitHub Sync (`worker-manager`) — **Doing**
 - `DSK-9`: Senior/Junior Role Allocation & Knowledge Matrix (`worker-hr`) — **Done**
 - `DSK-10`: Founder Business Banking & Legal KYC Integration — **Blocked on Human**
 - `DSK-11`: Deploy 200-Agent Enterprise Swarm Architecture (`god`) — **Done**
-- `DSK-12`: Activate Division 02 Commerce Lead (DukaanMitra Vercel Build) (`lead-retail`) — **Doing**
+- `DSK-12`: Activate Division 02 Commerce Lead (DukaanMitra Vercel Build) (`lead-retail`) — **Done** (Vite + ONDC Munim compiled)
 - `DSK-13`: Activate Division 03 Logistics Lead (TruckWala Monorepo Build) (`lead-logistics`) — **Done** (Production `dist/` compiled)
 - `DSK-14`: Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration) (`lead-cleantech`) — **Doing**
 - `DSK-15`: Activate Division 07 GovTech Lead (ProofLedger Verification) (`lead-govtech`) — **Doing**
 - `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Doing**
-- `DSK-17`: B2B Client Research, Company Registration & Authority Compliance Pipeline (`client-research`) — **Doing**
-- `DSK-18`: Client Calling, Gmail Outreach Automation & Deal Closing Engine (`client-closer`) — **Doing**
+- `DSK-17`: B2B Client Research, Company Registration & Authority Compliance Pipeline (`client-research`) — **Done** ([`CLIENT_RESEARCH_DATABASE.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_RESEARCH_DATABASE.md))
+- `DSK-18`: Client Calling, Gmail Outreach Automation & Deal Closing Engine (`client-closer`) — **Done** ([`CLIENT_OUTREACH_PLAYBOOK.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_OUTREACH_PLAYBOOK.md))
 - `DSK-19`: Deploy AI Copilot Pairs & Continuous Visual Reporting Pipeline (`god`) — **Done** ([`VISUAL_COMMAND_CENTER.html`](file:///C:/Users/18/OneDrive/Desktop/hive/VISUAL_COMMAND_CENTER.html))
 - `DSK-20`: Full Floor Desk Occupancy & Workforce Expansion Across All Workstations (`god`) — **Done** (17 Workstations Fully Staffed)
 - `DSK-21`: Configure Chrome Browser Automation & Live Portal Integration for All Floor Agents (`god`) — **Done** (Host Chrome Active)
