@@ -7,12 +7,12 @@
       "provider": "antigravity",
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": true,
-      "role": "god — runs the floor, triages requests, escalates only critical calls to you",
+      "role": "orchestrator (god)",
       "capabilities": [],
-      "status": "working",
+      "status": "idle",
       "cwdValid": true,
       "archived": false,
-      "lastSeen": 1792003305585
+      "lastSeen": 1792017446933
     },
     "manager": {
       "id": "manager",
