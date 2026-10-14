@@ -13,6 +13,44 @@
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792003305585
+    },
+    "manager": {
+      "id": "manager",
+      "name": "Manager",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Engineering Manager & Chief Architect — Git control, multi-repo design, all provider tools orchestrator",
+      "capabilities": [
+        "git",
+        "claude",
+        "agy",
+        "mempalace",
+        "node",
+        "uv"
+      ],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792004000000
+    },
+    "john": {
+      "id": "john",
+      "name": "John (Cleaner)",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Portfolio Cleaner & Sanitizer — deduplication, directory cleanup, gitignore, and codebase hygiene",
+      "capabilities": [
+        "cleaner",
+        "git",
+        "claude",
+        "mempalace"
+      ],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792004000000
     }
   }
 }

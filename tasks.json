@@ -9,11 +9,41 @@
       "createdAt": "2026-10-14T18:48:10.446Z",
       "doneAt": "2026-10-14T18:48:10.446Z",
       "updatedAt": "2026-10-14T18:48:10.446Z"
+    },
+    {
+      "title": "Audit & Domain Inventory of all Desktop Folders",
+      "assignee": "manager",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-2",
+      "createdAt": "2026-10-14T18:58:40.512Z",
+      "doneAt": "2026-10-14T18:58:40.512Z",
+      "updatedAt": "2026-10-14T18:58:40.512Z"
+    },
+    {
+      "title": "Deploy Manager (Architect) and John (Cleaner) to Hive Floor",
+      "assignee": "god",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-3",
+      "createdAt": "2026-10-14T18:58:40.512Z",
+      "doneAt": "2026-10-14T18:58:40.512Z",
+      "updatedAt": "2026-10-14T18:58:40.512Z"
+    },
+    {
+      "title": "Portfolio Deduplication & Clean Monorepo Architecture Blueprint",
+      "assignee": "john",
+      "status": "doing",
+      "priority": "high",
+      "id": "DSK-4",
+      "createdAt": "2026-10-14T18:58:40.512Z",
+      "startedAt": "2026-10-14T18:58:40.512Z",
+      "updatedAt": "2026-10-14T18:58:40.512Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 2,
+    "next": 5,
     "aliases": {}
   }
 }
