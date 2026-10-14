@@ -2,7 +2,7 @@
   "note": "Written by the app. Read only; to change anything, see README.md.",
   "webhookServer": {
     "running": true,
-    "url": ""
+    "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net"
   },
   "webhookResponder": "",
   "webhooks": [
@@ -15,7 +15,18 @@
       "mode": "strict",
       "description": "",
       "hasPrompt": false,
-      "url": ""
+      "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net/wh-mv8e073f-9xfrnw"
+    },
+    {
+      "id": "wh-mv8ggcdo-ab0h8w",
+      "name": "GitHub",
+      "source": "github",
+      "to": "",
+      "enabled": true,
+      "mode": "strict",
+      "description": "",
+      "hasPrompt": true,
+      "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net/wh-mv8ggcdo-ab0h8w"
     }
   ],
   "missions": [

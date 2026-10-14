@@ -1,4 +1,18 @@
 {
-  "godId": null,
-  "agents": {}
+  "godId": "god",
+  "agents": {
+    "god": {
+      "id": "god",
+      "name": "Michael",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": true,
+      "role": "orchestrator (god)",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792002958934
+    }
+  }
 }
