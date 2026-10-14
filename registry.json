@@ -175,8 +175,8 @@
       ],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792007000000
+      "archived": true,
+      "lastSeen": 1792017277314
     },
     "worker-john": {
       "id": "worker-john",
