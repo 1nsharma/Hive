@@ -121,8 +121,8 @@
       ],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792007000000
+      "archived": true,
+      "lastSeen": 1792017265189
     },
     "lead-cleantech": {
       "id": "lead-cleantech",
