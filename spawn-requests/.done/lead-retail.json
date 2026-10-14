@@ -1,0 +1,10 @@
+{
+  "name": "Angela (Retail Lead)",
+  "objective": "Build, test, and prepare DukaanMitra-OS and MitraOS Web for Vercel deployment. Ensure ONDC integration and WhatsApp Munim billing modules are production-ready.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\DukaanMitra-OS",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "angela",
+  "accent": "rose"
+}

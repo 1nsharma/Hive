@@ -21,7 +21,14 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Engineering Manager & Div 01 Lead — Git control, multi-repo design, all provider tools orchestrator",
-      "capabilities": ["git", "claude", "agy", "mempalace", "node", "uv"],
+      "capabilities": [
+        "git",
+        "claude",
+        "agy",
+        "mempalace",
+        "node",
+        "uv"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -34,7 +41,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Portfolio Cleaner & Sanitizer — deduplication, directory cleanup, gitignore, and codebase hygiene",
-      "capabilities": ["cleaner", "git", "claude", "mempalace"],
+      "capabilities": [
+        "cleaner",
+        "git",
+        "claude",
+        "mempalace"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -47,7 +59,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Cloud AI Server Room & Central Enterprise Data Store",
-      "capabilities": ["kg", "mempalace", "broker", "data-hub"],
+      "capabilities": [
+        "kg",
+        "mempalace",
+        "broker",
+        "data-hub"
+      ],
       "status": "working",
       "cwdValid": true,
       "archived": false,
@@ -60,7 +77,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "HR, Talent Acquisition & Creative Ideas Officer",
-      "capabilities": ["talent", "ideas", "recruitment", "culture"],
+      "capabilities": [
+        "talent",
+        "ideas",
+        "recruitment",
+        "culture"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -73,7 +95,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\DukaanMitra-OS",
       "isGod": false,
       "role": "Commerce & Retail Division Lead — DukaanMitra OS, MitraOS, ONDC Munim",
-      "capabilities": ["retail", "whatsapp", "billing", "ondc"],
+      "capabilities": [
+        "retail",
+        "whatsapp",
+        "billing",
+        "ondc"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -86,7 +113,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\Truckwala24x7",
       "isGod": false,
       "role": "Logistics & Fleet Division Lead — TruckWala 24x7, Breakdown & Fleet Operations",
-      "capabilities": ["logistics", "fleet", "diagnostics", "telematics"],
+      "capabilities": [
+        "logistics",
+        "fleet",
+        "diagnostics",
+        "telematics"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -99,7 +131,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\solar-hub",
       "isGod": false,
       "role": "CleanTech & Energy Division Lead — SolarHub, SolarSync Microgrid",
-      "capabilities": ["cleantech", "solar", "iot", "microgrid"],
+      "capabilities": [
+        "cleantech",
+        "solar",
+        "iot",
+        "microgrid"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -112,7 +149,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\proofledger-ai-aemy",
       "isGod": false,
       "role": "GovTech & Security Division Lead — ProofLedger, DIP Vision, Identity OS",
-      "capabilities": ["security", "crypto", "zkp", "identity"],
+      "capabilities": [
+        "security",
+        "crypto",
+        "zkp",
+        "identity"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -125,7 +167,12 @@
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\akafolder\\08_MEDIA_GAMING_AND_VENTURES",
       "isGod": false,
       "role": "Media & Gaming Division Lead — Desi Arcade Studios, DupperAI Content",
-      "capabilities": ["media", "gaming", "godot", "content-ai"],
+      "capabilities": [
+        "media",
+        "gaming",
+        "godot",
+        "content-ai"
+      ],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -166,6 +213,18 @@
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792006108000
+    },
+    "worker-lead-retail": {
+      "id": "worker-lead-retail",
+      "name": "Angela (Retail Lead)",
+      "provider": "antigravity",
+      "role": "temp",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\DukaanMitra-OS",
+      "capabilities": [],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007524699
     }
   }
 }

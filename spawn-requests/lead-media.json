@@ -1,0 +1,10 @@
+{
+  "name": "Ryan (Media Lead)",
+  "objective": "Build and package Desi Arcade Studios HTML5 web games and integrate folder 0 Vox AI motion graphics engine into division 08 media pipeline.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\akafolder\\08_MEDIA_GAMING_AND_VENTURES",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "ryan",
+  "accent": "purple"
+}

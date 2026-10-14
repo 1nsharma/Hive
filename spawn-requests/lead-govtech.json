@@ -1,0 +1,10 @@
+{
+  "name": "Creed (GovTech Lead)",
+  "objective": "Integrate ProofLedger cryptographic audit trail with DIP Vision biometric verification engine. Run test verification and generate compliance report.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\proofledger-ai-aemy",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "creed",
+  "accent": "crimson"
+}

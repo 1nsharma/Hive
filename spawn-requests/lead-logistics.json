@@ -1,0 +1,10 @@
+{
+  "name": "Darryl (Logistics Lead)",
+  "objective": "Consolidate Truckwala24x7 and Truckwala_Web into a unified high-performance logistics monorepo. Build and verify the Vite client and telematics dashboard.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\Truckwala24x7",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "darryl",
+  "accent": "forest"
+}

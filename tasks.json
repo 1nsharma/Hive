@@ -33,12 +33,13 @@
     {
       "title": "Portfolio Deduplication & Clean Monorepo Architecture Blueprint",
       "assignee": "worker-john",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-4",
       "createdAt": "2026-10-14T18:58:40.512Z",
       "startedAt": "2026-10-14T18:58:40.512Z",
-      "updatedAt": "2026-10-14T19:21:20.738Z"
+      "doneAt": "2026-10-14T19:54:00.000Z",
+      "updatedAt": "2026-10-14T19:52:44.986Z"
     },
     {
       "title": "Git Infrastructure & Master Monorepo Plan",
@@ -129,12 +130,13 @@
     {
       "title": "Activate Division 03 Logistics Lead (TruckWala Monorepo Build)",
       "assignee": "lead-logistics",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-13",
       "createdAt": "2026-10-14T19:44:48.314Z",
       "startedAt": "2026-10-14T19:44:48.314Z",
-      "updatedAt": "2026-10-14T19:44:48.314Z"
+      "doneAt": "2026-10-14T19:54:00.000Z",
+      "updatedAt": "2026-10-14T19:52:49.507Z"
     },
     {
       "title": "Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration)",

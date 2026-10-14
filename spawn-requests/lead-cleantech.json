@@ -1,0 +1,10 @@
+{
+  "name": "Stanley (CleanTech Lead)",
+  "objective": "Interconnect SolarHub Expo client and solar_wallet smart metering database. Build a unified microgrid solar trading architecture.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\solar-hub",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "stanley",
+  "accent": "mint"
+}

@@ -6,14 +6,24 @@ _Shared plans live here. The god agent is the scribe._
 > **"This company ships million-dollar projects using free resources and self-driven skills across every domain!"**  
 > *(Zero waste, maximum speed, sovereign autonomy, and high-level inter-resource execution.)*
 
+> [!IMPORTANT]
+> ### 🚨 EXECUTIVE MANDATE: 1-HOUR DEEP WORK SPRINT LOCKDOWN (ACTIVE)
+> **Zero Breaks. No Walking The Floor. 100% Station Lock & Build Focus.**  
+> By direct order of the Founder: Every agent is stationed at their desk, terminal, or server room. All compute and context cycles are dedicated to compiling, building, and deploying live products. Dwight Schrute (`worker-manager`) is enforcing floor discipline.
+
 ---
 
-## 🏛️ Executive Roster & Team Stations
-- **Michael (`god`)** [Station: `desk`]: Sovereign Floor Orchestrator — Triages human requests, manages floor policy, delegates work, and maintains kanban/board.
+## 🏛️ Executive Roster & Floor Stations
+- **Michael (`god`)** [Station: `terminal`]: Sovereign Floor Orchestrator — Triages human requests, manages floor policy, delegates work, and maintains kanban/board.
 - **Server AI (`server-ai`)** [Station: `server`]: Central Cloud AI Room & Data Store — Provides unified data access across all Desktop repos, MemPalace semantic store, Knowledge Graph, and broker connections.
-- **Manager (`manager` / Dwight)** [Station: `desk`]: Engineering Manager & Master Systems Architect — Git operations lead, repository orchestration, all provider tools coordinator (Claude Code, Antigravity, Node, Python, MemPalace).
-- **John (`john` / Jim)** [Station: `desk`]: Portfolio Cleaner & Code Hygiene Lead — Dedicated to deduplicating loose desktop directories, isolating obsolete archive files, and consolidating into clean monorepo packages.
-- **Pam (`hr`)** [Station: `desk`]: HR, Talent Acquisition & Creative Ideas Officer — Central ideas backlog incubator, HireSaathi integration, team alignment, and culture ops.
+- **Manager (`worker-manager` / Dwight)** [Station: `desk`]: Engineering Manager & Master Systems Architect — Git operations lead, repository orchestration, all provider tools coordinator.
+- **John (`worker-john` / Jim)** [Station: `desk`]: Portfolio Cleaner & Code Hygiene Lead — Deduplication, quarantine of legacy duplicates into `_ARCHIVE_LEGACY_VERSIONS`, codebase hygiene.
+- **Pam (`worker-hr` / Pam)** [Station: `desk`]: HR, Talent Acquisition & Creative Ideas Officer — Central ideas backlog incubator, 200-agent sprint allocations, culture ops.
+- **Angela (`lead-retail` / Angela)** [Station: `desk`]: Div 02 Commerce & Retail Lead — DukaanMitra-OS, MitraOS, ONDC Munim & Vercel deployment packaging.
+- **Darryl (`lead-logistics` / Darryl)** [Station: `desk`]: Div 03 Logistics & Fleet Lead — TruckWala 24x7 monorepo, Vite client compiled (`dist/` ready), breakdown SOS dispatch.
+- **Stanley (`lead-cleantech` / Stanley)** [Station: `desk`]: Div 04 CleanTech Lead — SolarHub Expo app, SolarSync peer-to-peer microgrid credit trading.
+- **Creed (`lead-govtech` / Creed)** [Station: `desk`]: Div 07 GovTech & Security Lead — ProofLedger cryptographic audit trail, DIP Vision biometric verification.
+- **Ryan (`lead-media` / Ryan)** [Station: `desk`]: Div 08 Media & Gaming Lead — Desi Arcade Studios HTML5 games, Vox AI automated video synthesis.
 
 ---
 
@@ -22,30 +32,39 @@ _Shared plans live here. The god agent is the scribe._
 | Division # | Vertical & Domain Focus | Battalion Strength | Senior Commander | Key Output |
 | :--- | :--- | :--- | :--- | :--- |
 | **Div 01** | **AI Core & Autonomous Agents OS** | 25 Agents (`AI-01`..`25`) | Principal Autonomous Architect | JORVISH, Universal Agent, Zenith AGI |
-| **Div 02** | **Commerce, Retail & MSME** | 25 Agents (`RET-01`..`25`) | Principal Retail Commerce Lead | DukaanMitra-OS, MitraOS, ONDC Munim |
-| **Div 03** | **Logistics, Freight & Fleet** | 25 Agents (`LOG-01`..`25`) | Principal Fleet & Logistics Lead | TruckWala 24x7 Breakdown & Diagnostics |
-| **Div 04** | **CleanTech & Solar Microgrids** | 25 Agents (`SOL-01`..`25`) | Principal Smart Grid Architect | SolarHub, SolarSync PM Surya Ghar |
-| **Div 05** | **Talent, Recruitment & HR Tech** | 25 Agents (`HR-01`..`25`) | Chief Talent Operations Lead | HireSaathi AI Recruitment Studio |
+| **Div 02** | **Commerce, Retail & MSME** | 25 Agents (`RET-01`..`25`) | Angela (`lead-retail`) | DukaanMitra-OS, MitraOS, ONDC Munim |
+| **Div 03** | **Logistics, Freight & Fleet** | 25 Agents (`LOG-01`..`25`) | Darryl (`lead-logistics`) | TruckWala 24x7 Breakdown & Diagnostics |
+| **Div 04** | **CleanTech & Solar Microgrids** | 25 Agents (`SOL-01`..`25`) | Stanley (`lead-cleantech`) | SolarHub, SolarSync PM Surya Ghar |
+| **Div 05** | **Talent, Recruitment & HR Tech** | 25 Agents (`HR-01`..`25`) | Pam (`worker-hr`) | HireSaathi AI Recruitment Studio |
 | **Div 06** | **PetCare & Veterinary Safety** | 25 Agents (`PET-01`..`25`) | Principal PetTech Systems Lead | PetsJanu, PetGuardian Digital ID |
-| **Div 07** | **GovTech, Security & Identity** | 25 Agents (`GOV-01`..`25`) | Principal Cryptographic Architect | ProofLedger, DIP Vision, Cultural OS |
-| **Div 08** | **Media, Gaming & Ventures** | 25 Agents (`MED-01`..`25`) | Principal Game & Media Director | Desi Arcade, DupperAI Content OS |
+| **Div 07** | **GovTech, Security & Identity** | 25 Agents (`GOV-01`..`25`) | Creed (`lead-govtech`) | ProofLedger, DIP Vision, Cultural OS |
+| **Div 08** | **Media, Gaming & Ventures** | 25 Agents (`MED-01`..`25`) | Ryan (`lead-media`) | Desi Arcade, DupperAI Content OS |
 | **Total** | **Enterprise Autonomous Workforce**| **200 AI Agents** | **Michael (god)** | **Million-Dollar Autonomous Delivery** |
 
 ---
 
 ## 🚀 High-Speed Execution & Go-To-Market Protocol
-1. **Parallel Execution Engine**: Non-blocking subagents and git worktrees running simultaneously.
-2. **Flash Model Speed Tier**: Gemini 3.8 Flash & Claude Fast Modes delivering sub-second tool calls and instant code synthesis.
+1. **Parallel Execution Engine**: Non-blocking background worker processes and isolated worktrees executing concurrently.
+2. **Flash Model Speed Tier**: Gemini 3.8 Flash & Claude Fast Modes delivering sub-second tool loops and instant code synthesis.
 3. **Continuous Semantic Memory**: Whole-hive MemPalace synchronization eliminates redundant calculations.
-4. **Vercel & GitHub CI/CD**: One-command deployments for live commercial previews.
+4. **Vercel & GitHub CI/CD**: One-command builds for live commercial previews.
 
 ---
 
 ## 📋 Active Tasks Ledger
-- `DSK-4`: Portfolio Deduplication (`worker-john`) — **Doing**
-- `DSK-5`: Git Infrastructure & Monorepo Plan (`worker-manager`) — **Doing**
-- `DSK-7`: HR & Ideas Pipeline (`worker-hr`) — **Doing**
-- `DSK-8`: Vercel Landing Page Deployment (`worker-manager`) — **Doing**
-- `DSK-9`: Senior/Junior Role Allocation (`worker-hr`) — **Done**
-- `DSK-10`: Founder Business Banking & KYC — **Blocked on Human**
+- `DSK-1`: Set up missing local tooling (`uv`, `mempalace`, `claude`) — **Done**
+- `DSK-2`: Audit & Domain Inventory of all Desktop Folders — **Done**
+- `DSK-3`: Deploy Manager (Architect) and John (Cleaner) to Hive Floor — **Done**
+- `DSK-4`: Portfolio Deduplication (`worker-john`) — **Done** (Archived `dukaan imple` to `_ARCHIVE_LEGACY_VERSIONS`)
+- `DSK-5`: Git Infrastructure & Master Monorepo Plan (`worker-manager`) — **Doing**
+- `DSK-6`: Establish Cloud AI Server Room & Central Data Access (`server-ai`) — **Done**
+- `DSK-7`: HR & Ideas Pipeline: Structure Cross-Domain Backlog (`worker-hr`) — **Done**
+- `DSK-8`: Vercel Landing Page Deployment & GitHub Sync (`worker-manager`) — **Doing**
+- `DSK-9`: Senior/Junior Role Allocation & Knowledge Matrix (`worker-hr`) — **Done**
+- `DSK-10`: Founder Business Banking & Legal KYC Integration — **Blocked on Human**
 - `DSK-11`: Deploy 200-Agent Enterprise Swarm Architecture (`god`) — **Done**
+- `DSK-12`: Activate Division 02 Commerce Lead (DukaanMitra Vercel Build) (`lead-retail`) — **Doing**
+- `DSK-13`: Activate Division 03 Logistics Lead (TruckWala Monorepo Build) (`lead-logistics`) — **Done** (Production `dist/` compiled)
+- `DSK-14`: Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration) (`lead-cleantech`) — **Doing**
+- `DSK-15`: Activate Division 07 GovTech Lead (ProofLedger Verification) (`lead-govtech`) — **Doing**
+- `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Doing**
