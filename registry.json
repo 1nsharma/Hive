@@ -139,8 +139,8 @@
       ],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792007000000
+      "archived": true,
+      "lastSeen": 1792017270381
     },
     "lead-govtech": {
       "id": "lead-govtech",
