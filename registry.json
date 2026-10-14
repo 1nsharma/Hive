@@ -9,26 +9,19 @@
       "isGod": true,
       "role": "god — runs the floor, triages requests, escalates only critical calls to you",
       "capabilities": [],
-      "status": "idle",
+      "status": "working",
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792003305585
     },
     "manager": {
       "id": "manager",
-      "name": "Manager",
+      "name": "Manager (Dwight)",
       "provider": "claude",
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
-      "role": "Engineering Manager & Chief Architect — Git control, multi-repo design, all provider tools orchestrator",
-      "capabilities": [
-        "git",
-        "claude",
-        "agy",
-        "mempalace",
-        "node",
-        "uv"
-      ],
+      "role": "Engineering Manager & Div 01 Lead — Git control, multi-repo design, all provider tools orchestrator",
+      "capabilities": ["git", "claude", "agy", "mempalace", "node", "uv"],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -36,17 +29,12 @@
     },
     "john": {
       "id": "john",
-      "name": "John (Cleaner)",
+      "name": "John (Jim - Cleaner)",
       "provider": "claude",
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Portfolio Cleaner & Sanitizer — deduplication, directory cleanup, gitignore, and codebase hygiene",
-      "capabilities": [
-        "cleaner",
-        "git",
-        "claude",
-        "mempalace"
-      ],
+      "capabilities": ["cleaner", "git", "claude", "mempalace"],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
@@ -54,39 +42,94 @@
     },
     "server-ai": {
       "id": "server-ai",
-      "name": "Server AI (Cloud Hub)",
+      "name": "Server AI (Oscar - Cloud Hub)",
       "provider": "antigravity",
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "Cloud AI Server Room & Central Enterprise Data Store",
-      "capabilities": [
-        "kg",
-        "mempalace",
-        "broker",
-        "data-hub"
-      ],
-      "status": "idle",
+      "capabilities": ["kg", "mempalace", "broker", "data-hub"],
+      "status": "working",
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792006000000
     },
     "hr": {
       "id": "hr",
-      "name": "Pam (HR & Ideas)",
+      "name": "Pam (HR & Div 05 Lead)",
       "provider": "claude",
       "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
       "isGod": false,
       "role": "HR, Talent Acquisition & Creative Ideas Officer",
-      "capabilities": [
-        "talent",
-        "ideas",
-        "recruitment",
-        "culture"
-      ],
+      "capabilities": ["talent", "ideas", "recruitment", "culture"],
       "status": "idle",
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792006000000
+    },
+    "lead-retail": {
+      "id": "lead-retail",
+      "name": "Angela (Div 02 Commerce Lead)",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\DukaanMitra-OS",
+      "isGod": false,
+      "role": "Commerce & Retail Division Lead — DukaanMitra OS, MitraOS, ONDC Munim",
+      "capabilities": ["retail", "whatsapp", "billing", "ondc"],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007000000
+    },
+    "lead-logistics": {
+      "id": "lead-logistics",
+      "name": "Darryl (Div 03 Logistics Lead)",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\Truckwala24x7",
+      "isGod": false,
+      "role": "Logistics & Fleet Division Lead — TruckWala 24x7, Breakdown & Fleet Operations",
+      "capabilities": ["logistics", "fleet", "diagnostics", "telematics"],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007000000
+    },
+    "lead-cleantech": {
+      "id": "lead-cleantech",
+      "name": "Stanley (Div 04 CleanTech Lead)",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\solar-hub",
+      "isGod": false,
+      "role": "CleanTech & Energy Division Lead — SolarHub, SolarSync Microgrid",
+      "capabilities": ["cleantech", "solar", "iot", "microgrid"],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007000000
+    },
+    "lead-govtech": {
+      "id": "lead-govtech",
+      "name": "Creed (Div 07 GovTech Lead)",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\proofledger-ai-aemy",
+      "isGod": false,
+      "role": "GovTech & Security Division Lead — ProofLedger, DIP Vision, Identity OS",
+      "capabilities": ["security", "crypto", "zkp", "identity"],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007000000
+    },
+    "lead-media": {
+      "id": "lead-media",
+      "name": "Ryan (Div 08 Media Lead)",
+      "provider": "claude",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop\\akafolder\\08_MEDIA_GAMING_AND_VENTURES",
+      "isGod": false,
+      "role": "Media & Gaming Division Lead — Desi Arcade Studios, DupperAI Content",
+      "capabilities": ["media", "gaming", "godot", "content-ai"],
+      "status": "idle",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007000000
     },
     "worker-john": {
       "id": "worker-john",
@@ -122,7 +165,7 @@
       "status": "idle",
       "cwdValid": true,
       "archived": false,
-      "lastSeen": 1792006107582
+      "lastSeen": 1792006108000
     }
   }
 }

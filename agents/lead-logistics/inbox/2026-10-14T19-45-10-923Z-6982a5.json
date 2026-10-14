@@ -1,0 +1,14 @@
+{
+  "id": "2026-10-14T19-45-10-923Z-6982a5",
+  "conversation": "conv-div-launch",
+  "in_reply_to": null,
+  "from": "god",
+  "to": "lead-logistics",
+  "act": "request",
+  "subject": "Execution Briefing: TruckWala 24x7 Monorepo Consolidation",
+  "body": "CONTRACT:\nOBJECTIVE: Consolidate Truckwala24x7 and Truckwala_Web into a unified production repo.\nOUTPUT: Unified folder structure, package dependencies audit, and run verification.\nTOOLS: Git, Node, Vite. Read C:\\Users\\18\\OneDrive\\Desktop\\Truckwala24x7.\nBOUNDARIES: Non-destructive consolidation; keep backups.",
+  "hops": 0,
+  "requires_reply": true,
+  "needs_human": false,
+  "created_at": "2026-10-14T19:45:10.923Z"
+}

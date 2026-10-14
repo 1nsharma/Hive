@@ -1,0 +1,14 @@
+{
+  "id": "2026-10-14T19-45-19-966Z-548739",
+  "conversation": "conv-div-launch",
+  "in_reply_to": null,
+  "from": "god",
+  "to": "lead-cleantech",
+  "act": "request",
+  "subject": "Execution Briefing: SolarHub & SolarSync Wallet Interconnect",
+  "body": "CONTRACT:\nOBJECTIVE: Wire solar-hub PWA with solar_wallet microgrid credits and PM Surya Ghar calculator.\nOUTPUT: Architecture summary and integrated schema mapping.\nTOOLS: React Native / Expo, Node, Supabase. Read C:\\Users\\18\\OneDrive\\Desktop\\solar-hub.\nBOUNDARIES: Zero data mutation; dry-run schema connections first.",
+  "hops": 0,
+  "requires_reply": true,
+  "needs_human": false,
+  "created_at": "2026-10-14T19:45:19.967Z"
+}
