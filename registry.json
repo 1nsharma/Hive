@@ -242,8 +242,8 @@
       ],
       "status": "working",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792007800000
+      "archived": true,
+      "lastSeen": 1792017280273
     },
     "client-closer": {
       "id": "client-closer",
