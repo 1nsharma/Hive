@@ -1,0 +1,3 @@
+#!/bin/sh
+if [ -x "C:/Program Files/nodejs/node.exe" ]; then exec "C:/Program Files/nodejs/node.exe" "$@"; fi
+ELECTRON_RUN_AS_NODE=1 exec "C:/Users/18/AppData/Local/Programs/Munder Difflin/Munder Difflin.exe" "$@"
