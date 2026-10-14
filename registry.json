@@ -225,6 +225,32 @@
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792007524699
+    },
+    "client-research": {
+      "id": "client-research",
+      "name": "Phyllis (Client Research Lead)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Enterprise Client Research & Authority Verification Lead — MCA, ROC, GSTIN, MSME Udyam",
+      "capabilities": ["research", "mca", "gstin", "registry", "lead-gen"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007800000
+    },
+    "client-closer": {
+      "id": "client-closer",
+      "name": "Andy (Client Closer & Outreach)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Client Calling & Gmail Outreach Deal Closer — B2B Calling Scripts, Gmail Sequences, Deal Closing",
+      "capabilities": ["calling", "outreach", "gmail", "closing", "crm"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792007800000
     }
   }
 }

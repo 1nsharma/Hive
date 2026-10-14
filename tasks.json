@@ -167,11 +167,31 @@
       "createdAt": "2026-10-14T19:44:48.314Z",
       "startedAt": "2026-10-14T19:44:48.314Z",
       "updatedAt": "2026-10-14T19:44:48.314Z"
+    },
+    {
+      "title": "B2B Client Research, Company Registration & Authority Compliance Pipeline",
+      "assignee": "client-research",
+      "status": "doing",
+      "priority": "high",
+      "id": "DSK-17",
+      "createdAt": "2026-10-14T19:58:00.000Z",
+      "startedAt": "2026-10-14T19:58:00.000Z",
+      "updatedAt": "2026-10-14T19:59:58.074Z"
+    },
+    {
+      "title": "Client Calling, Gmail Outreach Automation & Deal Closing Engine",
+      "assignee": "client-closer",
+      "status": "doing",
+      "priority": "high",
+      "id": "DSK-18",
+      "createdAt": "2026-10-14T19:58:00.000Z",
+      "startedAt": "2026-10-14T19:58:00.000Z",
+      "updatedAt": "2026-10-14T19:59:58.074Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 17,
+    "next": 19,
     "aliases": {}
   }
 }

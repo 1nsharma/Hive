@@ -24,6 +24,8 @@ _Shared plans live here. The god agent is the scribe._
 - **Stanley (`lead-cleantech` / Stanley)** [Station: `desk`]: Div 04 CleanTech Lead — SolarHub Expo app, SolarSync peer-to-peer microgrid credit trading.
 - **Creed (`lead-govtech` / Creed)** [Station: `desk`]: Div 07 GovTech & Security Lead — ProofLedger cryptographic audit trail, DIP Vision biometric verification.
 - **Ryan (`lead-media` / Ryan)** [Station: `desk`]: Div 08 Media & Gaming Lead — Desi Arcade Studios HTML5 games, Vox AI automated video synthesis.
+- **Phyllis (`client-research` / Phyllis)** [Station: `desk`]: Enterprise Client Research & Authority Verification Lead — MCA, ROC, GSTIN, and MSME legal entity intelligence ([`CLIENT_RESEARCH_DATABASE.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_RESEARCH_DATABASE.md)).
+- **Andy (`client-closer` / Andy)** [Station: `desk`]: Client Outreach & Deal Closing Specialist — Cold calling scripts, Google Workspace / Gmail cadences, contract closing ([`CLIENT_OUTREACH_PLAYBOOK.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_OUTREACH_PLAYBOOK.md)).
 
 ---
 
@@ -68,3 +70,5 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-14`: Activate Division 04 CleanTech Lead (SolarHub & Wallet Integration) (`lead-cleantech`) — **Doing**
 - `DSK-15`: Activate Division 07 GovTech Lead (ProofLedger Verification) (`lead-govtech`) — **Doing**
 - `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Doing**
+- `DSK-17`: B2B Client Research, Company Registration & Authority Compliance Pipeline (`client-research`) — **Doing**
+- `DSK-18`: Client Calling, Gmail Outreach Automation & Deal Closing Engine (`client-closer`) — **Doing**

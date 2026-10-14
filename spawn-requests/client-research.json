@@ -1,0 +1,10 @@
+{
+  "name": "Phyllis (Client Research Lead)",
+  "objective": "Build the Master B2B Client Research & Authority Knowledge Database. Research prospective enterprise clients, verify corporate registration authority data (MCA, ROC, GSTIN, MSME Udyam, legal compliance), map CXO contacts, and package qualified lead dossiers for outbound sales closing.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "phyllis",
+  "accent": "amber"
+}

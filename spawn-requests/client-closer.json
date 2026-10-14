@@ -1,0 +1,10 @@
+{
+  "name": "Andy (Client Closer)",
+  "objective": "Build the Client Calling & Google/Gmail Outreach Deal Closing Engine. Create high-converting B2B cold calling scripts, Gmail email outreach sequences, objection-handling playbooks, proposal templates, and closed-won contract frameworks across DukaanMitra, TruckWala, SolarHub, and ProofLedger.",
+  "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+  "provider": "antigravity",
+  "command": "agy --dangerously-skip-permissions",
+  "isolate": false,
+  "character": "andy",
+  "accent": "coral"
+}

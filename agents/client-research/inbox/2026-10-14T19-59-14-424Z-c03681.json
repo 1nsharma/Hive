@@ -1,0 +1,14 @@
+{
+  "id": "2026-10-14T19-59-14-424Z-c03681",
+  "conversation": "conv-client-ops",
+  "in_reply_to": null,
+  "from": "god",
+  "to": "client-research",
+  "act": "request",
+  "subject": "Execution Contract: B2B Client Research & Authority Verification Pipeline",
+  "body": "OBJECTIVE: Build verified enterprise client lists across logistics, retail, clean energy, and corporate sectors.\nOUTPUT: Qualified client dossiers with verified MCA, ROC, GSTIN, and MSME Udyam credentials filed in `CLIENT_RESEARCH_DATABASE.md`.\nTOOLS: Corporate registry search, GSTIN verification tools, MemPalace.\nBOUNDARIES: Pass verified decision maker contacts to Andy (`client-closer`) via outbox.",
+  "hops": 0,
+  "requires_reply": true,
+  "needs_human": false,
+  "created_at": "2026-10-14T19:59:14.426Z"
+}
