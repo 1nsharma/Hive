@@ -85,8 +85,8 @@
       ],
       "status": "idle",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792006000000
+      "archived": true,
+      "lastSeen": 1792017248298
     },
     "lead-retail": {
       "id": "lead-retail",
