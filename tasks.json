@@ -187,11 +187,33 @@
       "createdAt": "2026-10-14T19:58:00.000Z",
       "startedAt": "2026-10-14T19:58:00.000Z",
       "updatedAt": "2026-10-14T19:59:58.074Z"
+    },
+    {
+      "title": "Deploy AI Copilot Pairs & Continuous Visual Reporting Pipeline Across All Divisions",
+      "assignee": "god",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-19",
+      "createdAt": "2026-10-14T20:05:00.000Z",
+      "startedAt": "2026-10-14T20:05:00.000Z",
+      "doneAt": "2026-10-14T20:06:00.000Z",
+      "updatedAt": "2026-10-14T20:06:21.960Z"
+    },
+    {
+      "title": "Full Floor Desk Occupancy & Workforce Expansion Across All Workstations",
+      "assignee": "god",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-20",
+      "createdAt": "2026-10-14T20:10:00.000Z",
+      "startedAt": "2026-10-14T20:10:00.000Z",
+      "doneAt": "2026-10-14T20:11:00.000Z",
+      "updatedAt": "2026-10-14T20:10:19.133Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 19,
+    "next": 21,
     "aliases": {}
   }
 }

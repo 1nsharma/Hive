@@ -26,6 +26,11 @@ _Shared plans live here. The god agent is the scribe._
 - **Ryan (`lead-media` / Ryan)** [Station: `desk`]: Div 08 Media & Gaming Lead — Desi Arcade Studios HTML5 games, Vox AI automated video synthesis.
 - **Phyllis (`client-research` / Phyllis)** [Station: `desk`]: Enterprise Client Research & Authority Verification Lead — MCA, ROC, GSTIN, and MSME legal entity intelligence ([`CLIENT_RESEARCH_DATABASE.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_RESEARCH_DATABASE.md)).
 - **Andy (`client-closer` / Andy)** [Station: `desk`]: Client Outreach & Deal Closing Specialist — Cold calling scripts, Google Workspace / Gmail cadences, contract closing ([`CLIENT_OUTREACH_PLAYBOOK.md`](file:///C:/Users/18/OneDrive/Desktop/hive/CLIENT_OUTREACH_PLAYBOOK.md)).
+- **Kevin (`kevin-analytics` / Kevin)** [Station: `desk`]: Cost Economics, Pricing Engine & Hyperlocal Delivery Analytics Specialist.
+- **Toby (`toby-compliance` / Toby)** [Station: `desk`]: Statutory Governance, Contract SLA Review & Legal Guardrails Officer.
+- **Kelly (`kelly-support` / Kelly)** [Station: `desk`]: Customer Experience, Voice AI Conversation Scripts & Omnichannel Social Engagement Lead.
+- **Meredith (`meredith-procure` / Meredith)** [Station: `desk`]: Hardware Procurement, DISCOM Vendor Relations & Supply Chain Expediter.
+- **Erin (`erin-reception` / Erin)** [Station: `desk`]: Floor Concierge, Inbound Client Call Triage & Executive Communication Lead.
 
 ---
 
@@ -72,3 +77,6 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-16`: Activate Division 08 Media Lead (Desi Arcade Game Pipeline) (`lead-media`) — **Doing**
 - `DSK-17`: B2B Client Research, Company Registration & Authority Compliance Pipeline (`client-research`) — **Doing**
 - `DSK-18`: Client Calling, Gmail Outreach Automation & Deal Closing Engine (`client-closer`) — **Doing**
+- `DSK-19`: Deploy AI Copilot Pairs & Continuous Visual Reporting Pipeline (`god`) — **Done** ([`VISUAL_COMMAND_CENTER.html`](file:///C:/Users/18/OneDrive/Desktop/hive/VISUAL_COMMAND_CENTER.html))
+- `DSK-20`: Full Floor Desk Occupancy & Workforce Expansion Across All Workstations (`god`) — **Done** (17 Workstations Fully Staffed)
+

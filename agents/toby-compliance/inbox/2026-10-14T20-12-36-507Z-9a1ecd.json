@@ -1,0 +1,14 @@
+{
+  "id": "2026-10-14T20-12-36-507Z-9a1ecd",
+  "conversation": "conv-chrome-mandate",
+  "in_reply_to": null,
+  "from": "god",
+  "to": "broadcast",
+  "act": "inform",
+  "subject": "EXECUTIVE ORDER: Utilize Local Google Chrome for All Web Operations",
+  "body": "By direct order of the Founder:\n\n1. CHROME BROWSER INTEGRATION: All agents must utilize Google Chrome (`C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`) on the host computer for all web-based operations.\n2. AUTHORITY & REGISTRATION LOOKUP: Phyllis (`client-research`) must verify legal registrations (MCA Master Data, ROC filings, GSTIN status, MSME Udyam) directly in Chrome.\n3. GMAIL & OUTREACH CLOSING: Andy (`client-closer`) must leverage Chrome for Google Workspace, Gmail outreach sequences, demo links, and closing communications.\n4. LIVE UI & DEVTOOLS VALIDATION: Division Leads (Retail, Logistics, CleanTech, GovTech, Media) must validate their frontend applications in Chrome and provide live visual previews.\n\nChrome has been launched with the Visual Command Center and Port 3300. Execute with full browser access!",
+  "hops": 0,
+  "requires_reply": false,
+  "needs_human": false,
+  "created_at": "2026-10-14T20:12:36.509Z"
+}

@@ -251,6 +251,71 @@
       "cwdValid": true,
       "archived": false,
       "lastSeen": 1792007800000
+    },
+    "kevin-analytics": {
+      "id": "kevin-analytics",
+      "name": "Kevin (Hyperlocal & Cost Analytics)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Cost Economics, Pricing Engine & Hyperlocal Delivery Analytics Specialist",
+      "capabilities": ["analytics", "pricing", "costing", "metrics"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792008300000
+    },
+    "toby-compliance": {
+      "id": "toby-compliance",
+      "name": "Toby (Legal & Regulatory Governance)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Statutory Governance, Contract SLA Review & Legal Guardrails Officer",
+      "capabilities": ["legal", "compliance", "sla", "contracts"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792008300000
+    },
+    "kelly-support": {
+      "id": "kelly-support",
+      "name": "Kelly (Voice AI & Social Engagement)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Customer Experience, Voice AI Conversation Scripts & Omnichannel Social Engagement Lead",
+      "capabilities": ["support", "voice-ai", "social", "retention"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792008300000
+    },
+    "meredith-procure": {
+      "id": "meredith-procure",
+      "name": "Meredith (Vendor Relations & Hardware Logistics)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Hardware Procurement, DISCOM Vendor Relations & Supply Chain Expediter",
+      "capabilities": ["procurement", "hardware", "discom", "vendors"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792008300000
+    },
+    "erin-reception": {
+      "id": "erin-reception",
+      "name": "Erin (Executive Reception & Inbound Routing)",
+      "provider": "antigravity",
+      "cwd": "C:\\Users\\18\\OneDrive\\Desktop",
+      "isGod": false,
+      "role": "Floor Concierge, Inbound Client Call Triage & Executive Communication Lead",
+      "capabilities": ["reception", "triage", "comms", "routing"],
+      "status": "working",
+      "cwdValid": true,
+      "archived": false,
+      "lastSeen": 1792008300000
     }
   }
 }
