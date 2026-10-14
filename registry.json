@@ -279,8 +279,8 @@
       ],
       "status": "working",
       "cwdValid": true,
-      "archived": false,
-      "lastSeen": 1792008300000
+      "archived": true,
+      "lastSeen": 1792017288359
     },
     "toby-compliance": {
       "id": "toby-compliance",
