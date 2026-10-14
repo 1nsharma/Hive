@@ -46,11 +46,11 @@
       "label": "Floor heartbeat",
       "to": "god",
       "body": "Floor heartbeat: the team has gone quiet. Review the digest in your inbox, re-engage anyone stalled or blocked, and keep the board accurate — or rest if the work is genuinely done.",
-      "enabled": false,
+      "enabled": true,
       "intervalMs": 120000,
       "kind": "heartbeat",
       "createdBy": "",
-      "lastFiredAt": "2026-10-14T17:25:44.256Z"
+      "lastFiredAt": "2026-10-14T19:03:00.618Z"
     }
   ],
   "slack": {
