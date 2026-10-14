@@ -32,18 +32,28 @@
     },
     {
       "title": "Portfolio Deduplication & Clean Monorepo Architecture Blueprint",
-      "assignee": "john",
+      "assignee": "worker-john",
       "status": "doing",
       "priority": "high",
       "id": "DSK-4",
       "createdAt": "2026-10-14T18:58:40.512Z",
       "startedAt": "2026-10-14T18:58:40.512Z",
-      "updatedAt": "2026-10-14T18:58:40.512Z"
+      "updatedAt": "2026-10-14T19:21:20.738Z"
+    },
+    {
+      "title": "Git Infrastructure & Master Monorepo Plan",
+      "assignee": "worker-manager",
+      "status": "doing",
+      "priority": "high",
+      "id": "DSK-5",
+      "createdAt": "2026-10-14T19:21:20.738Z",
+      "startedAt": "2026-10-14T19:21:20.738Z",
+      "updatedAt": "2026-10-14T19:21:20.738Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 5,
+    "next": 6,
     "aliases": {}
   }
 }
