@@ -13,8 +13,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const HIVE_ROOT = path.resolve(__dirname, '..');
 
-// Verified Leads Database (Synced with CLIENT_RESEARCH_DATABASE.md)
-export const VERIFIED_LEADS = [
+import { ENTERPRISE_CLIENT_DOSSIERS } from '../client-research-engine/dossiers/enterprise-leads.mjs';
+
+// Core Sample Leads (Maintained for backward-compatible merge tag tests)
+const CORE_SAMPLE_LEADS = [
   {
     companyName: 'National Express Freight Lines',
     sector: 'Transport & Fleet Logistics',
@@ -82,6 +84,28 @@ export const VERIFIED_LEADS = [
     estimatedMonthlyLoss: '₹1,90,000 in roadside cash extortion'
   }
 ];
+
+// Map all 20 dossiers from Phyllis's client-research-engine
+const ADDITIONAL_RESEARCH_LEADS = ENTERPRISE_CLIENT_DOSSIERS.map(d => ({
+  companyName: d.companyName,
+  sector: d.sector,
+  decisionMakerName: d.decisionMaker.name,
+  decisionMakerRole: d.decisionMaker.role,
+  targetSolution: d.vertical,
+  fleetSize: d.operationalMetrics?.fleetSize,
+  storeCount: d.operationalMetrics?.storeCount,
+  counterCount: d.operationalMetrics?.counterCount,
+  solarCapacityKw: d.operationalMetrics?.solarFeasibilityKw,
+  monthlyVolume: d.operationalMetrics?.monthlyVolume,
+  region: d.region,
+  verificationStatus: `MCA / GSTIN Active (CIN: ${d.authorityData.cin})`,
+  email: d.decisionMaker.email,
+  phone: d.decisionMaker.phone,
+  estimatedMonthlyLoss: d.quantifiableBleed
+})).filter(al => !CORE_SAMPLE_LEADS.some(cl => cl.companyName.toLowerCase() === al.companyName.toLowerCase()));
+
+// Unified Verified Leads Database (Synced with CLIENT_RESEARCH_DATABASE.md)
+export const VERIFIED_LEADS = [...CORE_SAMPLE_LEADS, ...ADDITIONAL_RESEARCH_LEADS];
 
 export function listLeads() {
   return VERIFIED_LEADS;

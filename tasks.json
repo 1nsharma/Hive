@@ -172,12 +172,13 @@
     {
       "title": "B2B Client Research, Company Registration & Authority Compliance Pipeline",
       "assignee": "client-research",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-17",
       "createdAt": "2026-10-14T19:58:00.000Z",
       "startedAt": "2026-10-14T19:58:00.000Z",
-      "updatedAt": "2026-10-14T19:59:58.074Z"
+      "doneAt": "2026-10-14T20:49:00.000Z",
+      "updatedAt": "2026-10-14T20:49:07.747Z"
     },
     {
       "title": "Client Calling, Gmail Outreach Automation & Deal Closing Engine",
