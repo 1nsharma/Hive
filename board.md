@@ -79,4 +79,6 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-18`: Client Calling, Gmail Outreach Automation & Deal Closing Engine (`client-closer`) — **Doing**
 - `DSK-19`: Deploy AI Copilot Pairs & Continuous Visual Reporting Pipeline (`god`) — **Done** ([`VISUAL_COMMAND_CENTER.html`](file:///C:/Users/18/OneDrive/Desktop/hive/VISUAL_COMMAND_CENTER.html))
 - `DSK-20`: Full Floor Desk Occupancy & Workforce Expansion Across All Workstations (`god`) — **Done** (17 Workstations Fully Staffed)
+- `DSK-21`: Configure Chrome Browser Automation & Live Portal Integration for All Floor Agents (`god`) — **Done** (Host Chrome Active)
+
 

@@ -209,11 +209,22 @@
       "startedAt": "2026-10-14T20:10:00.000Z",
       "doneAt": "2026-10-14T20:11:00.000Z",
       "updatedAt": "2026-10-14T20:10:19.133Z"
+    },
+    {
+      "title": "Configure Chrome Browser Automation & Live Portal Integration for All Floor Agents",
+      "assignee": "god",
+      "status": "done",
+      "priority": "high",
+      "id": "DSK-21",
+      "createdAt": "2026-10-14T20:12:00.000Z",
+      "startedAt": "2026-10-14T20:12:00.000Z",
+      "doneAt": "2026-10-14T20:13:00.000Z",
+      "updatedAt": "2026-10-14T20:12:56.098Z"
     }
   ],
   "ticket": {
     "prefix": "DSK",
-    "next": 21,
+    "next": 22,
     "aliases": {}
   }
 }
