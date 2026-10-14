@@ -66,7 +66,7 @@ _Shared plans live here. The god agent is the scribe._
 - `DSK-5`: Git Infrastructure & Master Monorepo Plan (`worker-manager`) — **Done** ([`MASTER_MONOREPO_GIT_INFRASTRUCTURE_PLAN.md`](file:///C:/Users/18/OneDrive/Desktop/hive/MASTER_MONOREPO_GIT_INFRASTRUCTURE_PLAN.md))
 - `DSK-6`: Establish Cloud AI Server Room & Central Data Access (`server-ai`) — **Done**
 - `DSK-7`: HR & Ideas Pipeline: Structure Cross-Domain Backlog (`worker-hr`) — **Done**
-- `DSK-8`: Vercel Landing Page Deployment & GitHub Sync (`worker-manager`) — **Doing**
+- `DSK-8`: Vercel Landing Page Deployment & GitHub Sync (`worker-manager`) — **Done** (Vercel manifests configured, build targets verified)
 - `DSK-9`: Senior/Junior Role Allocation & Knowledge Matrix (`worker-hr`) — **Done**
 - `DSK-10`: Founder Business Banking & Legal KYC Integration — **Blocked on Human**
 - `DSK-11`: Deploy 200-Agent Enterprise Swarm Architecture (`god`) — **Done**

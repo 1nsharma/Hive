@@ -76,12 +76,13 @@
     {
       "title": "Vercel Landing Page Deployment & GitHub Sync for Hero Products",
       "assignee": "worker-manager",
-      "status": "doing",
+      "status": "done",
       "priority": "high",
       "id": "DSK-8",
       "createdAt": "2026-10-14T19:34:34.393Z",
       "startedAt": "2026-10-14T19:34:34.393Z",
-      "updatedAt": "2026-10-14T19:34:34.393Z"
+      "doneAt": "2026-10-14T22:50:00.000Z",
+      "updatedAt": "2026-10-14T22:50:00.000Z"
     },
     {
       "title": "Domain Block Senior/Junior Role Allocation & Knowledge Matrix",
@@ -104,6 +105,10 @@
           "askedAt": "2026-10-14T19:35:00.000Z",
           "a": "send agent to acces this",
           "answeredAt": "2026-10-14T21:06:08.011Z"
+        },
+        {
+          "q": "**Bank & KYC regulatory security requires you to complete verification or paste the API credentials directly.**\n\nAI agents cannot legally hold biometric ID, pass OTP verification, or bypass banking regulations.\n\n- Perform KYC directly at your bank/gateway dashboard.\n- Or add your gateway API keys (`RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `STRIPE_SECRET_KEY`) to `hive/agents/god/.env`.",
+          "askedAt": "2026-10-14T22:52:00.000Z"
         }
       ],
       "id": "DSK-10",
