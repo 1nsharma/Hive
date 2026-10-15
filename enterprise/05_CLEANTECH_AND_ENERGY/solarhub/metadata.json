@@ -1,0 +1,6 @@
+{
+  "name": "AI Ops Infographic",
+  "description": "Visual comparison of AIOps, LLMOps, and MLOps",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

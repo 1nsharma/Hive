@@ -1,0 +1,25 @@
+{
+  "user_001": {
+    "user_id": "user_001",
+    "consent_given": true,
+    "consent_timestamp": "2026-09-03T16:52:47.893922",
+    "data_usage_scope": [
+      "model_improvement",
+      "research"
+    ],
+    "can_share_anonymized": true,
+    "withdrawal_request": false,
+    "withdrawal_timestamp": null
+  },
+  "demo_user_004": {
+    "user_id": "demo_user_004",
+    "consent_given": true,
+    "consent_timestamp": "2026-09-03T17:03:44.546540",
+    "data_usage_scope": [
+      "model_improvement"
+    ],
+    "can_share_anonymized": true,
+    "withdrawal_request": false,
+    "withdrawal_timestamp": null
+  }
+}

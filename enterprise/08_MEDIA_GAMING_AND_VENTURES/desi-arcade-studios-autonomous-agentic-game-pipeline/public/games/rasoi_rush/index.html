@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rasoi Rush - Indian Kitchen Simulator - Desi Arcade</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: radial-gradient(circle at center, #2e1065 0%, #0f051d 100%);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    #header {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid rgba(236, 72, 153, 0.4);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #f472b6;
+      pointer-events: auto;
+    }
+    .hud-box {
+      background: rgba(30, 11, 62, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 16px;
+      pointer-events: auto;
+    }
+    .stat-label { font-size: 10px; color: #cbd5e1; text-transform: uppercase; font-weight: 600; }
+    .stat-val { font-size: 18px; font-weight: 800; color: #f8fafc; font-family: monospace; }
+    canvas {
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(236, 72, 153, 0.2);
+      cursor: pointer;
+    }
+    .btn {
+      background: #ec4899;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+      transition: all 0.15s ease;
+    }
+    .btn:hover { background: #f472b6; transform: translateY(-1px); }
+    #instructions {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(30, 11, 62, 0.85);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="../index.html" class="btn" style="background:#4c1d95;">&larr; Arcade Hub</a>
+      <div class="badge">
+        <span>&#127858; RASOI RUSH</span>
+        <span style="color:#e2e8f0; font-weight:normal;">| Indian Festive Kitchen Sim</span>
+      </div>
+    </div>
+    <div class="hud-box">
+      <div><div class="stat-label">Earnings (INR)</div><div id="hud-money" class="stat-val">&#8377;0</div></div>
+      <div><div class="stat-label">Served</div><div id="hud-served" class="stat-val">0</div></div>
+      <div><div class="stat-label">Active Multiplier</div><div id="hud-mult" class="stat-val" style="color:#facc15;">1.75x</div></div>
+      <div><div class="stat-label">Rush Hour</div><div id="hud-rush" class="stat-val" style="color:#4ade80;">ACTIVE</div></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <div id="instructions">
+    <span>&#128073; <b>How to Cook:</b> Click customer orders to prepare ingredients at the boiling Kettle, Frying Kadai, and Modak Steamer!</span>
+    <button id="btn-restart" class="btn" style="padding:4px 10px; font-size:11px;">New Shift</button>
+  </div>
+
+  <script>
+    // WebAudio sound synthesizer for tea kettle whistling & pakora sizzling
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      playSizzle() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const bufferSize = this.ctx.sampleRate * 0.18;
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const output = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+        const whiteNoise = this.ctx.createBufferSource();
+        whiteNoise.buffer = buffer;
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(3200, now);
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        whiteNoise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+        whiteNoise.start(now);
+      },
+      playCashChime() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1200, now);
+        osc.frequency.setValueAtTime(1800, now + 0.08);
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.32);
+      }
+    };
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const hudMoney = document.getElementById('hud-money');
+    const hudServed = document.getElementById('hud-served');
+    const hudMult = document.getElementById('hud-mult');
+    const btnRestart = document.getElementById('btn-restart');
+
+    let money = 0;
+    let servedCount = 0;
+    let multiplier = 1.75; // Ganesh Chaturthi LiveOps festive multiplier
+
+    // Cooking Stations
+    const stations = [
+      { id: 'chai', name: 'Masala Chai Kettle', x: 120, y: 380, width: 180, height: 160, color: '#f59e0b', status: 'ready', timer: 0 },
+      { id: 'pakora', name: 'Kanda Bhaji Kadai', x: 360, y: 380, width: 180, height: 160, color: '#ea580c', status: 'ready', timer: 0 },
+      { id: 'modak', name: 'Festive Modak Steamer', x: 600, y: 380, width: 180, height: 160, color: '#ec4899', status: 'ready', timer: 0 }
+    ];
+
+    // Customer Queue
+    let customers = [
+      { id: 1, name: 'Sharma Ji', x: 140, order: 'chai', patience: 100, maxPatience: 100, price: 40 },
+      { id: 2, name: 'Priya & Rahul', x: 380, order: 'pakora', patience: 85, maxPatience: 100, price: 80 },
+      { id: 3, name: 'Aunty Ji', x: 620, order: 'modak', patience: 95, maxPatience: 100, price: 150 }
+    ];
+
+    function updateHUD() {
+      hudMoney.innerHTML = `&#8377;${money}`;
+      hudServed.textContent = servedCount;
+      hudMult.textContent = `${multiplier}x`;
+    }
+
+    canvas.addEventListener('click', (e) => {
+      AudioEngine.init();
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+
+      // Check click on Customer Order tickets
+      customers.forEach((c, idx) => {
+        if (mx > c.x - 60 && mx < c.x + 60 && my > 80 && my < 260) {
+          // Find matching cooking station
+          const st = stations.find(s => s.id === c.order);
+          if (st) {
+            AudioEngine.playSizzle();
+            st.status = 'cooking';
+            st.timer = 40;
+
+            setTimeout(() => {
+              st.status = 'ready';
+              AudioEngine.playCashChime();
+              money += Math.round(c.price * multiplier);
+              servedCount++;
+              updateHUD();
+              // Spawn new customer
+              const RECIPES = ['chai', 'pakora', 'modak'];
+              const NAMES = ['Gupta Uncle', 'Rohan', 'Sneha', 'Kabir', 'Meera'];
+              const nextOrder = RECIPES[Math.floor(Math.random() * RECIPES.length)];
+              customers[idx] = {
+                id: Date.now(),
+                name: NAMES[Math.floor(Math.random() * NAMES.length)],
+                x: c.x,
+                order: nextOrder,
+                patience: 100,
+                maxPatience: 100,
+                price: nextOrder === 'chai' ? 40 : nextOrder === 'pakora' ? 80 : 150
+              };
+            }, 600);
+          }
+        }
+      });
+    });
+
+    btnRestart.addEventListener('click', () => {
+      money = 0;
+      servedCount = 0;
+      updateHUD();
+    });
+
+    function update() {
+      // Patience decay
+      customers.forEach(c => {
+        c.patience -= 0.08;
+        if (c.patience <= 0) {
+          c.patience = 100;
+          c.order = ['chai', 'pakora', 'modak'][Math.floor(Math.random() * 3)];
+        }
+      });
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Kitchen Background & Tiles
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      bgGrad.addColorStop(0, '#1e1b4b');
+      bgGrad.addColorStop(0.55, '#312e81');
+      bgGrad.addColorStop(1, '#431407');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Wooden Serving Counter
+      ctx.fillStyle = '#78350f';
+      ctx.fillRect(0, 320, canvas.width, 280);
+      ctx.fillStyle = '#451a03';
+      ctx.fillRect(0, 320, canvas.width, 14);
+
+      // Render Customers & Orders
+      customers.forEach(c => {
+        // Customer Avatar
+        ctx.save();
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath();
+        ctx.arc(c.x, 150, 28, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Customer Name
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.name, c.x, 110);
+
+        // Patience Bar
+        const barW = 80;
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(c.x - barW / 2, 190, barW, 6);
+        ctx.fillStyle = c.patience > 40 ? '#22c55e' : '#ef4444';
+        ctx.fillRect(c.x - barW / 2, 190, barW * (c.patience / c.maxPatience), 6);
+
+        // Order Speech Bubble
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.roundRect(c.x - 65, 210, 130, 60, 10);
+        ctx.fill();
+
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'bold 11px system-ui';
+        ctx.fillText('ORDER: ' + (c.order === 'chai' ? '☕ Adrak Chai' : c.order === 'pakora' ? '🥟 Onion Pakora' : '✨ Kaju Modak'), c.x, 235);
+        ctx.fillStyle = '#ec4899';
+        ctx.font = 'bold 10px monospace';
+        ctx.fillText(`₹${c.price} (+${Math.round((multiplier - 1) * 100)}% Bonus)`, c.x, 255);
+        ctx.restore();
+      });
+
+      // Render Cooking Stations
+      stations.forEach(st => {
+        ctx.save();
+        ctx.fillStyle = st.color;
+        ctx.beginPath();
+        ctx.roundRect(st.x, st.y, st.width, st.height, 14);
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText(st.name, st.x + st.width / 2, st.y + 35);
+
+        // Cooking steam / status
+        if (st.status === 'cooking') {
+          ctx.fillStyle = '#fef08a';
+          ctx.font = 'bold 14px monospace';
+          ctx.fillText('SIZZLING... 🔥', st.x + st.width / 2, st.y + 90);
+        } else {
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '12px system-ui';
+          ctx.fillText('READY TO PREPARE', st.x + st.width / 2, st.y + 90);
+          ctx.fillStyle = '#fef08a';
+          ctx.font = 'bold 11px system-ui';
+          ctx.fillText('Tap Order above to Cook', st.x + st.width / 2, st.y + 120);
+        }
+        ctx.restore();
+      });
+
+      requestAnimationFrame(loop);
+    }
+
+    function loop() {
+      update();
+      render();
+    }
+
+    updateHUD();
+    loop();
+  </script>
+</body>
+</html>

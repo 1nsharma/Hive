@@ -1,0 +1,6 @@
+{
+  "name": "AI Project Roadmap Generator",
+  "description": "An intelligent application that takes a project idea as input and leverages the Gemini API to generate a comprehensive, structured development roadmap with milestones and key features.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

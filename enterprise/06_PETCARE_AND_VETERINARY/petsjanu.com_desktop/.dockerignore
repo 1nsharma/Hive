@@ -1,0 +1,15 @@
+# Docker ignore — keep image lean
+node_modules/
+dist/
+.env
+.env.local
+*.env.*
+.git/
+.github/
+*.log
+*.tsbuildinfo
+coverage/
+.nyc_output/
+README.md
+docs/
+scripts/

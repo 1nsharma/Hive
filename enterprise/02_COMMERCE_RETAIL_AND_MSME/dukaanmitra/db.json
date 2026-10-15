@@ -1,0 +1,138 @@
+{
+  "customers": [
+    {
+      "id": "cust_1",
+      "name": "Rahul (राहुल)",
+      "phone": "+91 98765 43210",
+      "balance": 1200,
+      "updatedAt": "2026-06-30T10:00:00.000Z"
+    },
+    {
+      "id": "cust_2",
+      "name": "Amit (अमित)",
+      "phone": "+91 91234 56789",
+      "balance": 3500,
+      "updatedAt": "2026-06-30T09:30:00.000Z"
+    },
+    {
+      "id": "cust_3",
+      "name": "Pooja (पूजा)",
+      "phone": "+91 99887 76655",
+      "balance": -400,
+      "updatedAt": "2026-06-30T08:15:00.000Z"
+    },
+    {
+      "id": "cust_4",
+      "name": "Suresh (सुरेश)",
+      "phone": "+91 93456 78123",
+      "balance": 450,
+      "updatedAt": "2026-06-29T18:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_1",
+      "name": "Sugar (चीनी)",
+      "stock": 80,
+      "unit": "kg",
+      "price": 42,
+      "costPrice": 36,
+      "lowStockThreshold": 20,
+      "updatedAt": "2026-06-30T10:00:00.000Z"
+    },
+    {
+      "id": "prod_2",
+      "name": "Wheat Flour (आटा)",
+      "stock": 120,
+      "unit": "kg",
+      "price": 35,
+      "costPrice": 28,
+      "lowStockThreshold": 30,
+      "updatedAt": "2026-06-30T09:30:00.000Z"
+    },
+    {
+      "id": "prod_3",
+      "name": "Milk Packet (दूध पैकेट)",
+      "stock": 15,
+      "unit": "piece",
+      "price": 28,
+      "costPrice": 24,
+      "lowStockThreshold": 25,
+      "updatedAt": "2026-06-30T08:15:00.000Z"
+    },
+    {
+      "id": "prod_4",
+      "name": "Mustard Oil (सरसों तेल)",
+      "stock": 45,
+      "unit": "litre",
+      "price": 180,
+      "costPrice": 160,
+      "lowStockThreshold": 15,
+      "updatedAt": "2026-06-29T18:00:00.000Z"
+    },
+    {
+      "id": "prod_5",
+      "name": "Rice (चावल)",
+      "stock": 200,
+      "unit": "kg",
+      "price": 50,
+      "costPrice": 42,
+      "lowStockThreshold": 40,
+      "updatedAt": "2026-06-29T18:00:00.000Z"
+    },
+    {
+      "id": "prod_6",
+      "name": "Tea Leaves (चाय पत्ती)",
+      "stock": 5,
+      "unit": "kg",
+      "price": 240,
+      "costPrice": 210,
+      "lowStockThreshold": 10,
+      "updatedAt": "2026-06-29T18:00:00.000Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx_1",
+      "customerId": "cust_1",
+      "customerName": "Rahul (राहुल)",
+      "amount": 500,
+      "type": "credit",
+      "product": "Sugar (चीनी)",
+      "quantity": "12 kg",
+      "date": "2026-06-30T10:00:00.000Z",
+      "notes": "चीनी उधारी"
+    },
+    {
+      "id": "tx_2",
+      "customerId": "cust_2",
+      "customerName": "Amit (अमित)",
+      "amount": 1050,
+      "type": "credit",
+      "product": "Wheat Flour (आटा)",
+      "quantity": "30 kg",
+      "date": "2026-06-30T09:30:00.000Z",
+      "notes": "आटा उधारी"
+    },
+    {
+      "id": "tx_3",
+      "customerId": "cust_3",
+      "customerName": "Pooja (पूजा)",
+      "amount": 400,
+      "type": "payment",
+      "date": "2026-06-30T08:15:00.000Z",
+      "notes": "एडवांस पेमेंट"
+    },
+    {
+      "id": "tx_4",
+      "customerId": "cust_4",
+      "customerName": "Suresh (सुरेश)",
+      "amount": 450,
+      "type": "credit",
+      "product": "Mustard Oil (सरसों तेल)",
+      "quantity": "2.5 litre",
+      "date": "2026-06-29T18:00:00.000Z",
+      "notes": "सरसों तेल"
+    }
+  ]
+}

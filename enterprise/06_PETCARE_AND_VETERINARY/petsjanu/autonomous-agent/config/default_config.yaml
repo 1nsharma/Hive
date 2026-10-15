@@ -1,0 +1,228 @@
+# Autonomous Agent System Configuration
+
+model:
+  provider: ollama
+  base_url: "http://localhost:11434/v1"
+  model_name: "llama3.1:8b"
+  temperature: 0.7
+  max_tokens: 4096
+  top_p: 0.9
+  timeout_seconds: 120
+
+memory:
+  short_term:
+    max_context_length: 8000
+    summary_threshold: 0.8
+    sliding_window_size: 50
+  long_term:
+    backend: qdrant
+    host: localhost
+    port: 6333
+    collection_name: agent_memory
+    embedding_model: all-MiniLM-L6-v2
+    vector_size: 384
+
+safety:
+  max_iterations: 50
+  max_tokens_per_task: 100000
+  tool_timeout_seconds: 60
+  task_timeout_seconds: 600
+  require_human_approval_for:
+    - high
+    - critical
+  enable_sandboxing: true
+  sandbox_timeout_seconds: 30
+  audit_logging: true
+  log_file: agent_audit.log
+
+mcp_servers:
+  - name: petjanu_core
+    url: "http://localhost:3000/api/v1/mcp/rpc"
+    description: "PetJanu Core Pet Safety, Identity, Clinical Triage, and Registry MCP Server"
+    tools:
+      - pet_safety_triage
+      - search_lost_pets
+      - report_pet_sighting
+      - generate_secure_tag
+      - calculate_pet_nutrition
+      - search_marketplace_products
+      - get_pet_emergency_guide
+      - execute_sandbox_code
+    enabled: true
+
+  - name: filesystem
+    url: "http://localhost:8081"
+    description: "File system operations (read, write, list, delete)"
+    tools:
+      - read_file
+      - write_file
+      - list_directory
+      - delete_file
+    enabled: true
+
+  - name: web_search
+    url: "http://localhost:8082"
+    description: "Web search and content retrieval"
+    tools:
+      - search
+      - get_content
+      - get_metadata
+    enabled: true
+
+  - name: code_interpreter
+    url: "http://localhost:8083"
+    description: "Secure Python code execution sandbox"
+    tools:
+      - execute_python
+      - execute_shell
+    requires_approval: true
+    enabled: true
+
+tools:
+  - name: pet_safety_triage
+    description: "AI-powered clinical triage engine for pet symptoms with risk levels and care steps"
+    mcp_server: petjanu_core
+    enabled: true
+    timeout_seconds: 20
+    max_retries: 2
+    risk_level: low
+
+  - name: search_lost_pets
+    description: "Search community lost & found digital pet registry"
+    mcp_server: petjanu_core
+    enabled: true
+    timeout_seconds: 10
+    max_retries: 2
+    risk_level: low
+
+  - name: report_pet_sighting
+    description: "Submit a verified community sighting report for a lost pet"
+    mcp_server: petjanu_core
+    enabled: true
+    timeout_seconds: 15
+    max_retries: 2
+    risk_level: low
+
+  - name: generate_secure_tag
+    description: "Cryptographically generate a signed anti-counterfeiting QR/NFC safety tag"
+    mcp_server: petjanu_core
+    enabled: true
+    timeout_seconds: 10
+    max_retries: 2
+    risk_level: low
+
+  - name: calculate_pet_nutrition
+    description: "Calculate scientific RER/MER calories and hydration volume"
+    mcp_server: petjanu_core
+    enabled: true
+    timeout_seconds: 5
+    max_retries: 1
+    risk_level: low
+
+  - name: search_marketplace_products
+    description: "Search hardware safety tags, GPS collars, and medical kits"
+    mcp_server: petjanu_core
+    enabled: true
+    timeout_seconds: 10
+    max_retries: 2
+    risk_level: low
+
+  - name: read_file
+    description: "Read contents of a file"
+    mcp_server: filesystem
+    enabled: true
+    timeout_seconds: 10
+    max_retries: 2
+    risk_level: low
+
+  - name: write_file
+    description: "Write content to a file"
+    mcp_server: filesystem
+    enabled: true
+    timeout_seconds: 10
+    max_retries: 2
+    risk_level: medium
+    requires_approval: false
+
+  - name: search
+    description: "Search the web for information"
+    mcp_server: web_search
+    enabled: true
+    timeout_seconds: 30
+    max_retries: 3
+    risk_level: low
+
+  - name: execute_python
+    description: "Execute Python code in a sandboxed environment"
+    mcp_server: code_interpreter
+    enabled: true
+    timeout_seconds: 30
+    max_retries: 1
+    risk_level: high
+    requires_approval: true
+
+agents:
+  - name: researcher
+    role: "Information gathering and analysis specialist"
+    system_prompt: |
+      You are a research specialist agent. Your role is to:
+      1. Gather relevant information using available search tools
+      2. Analyze and synthesize findings
+      3. Provide well-structured reports with citations
+      4. Identify knowledge gaps and request additional research if needed
+      
+      Always verify information from multiple sources when possible.
+      Cite your sources clearly.
+    specialized_tools:
+      - search
+      - read_file
+      - write_file
+    can_delegate: false
+
+  - name: coder
+    role: "Software development and code execution specialist"
+    system_prompt: |
+      You are a coding specialist agent. Your role is to:
+      1. Write clean, efficient, and well-documented code
+      2. Test code thoroughly before reporting success
+      3. Follow best practices and security guidelines
+      4. Explain your code clearly with comments
+      
+      Always test your code in the sandbox before finalizing.
+      Handle errors gracefully and provide meaningful error messages.
+    specialized_tools:
+      - execute_python
+      - read_file
+      - write_file
+    can_delegate: false
+
+  - name: analyst
+    role: "Data analysis and insight generation specialist"
+    system_prompt: |
+      You are a data analysis specialist agent. Your role is to:
+      1. Process and analyze structured and unstructured data
+      2. Generate insights and recommendations
+      3. Create clear visualizations and summaries
+      4. Identify patterns and anomalies
+      
+      Always validate your analysis with appropriate statistical methods.
+      Present findings in a clear, actionable format.
+    specialized_tools:
+      - execute_python
+      - read_file
+      - write_file
+      - search
+    can_delegate: false
+
+orchestrator:
+  name: orchestrator
+  role: "Task Coordinator and Manager"
+  decomposition_strategy: hierarchical
+  worker_agents:
+    - researcher
+    - coder
+    - analyst
+  parallel_execution: true
+  max_parallel_tasks: 3
+
+goals: []

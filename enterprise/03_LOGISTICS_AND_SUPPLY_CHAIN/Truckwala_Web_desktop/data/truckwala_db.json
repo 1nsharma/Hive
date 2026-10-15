@@ -1,0 +1,2169 @@
+{
+  "config": {
+    "name": "TruckWala 24×7",
+    "phoneDisplay": "+91 98765 43210",
+    "phoneClean": "+919876543210",
+    "whatsappNumber": "919876543210",
+    "addressEn": "Truckwala, Nearby Address: GF8M+85W, Gadan Khera Bypass Flyover, Nirala Nagar, Unnao, Uttar Pradesh 209801 (Kanpur–Lucknow Highway Corridor)",
+    "addressHi": "ट्रकवाला, गडन खेड़ा बाईपास फ्लाईओवर के पास, निराला नगर, उन्नाव, उत्तर प्रदेश 209801 (कानपुर-लखनऊ हाईवे कॉरिडोर)",
+    "googleMapsUrl": "https://maps.app.goo.gl/kSAFmi55aoMxJLHMA",
+    "googleReviewUrl": "https://maps.app.goo.gl/QcYsfEK4xaUVxngF7?g_st=ac",
+    "emergencyRadiusKm": 50,
+    "emergencyVanCount": 4,
+    "specialties": [
+      "Tata Motors Commercial",
+      "Cummins Turbo Diesel",
+      "Ashok Leyland",
+      "BharatBenz Heavy",
+      "BS-III / IV / VI"
+    ]
+  },
+  "leads": [
+    {
+      "id": "TW-849102",
+      "receivedAt": "2026-09-10T15:12:12.343Z",
+      "formType": "breakdown",
+      "vehicleNumber": "RJ 14 GB 6821",
+      "phone": "+91 94140 12890",
+      "problem": "Air brake pressure drop & rear wheel lock near Highway Mile 142",
+      "urgency": "emergency",
+      "status": "dispatched",
+      "location": {
+        "lat": 27.2341,
+        "lng": 77.9412,
+        "addressText": "NH-19 KM 142 near Mathura-Agra Toll",
+        "accuracy": 15
+      },
+      "technicianNotes": "Mobile Van #2 dispatched with heavy air compressor and Wabco pressure valve kit."
+    },
+    {
+      "id": "TW-848712",
+      "receivedAt": "2026-09-10T13:50:12.343Z",
+      "formType": "parts",
+      "vehicleNumber": "UP 80 BT 4410",
+      "phone": "+91 98370 55122",
+      "problem": "Genuine Clutch Booster Valve & Wabco 4-Circuit Protection Valve needed for Tata Signa 4825",
+      "partName": "Wabco 4-Circuit Valve + Tata Clutch Booster",
+      "urgency": "high",
+      "status": "contacted",
+      "technicianNotes": "Part available in bay inventory. Transporter informed over WhatsApp."
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-406655",
+      "timestamp": "2026-09-22T17:16:46.655Z",
+      "eventType": "button_click",
+      "label": "reviews",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-397610",
+      "timestamp": "2026-09-22T17:16:37.610Z",
+      "eventType": "button_click",
+      "label": "citations",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-392725",
+      "timestamp": "2026-09-22T17:16:32.725Z",
+      "eventType": "button_click",
+      "label": "phone",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-383812",
+      "timestamp": "2026-09-22T17:16:23.812Z",
+      "eventType": "button_click",
+      "label": "domain",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-354646",
+      "timestamp": "2026-09-22T17:15:54.646Z",
+      "eventType": "button_click",
+      "label": "gbp",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-185696",
+      "timestamp": "2026-09-22T17:13:05.696Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x773"
+      }
+    },
+    {
+      "id": "EV-185686",
+      "timestamp": "2026-09-22T17:13:05.686Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x773"
+      }
+    },
+    {
+      "id": "EV-141704",
+      "timestamp": "2026-09-22T17:12:21.705Z",
+      "eventType": "whatsapp_click",
+      "label": "footer",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-137975",
+      "timestamp": "2026-09-22T17:12:17.975Z",
+      "eventType": "phone_click",
+      "label": "footer_emergency",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-002235",
+      "timestamp": "2026-09-22T16:53:22.235Z",
+      "eventType": "directions_click",
+      "label": "service_area_map",
+      "metadata": {
+        "url": "https://ais-dev-natwt5gxvdohs5b5lk7rhl-439336978771.asia-southeast1.run.app/"
+      }
+    },
+    {
+      "id": "EV-993742",
+      "timestamp": "2026-09-22T16:53:13.742Z",
+      "eventType": "SERVICE_SELECTED",
+      "label": "Rebuild"
+    },
+    {
+      "id": "EV-972323",
+      "timestamp": "2026-09-22T16:52:52.323Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-972318",
+      "timestamp": "2026-09-22T16:52:52.318Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-970782",
+      "timestamp": "2026-09-22T16:52:50.782Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-970775",
+      "timestamp": "2026-09-22T16:52:50.775Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-890290",
+      "timestamp": "2026-09-21T21:41:30.290Z",
+      "eventType": "tour_start",
+      "label": "hi"
+    },
+    {
+      "id": "EV-796840",
+      "timestamp": "2026-09-21T21:39:56.840Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "792x407"
+      }
+    },
+    {
+      "id": "EV-796828",
+      "timestamp": "2026-09-21T21:39:56.829Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "792x407"
+      }
+    },
+    {
+      "id": "EV-778755",
+      "timestamp": "2026-09-21T21:39:38.756Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "792x407"
+      }
+    },
+    {
+      "id": "EV-778735",
+      "timestamp": "2026-09-21T21:39:38.735Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "792x407"
+      }
+    },
+    {
+      "id": "EV-691049",
+      "timestamp": "2026-09-21T21:21:31.049Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-691053",
+      "timestamp": "2026-09-21T21:21:31.053Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-690078",
+      "timestamp": "2026-09-21T21:21:30.078Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-690064",
+      "timestamp": "2026-09-21T21:21:30.064Z",
+      "eventType": "page_view",
+      "label": "/",
+      "metadata": {
+        "referrer": "https://aistudio.google.com/",
+        "viewport": "452x850"
+      }
+    },
+    {
+      "id": "EV-864099",
+      "timestamp": "2026-09-10T15:41:04.099Z",
+      "eventType": "call",
+      "label": "+919876543210"
+    },
+    {
+      "id": "EV-840384",
+      "timestamp": "2026-09-10T15:40:40.384Z",
+      "eventType": "call",
+      "label": "+919876543210"
+    },
+    {
+      "id": "EV-9901",
+      "timestamp": "2026-09-10T15:40:12.343Z",
+      "eventType": "page_view",
+      "label": "Home"
+    }
+  ],
+  "vehicles": {
+    "UP78BT4410": {
+      "vehicleNumber": "UP 78 BT 4410",
+      "model": "Tata Signa 4825.TK 16-Wheeler Tipper",
+      "fleetOwner": "Kanpur Roadways Logistics Co.",
+      "activeTicket": {
+        "leadId": "TW-849102",
+        "reportedIssue": "Air line pressure drop & rear wheel lock on NH-19 near Unnao Toll",
+        "status": "Van Dispatched",
+        "locationName": "NH-19 KM 42 (Kanpur-Unnao corridor)",
+        "etaMinutes": 18,
+        "dispatchedVan": "Mobile Rescue Van #2 (Tech: Master Rakesh Yadav)"
+      },
+      "history": [
+        {
+          "jobId": "JOB-2026-0914",
+          "date": "2026-08-12",
+          "serviceCategory": "Brake System Overhaul",
+          "problemSummary": "Replaced rear axle brake linings and fitted genuine Wabco 4-circuit protection valve",
+          "technicianAssigned": "Tech Lead Manoj Sharma",
+          "status": "Completed",
+          "partsReplaced": [
+            "Wabco 4-Circuit Protection Valve",
+            "Ferodo Heavy Duty Brake Linings (Set of 8)"
+          ],
+          "invoiceAmount": "₹14,800",
+          "invoiceId": "INV-TW-4921",
+          "mileageKm": "184,200 km"
+        },
+        {
+          "jobId": "JOB-2026-0422",
+          "date": "2026-04-22",
+          "serviceCategory": "Engine Diagnostics & DPF Regen",
+          "problemSummary": "BS-6 DEF AdBlue dosing error cleared; forced stationary DPF regeneration conducted",
+          "technicianAssigned": "ECU Specialist Vikram Singh",
+          "status": "Completed",
+          "partsReplaced": [
+            "AdBlue Dosing Filter Element",
+            "Bosch Differential Pressure Sensor"
+          ],
+          "invoiceAmount": "₹8,450",
+          "invoiceId": "INV-TW-3882",
+          "mileageKm": "152,400 km"
+        }
+      ]
+    },
+    "RJ14GB6821": {
+      "vehicleNumber": "RJ 14 GB 6821",
+      "model": "Ashok Leyland 3520 8x2 Multi-Axle Hauler",
+      "fleetOwner": "Marwar Cargo Carriers",
+      "activeTicket": {
+        "leadId": "TW-849208",
+        "reportedIssue": "Clutch booster leakage near Rania Industrial Bypass",
+        "status": "In Progress",
+        "locationName": "Rania Bypass, Kanpur Outer Ring",
+        "etaMinutes": 12,
+        "dispatchedVan": "Mobile Rescue Van #1 (Tech: Arvind Kumar)"
+      },
+      "history": [
+        {
+          "jobId": "JOB-2026-0610",
+          "date": "2026-06-10",
+          "serviceCategory": "Transmission & Clutch",
+          "problemSummary": "Clutch plate and release bearing replacement with pre-trip inspection",
+          "technicianAssigned": "Tech Suresh Yadav",
+          "status": "Completed",
+          "partsReplaced": [
+            "Ashok Leyland Genuine 380mm Clutch Disc",
+            "Heavy Release Bearing Assembly"
+          ],
+          "invoiceAmount": "₹22,300",
+          "invoiceId": "INV-TW-4209",
+          "mileageKm": "210,000 km"
+        }
+      ]
+    },
+    "UP32AZ1009": {
+      "vehicleNumber": "UP 32 AZ 1009",
+      "model": "BharatBenz 2823R Heavy Cargo Container",
+      "fleetOwner": "Awadh Express Freightways",
+      "history": [
+        {
+          "jobId": "JOB-2026-0719",
+          "date": "2026-07-19",
+          "serviceCategory": "Preventive Fleet Maintenance",
+          "problemSummary": "Scheduled 40,000 km lube service with 24V alternator overhaul",
+          "technicianAssigned": "Tech Lead Manoj Sharma",
+          "status": "Completed",
+          "partsReplaced": [
+            "15W-40 CK-4 Turbo Diesel Oil (28L)",
+            "Primary/Secondary Diesel Fuel Filters",
+            "Alternator Diode Plate"
+          ],
+          "invoiceAmount": "₹18,900",
+          "invoiceId": "INV-TW-4511",
+          "mileageKm": "138,500 km"
+        }
+      ]
+    }
+  },
+  "rlPolicy": {
+    "qTable": {
+      "TRAILER:BRAKE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 7,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:BRAKE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 7,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:BRAKE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 7,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:BRAKE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 7,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:BRAKE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 25,
+        "VAN_3_HYDRAULIC_CRANE": 7,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:BRAKE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 26.5,
+        "VAN_3_HYDRAULIC_CRANE": 7,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:CLUTCH:ZONE_A:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:CLUTCH:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:CLUTCH:ZONE_B:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:CLUTCH:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:CLUTCH:ZONE_C:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:CLUTCH:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TRAILER:ELECTRICAL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TRAILER:ELECTRICAL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TRAILER:ELECTRICAL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TRAILER:ELECTRICAL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TRAILER:ELECTRICAL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TRAILER:ELECTRICAL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TRAILER:FUEL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TRAILER:FUEL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TRAILER:FUEL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TRAILER:FUEL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TRAILER:FUEL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TRAILER:FUEL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TRAILER:COOLING:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TRAILER:COOLING:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TRAILER:COOLING:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TRAILER:COOLING:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TRAILER:COOLING:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TRAILER:COOLING:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TRAILER:TYRE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 10,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:TYRE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 10,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:TYRE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 10,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:TYRE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 10,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:TYRE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 10,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:TYRE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 10,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:BS6_DERATE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TRAILER:BS6_DERATE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TRAILER:BS6_DERATE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TRAILER:BS6_DERATE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TRAILER:BS6_DERATE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "TRAILER:BS6_DERATE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "TRAILER:CHASSIS_AXLE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:CHASSIS_AXLE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:CHASSIS_AXLE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:CHASSIS_AXLE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:CHASSIS_AXLE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 11,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TRAILER:CHASSIS_AXLE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 12.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:BRAKE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:BRAKE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:BRAKE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:BRAKE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:BRAKE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 25,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:BRAKE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 26.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:CLUTCH:ZONE_A:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:CLUTCH:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:CLUTCH:ZONE_B:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:CLUTCH:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:CLUTCH:ZONE_C:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:CLUTCH:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "HEAVY:ELECTRICAL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "HEAVY:ELECTRICAL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "HEAVY:ELECTRICAL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "HEAVY:ELECTRICAL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "HEAVY:ELECTRICAL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "HEAVY:ELECTRICAL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "HEAVY:FUEL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "HEAVY:FUEL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "HEAVY:FUEL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "HEAVY:FUEL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "HEAVY:FUEL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "HEAVY:FUEL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "HEAVY:COOLING:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "HEAVY:COOLING:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "HEAVY:COOLING:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "HEAVY:COOLING:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "HEAVY:COOLING:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "HEAVY:COOLING:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "HEAVY:TYRE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:TYRE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:TYRE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:TYRE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:TYRE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:TYRE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:BS6_DERATE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "HEAVY:BS6_DERATE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "HEAVY:BS6_DERATE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "HEAVY:BS6_DERATE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "HEAVY:BS6_DERATE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "HEAVY:BS6_DERATE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "HEAVY:CHASSIS_AXLE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:CHASSIS_AXLE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:CHASSIS_AXLE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:CHASSIS_AXLE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:CHASSIS_AXLE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 11,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "HEAVY:CHASSIS_AXLE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 12.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:BRAKE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:BRAKE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:BRAKE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:BRAKE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:BRAKE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 25,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:BRAKE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 26.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:CLUTCH:ZONE_A:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:CLUTCH:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:CLUTCH:ZONE_B:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:CLUTCH:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:CLUTCH:ZONE_C:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:CLUTCH:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "TIPPER:ELECTRICAL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TIPPER:ELECTRICAL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TIPPER:ELECTRICAL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TIPPER:ELECTRICAL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TIPPER:ELECTRICAL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TIPPER:ELECTRICAL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "TIPPER:FUEL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TIPPER:FUEL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TIPPER:FUEL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TIPPER:FUEL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TIPPER:FUEL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TIPPER:FUEL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "TIPPER:COOLING:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TIPPER:COOLING:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TIPPER:COOLING:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TIPPER:COOLING:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TIPPER:COOLING:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TIPPER:COOLING:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "TIPPER:TYRE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:TYRE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:TYRE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:TYRE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:TYRE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:TYRE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:BS6_DERATE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TIPPER:BS6_DERATE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TIPPER:BS6_DERATE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TIPPER:BS6_DERATE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "TIPPER:BS6_DERATE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "TIPPER:BS6_DERATE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "TIPPER:CHASSIS_AXLE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:CHASSIS_AXLE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:CHASSIS_AXLE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:CHASSIS_AXLE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:CHASSIS_AXLE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 11,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "TIPPER:CHASSIS_AXLE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 12.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:BRAKE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:BRAKE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:BRAKE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:BRAKE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:BRAKE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 25,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:BRAKE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 26.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:CLUTCH:ZONE_A:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:CLUTCH:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:CLUTCH:ZONE_B:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:CLUTCH:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:CLUTCH:ZONE_C:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:CLUTCH:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "CONTAINER:ELECTRICAL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "CONTAINER:ELECTRICAL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "CONTAINER:ELECTRICAL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "CONTAINER:ELECTRICAL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "CONTAINER:ELECTRICAL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "CONTAINER:ELECTRICAL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "CONTAINER:FUEL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "CONTAINER:FUEL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "CONTAINER:FUEL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "CONTAINER:FUEL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "CONTAINER:FUEL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "CONTAINER:FUEL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "CONTAINER:COOLING:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "CONTAINER:COOLING:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "CONTAINER:COOLING:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "CONTAINER:COOLING:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "CONTAINER:COOLING:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "CONTAINER:COOLING:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "CONTAINER:TYRE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:TYRE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:TYRE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:TYRE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:TYRE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:TYRE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:BS6_DERATE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "CONTAINER:BS6_DERATE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "CONTAINER:BS6_DERATE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "CONTAINER:BS6_DERATE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "CONTAINER:BS6_DERATE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "CONTAINER:BS6_DERATE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "CONTAINER:CHASSIS_AXLE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:CHASSIS_AXLE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:CHASSIS_AXLE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:CHASSIS_AXLE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:CHASSIS_AXLE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 11,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "CONTAINER:CHASSIS_AXLE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 12.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:BRAKE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 20,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:BRAKE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 21.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:BRAKE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 20,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:BRAKE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 21.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:BRAKE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 22,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:BRAKE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 23.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:CLUTCH:ZONE_A:DAY": {
+        "VAN_1_RAPID": 19,
+        "VAN_2_HEAVY_AIR": 16,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:CLUTCH:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17.5,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:CLUTCH:ZONE_B:DAY": {
+        "VAN_1_RAPID": 19,
+        "VAN_2_HEAVY_AIR": 16,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:CLUTCH:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17.5,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:CLUTCH:ZONE_C:DAY": {
+        "VAN_1_RAPID": 19,
+        "VAN_2_HEAVY_AIR": 16,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:CLUTCH:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17.5,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "LCV:ELECTRICAL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 29,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "LCV:ELECTRICAL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 30,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "LCV:ELECTRICAL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 29,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "LCV:ELECTRICAL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 30,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "LCV:ELECTRICAL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 29,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "LCV:ELECTRICAL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 30,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "LCV:FUEL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "LCV:FUEL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "LCV:FUEL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "LCV:FUEL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "LCV:FUEL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "LCV:FUEL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "LCV:COOLING:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "LCV:COOLING:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "LCV:COOLING:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "LCV:COOLING:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "LCV:COOLING:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "LCV:COOLING:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 3,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "LCV:TYRE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 26,
+        "VAN_2_HEAVY_AIR": 14,
+        "VAN_3_HYDRAULIC_CRANE": 2,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:TYRE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 27,
+        "VAN_2_HEAVY_AIR": 15.5,
+        "VAN_3_HYDRAULIC_CRANE": 2,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:TYRE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 26,
+        "VAN_2_HEAVY_AIR": 14,
+        "VAN_3_HYDRAULIC_CRANE": 2,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:TYRE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 27,
+        "VAN_2_HEAVY_AIR": 15.5,
+        "VAN_3_HYDRAULIC_CRANE": 2,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:TYRE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 26,
+        "VAN_2_HEAVY_AIR": 14,
+        "VAN_3_HYDRAULIC_CRANE": 2,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:TYRE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 27,
+        "VAN_2_HEAVY_AIR": 15.5,
+        "VAN_3_HYDRAULIC_CRANE": 2,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:BS6_DERATE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "LCV:BS6_DERATE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 15,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "LCV:BS6_DERATE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "LCV:BS6_DERATE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 15,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "LCV:BS6_DERATE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 4,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "LCV:BS6_DERATE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 15,
+        "VAN_2_HEAVY_AIR": 5.5,
+        "VAN_3_HYDRAULIC_CRANE": 1,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "LCV:CHASSIS_AXLE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 6,
+        "VAN_3_HYDRAULIC_CRANE": 20,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:CHASSIS_AXLE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 7.5,
+        "VAN_3_HYDRAULIC_CRANE": 20,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:CHASSIS_AXLE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 6,
+        "VAN_3_HYDRAULIC_CRANE": 20,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:CHASSIS_AXLE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 7.5,
+        "VAN_3_HYDRAULIC_CRANE": 20,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:CHASSIS_AXLE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 8,
+        "VAN_3_HYDRAULIC_CRANE": 20,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "LCV:CHASSIS_AXLE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 9.5,
+        "VAN_3_HYDRAULIC_CRANE": 20,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:BRAKE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:BRAKE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:BRAKE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 23,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:BRAKE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 24.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:BRAKE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 25,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:BRAKE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 26.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:CLUTCH:ZONE_A:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:CLUTCH:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:CLUTCH:ZONE_B:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:CLUTCH:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:CLUTCH:ZONE_C:DAY": {
+        "VAN_1_RAPID": 13,
+        "VAN_2_HEAVY_AIR": 19,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:CLUTCH:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 14,
+        "VAN_2_HEAVY_AIR": 20.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 6
+      },
+      "BUS:ELECTRICAL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "BUS:ELECTRICAL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "BUS:ELECTRICAL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "BUS:ELECTRICAL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "BUS:ELECTRICAL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 23,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "BUS:ELECTRICAL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 24,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 14
+      },
+      "BUS:FUEL:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "BUS:FUEL:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "BUS:FUEL:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "BUS:FUEL:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "BUS:FUEL:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "BUS:FUEL:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 18
+      },
+      "BUS:COOLING:ZONE_A:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "BUS:COOLING:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "BUS:COOLING:ZONE_B:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "BUS:COOLING:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "BUS:COOLING:ZONE_C:DAY": {
+        "VAN_1_RAPID": 17,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "BUS:COOLING:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 18,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 6,
+        "VAN_4_ECU_DIAG": 12
+      },
+      "BUS:TYRE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:TYRE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:TYRE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:TYRE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:TYRE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 20,
+        "VAN_2_HEAVY_AIR": 17,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:TYRE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 21,
+        "VAN_2_HEAVY_AIR": 18.5,
+        "VAN_3_HYDRAULIC_CRANE": 5,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:BS6_DERATE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "BUS:BS6_DERATE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "BUS:BS6_DERATE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "BUS:BS6_DERATE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 26
+      },
+      "BUS:BS6_DERATE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 7,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "BUS:BS6_DERATE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 9,
+        "VAN_2_HEAVY_AIR": 8.5,
+        "VAN_3_HYDRAULIC_CRANE": 4,
+        "VAN_4_ECU_DIAG": 28
+      },
+      "BUS:CHASSIS_AXLE:ZONE_A:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:CHASSIS_AXLE:ZONE_A:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:CHASSIS_AXLE:ZONE_B:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 9,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:CHASSIS_AXLE:ZONE_B:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 10.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:CHASSIS_AXLE:ZONE_C:DAY": {
+        "VAN_1_RAPID": 7,
+        "VAN_2_HEAVY_AIR": 11,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      },
+      "BUS:CHASSIS_AXLE:ZONE_C:NIGHT": {
+        "VAN_1_RAPID": 8,
+        "VAN_2_HEAVY_AIR": 12.5,
+        "VAN_3_HYDRAULIC_CRANE": 23,
+        "VAN_4_ECU_DIAG": 5
+      }
+    },
+    "totalEpisodes": 342,
+    "avgReward": 1.84,
+    "recentRewards": [
+      {
+        "episode": 338,
+        "reward": 2.1,
+        "action": "VAN_2_HEAVY_AIR",
+        "timestamp": "2026-09-22T16:12:50.527Z"
+      },
+      {
+        "episode": 339,
+        "reward": 1.9,
+        "action": "VAN_4_ECU_DIAG",
+        "timestamp": "2026-09-22T16:22:50.527Z"
+      },
+      {
+        "episode": 340,
+        "reward": 1.7,
+        "action": "VAN_1_RAPID",
+        "timestamp": "2026-09-22T16:32:50.527Z"
+      },
+      {
+        "episode": 341,
+        "reward": 2.3,
+        "action": "VAN_2_HEAVY_AIR",
+        "timestamp": "2026-09-22T16:42:50.527Z"
+      },
+      {
+        "episode": 342,
+        "reward": 1.8,
+        "action": "VAN_3_HYDRAULIC_CRANE",
+        "timestamp": "2026-09-22T16:52:50.527Z"
+      }
+    ],
+    "hyperparams": {
+      "learningRate": 0.18,
+      "discountFactor": 0.88,
+      "epsilon": 0.08
+    },
+    "lastTrainedAt": "2026-09-22T16:52:50.527Z",
+    "convergenceScore": 94.6
+  }
+}

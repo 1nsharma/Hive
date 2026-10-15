@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Golden Shield/Emblem Arc -->
+    <path
+        android:pathData="M27,62 C27,47 39,35 54,35 C69,35 81,47 81,62"
+        android:strokeWidth="4"
+        android:strokeColor="#E0A96D"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Suspension cables / Bridge spans -->
+    <path
+        android:pathData="M35,62 L35,46 M43,62 L43,39 M54,62 L54,35 M65,62 L65,39 M73,62 L73,46"
+        android:strokeWidth="1.8"
+        android:strokeColor="#C68B59"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Bridge Deck Highway -->
+    <path
+        android:pathData="M24,63 L84,63"
+        android:strokeWidth="5"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Lower Reflection / Base pillars -->
+    <path
+        android:pathData="M33,63 L33,74 M75,63 L75,74"
+        android:strokeWidth="3.5"
+        android:strokeColor="#E0A96D"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Global Origin Node (Local Capability) -->
+    <path
+        android:pathData="M33,75 A4,4 0 1,0 33,83 A4,4 0 1,0 33,75 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="29"
+                android:startY="75"
+                android:endX="37"
+                android:endY="83"
+                android:type="linear">
+                <item android:color="#E0A96D" android:offset="0.0" />
+                <item android:color="#F6D365" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Global Destination Node (Global Trust) -->
+    <path
+        android:pathData="M75,75 A4,4 0 1,0 75,83 A4,4 0 1,0 75,75 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="71"
+                android:startY="75"
+                android:endX="79"
+                android:endY="83"
+                android:type="linear">
+                <item android:color="#10B981" android:offset="0.0" />
+                <item android:color="#34D399" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Apex Beacon Star (Trust Star) -->
+    <path
+        android:pathData="M54,24 L56.2,29.5 L62,30.2 L57.7,34 L59,39.5 L54,36.5 L49,39.5 L50.3,34 L46,30.2 L51.8,29.5 Z"
+        android:fillColor="#F6D365" />
+</vector>

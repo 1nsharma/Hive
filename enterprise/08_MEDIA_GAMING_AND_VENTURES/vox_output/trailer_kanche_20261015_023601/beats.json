@@ -1,0 +1,28 @@
+{
+  "project_id": "trailer_kanche_20261015_023601",
+  "game_id": "kanche",
+  "game_title": "Kanche / Goli - Precision Marble Shooter",
+  "topic": "Street Kanche nostalgic shootout with colorful glass marbles and chalk ring boundaries",
+  "aesthetic": "dusty_terracotta_collage",
+  "created_at": "2026-10-15T02:36:01.704010",
+  "beats": [
+    {
+      "beat": 1,
+      "title": "The Mohalla Dust Ground",
+      "narration": "In the dusty gullies of 90s India, champions weren't made on turf. They ruled the chalk circle.",
+      "visual": "Vintage torn-paper Indian street alley with warm ochre dirt ground and chalk circle markings."
+    },
+    {
+      "beat": 2,
+      "title": "The Glass Marble Impulse",
+      "narration": "Glass against glass. One flick of the middle finger, calculated impulse, and a high-stakes ring out.",
+      "visual": "Macro close-up of emerald cat-eye glass marble colliding with explosive amber sparkles."
+    },
+    {
+      "beat": 3,
+      "title": "Desi Arcade Evolution",
+      "narration": "Desi Arcade Studios brings street Kanche to your browser with full WebAudio resonance.",
+      "visual": "Modern arcade cabinet neon interface showcasing live high scores and leaderboard glory."
+    }
+  ]
+}

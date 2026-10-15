@@ -1,0 +1,6 @@
+{
+  "name": "AI Data Research Agent",
+  "description": "An intelligent research and scraping agent that searches the web, gathers, validates, and packages clean, structured data in multiple formats based on user requirements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,7 +1,7 @@
 {
-  "name": "ai-super-intelligence-company",
+  "name": "hive-super-intelligence-company",
   "version": "1.0.0",
-  "description": "Autonomous AI Super Intelligence Company with Virtual Coworkers, Floor Workspaces, and Multi-Model CLI Gateway (Inspired by Munder Difflin)",
+  "description": "Autonomous AI Hive Super Intelligence Company with Virtual Coworkers, Enterprise Workspaces, Unified Frontend, and Multi-Model CLI Gateway",
   "type": "module",
   "main": "server.js",
   "scripts": {

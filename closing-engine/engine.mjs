@@ -2,7 +2,7 @@
 /**
  * Deal Closing Engine CLI & Automation Core
  * Authored by Andy Bernard (`client-closer`)
- * Munder Difflin AI - Enterprise Client Acquisition & Revenue
+ * Hive AI - Enterprise Client Acquisition & Revenue
  */
 
 import fs from 'node:fs';
@@ -284,7 +284,7 @@ export function generateContract(vertical, leadQuery) {
 
 export function getStats() {
   return {
-    engine: 'Munder Difflin B2B Deal Closing Engine v2.0',
+    engine: 'Hive B2B Deal Closing Engine v2.0',
     closerAgent: 'Andy Bernard (worker-client-closer)',
     productsCovered: ['DukaanMitra-OS', 'TruckWala 24x7', 'SolarHub CleanTech', 'ProofLedger AI'],
     verifiedLeadsCount: VERIFIED_LEADS.length,

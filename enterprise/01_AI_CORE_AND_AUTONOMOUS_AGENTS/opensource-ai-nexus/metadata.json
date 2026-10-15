@@ -1,0 +1,8 @@
+{
+  "name": "OpenSource AI Nexus",
+  "description": "A curated, AI-powered directory for discovering the best free and open-source LLMs, APIs, MCP servers, and datasets.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

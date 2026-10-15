@@ -1,3 +1,4 @@
+﻿# Runtime & Locks
 fleet.json
 hooks.sock
 .floor-lock
@@ -5,7 +6,12 @@ cost-ledger.jsonl
 log.jsonl
 .DS_Store
 crashes/
+facts.db-shm
+facts.db-wal
+
+# Dependencies & Package Caches
 node_modules/
+**/node_modules/
 .npm-cache/
 .yarn/cache/
 .pnpm-store/
@@ -16,13 +22,24 @@ __pycache__/
 .next/
 .gradle/
 .remotion/
+.vite/
+**/.vite/
+
+# Desktop & Web Build Artifacts
+desktop/out/
+desktop/dist/
+desktop/.worktrees/
+desktop/.env*
+out/
+dist/
+build/AuthKey_*.p8
+
+# Agent Runtime Memory
 /agents/*/memory.md
 /agents/*/memory-archive.md
 /agents/*/memory-archive-raw*.md
 /backups/
 /bin/runtime/md-hook-*.cmd
-facts.db-shm
-facts.db-wal
 /mtime-test-*/
 
 # Ignore legacy duplicate folder

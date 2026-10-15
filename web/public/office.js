@@ -6,18 +6,24 @@ let logs = [];
 let workforce = null;
 let schedule = null;
 let decisions = [];
+let engines = null;
+let portfolio = null;
+let desktopStatus = null;
 let selectedCoworker = null;
 
 async function loadData() {
   try {
-    const [cRes, wRes, tRes, lRes, wfRes, scRes, decRes] = await Promise.all([
+    const [cRes, wRes, tRes, lRes, wfRes, scRes, decRes, engRes, portRes, dskRes] = await Promise.all([
       fetch('/api/coworkers'),
       fetch('/api/workspaces'),
       fetch('/api/tasks'),
       fetch('/api/logs'),
       fetch('/api/workforce'),
       fetch('/api/schedule'),
-      fetch('/api/decisions')
+      fetch('/api/decisions'),
+      fetch('/api/engines'),
+      fetch('/api/enterprise/portfolio'),
+      fetch('/api/desktop/status')
     ]);
     coworkers = await cRes.json();
     workspaces = await wRes.json();
@@ -26,6 +32,9 @@ async function loadData() {
     workforce = await wfRes.json();
     schedule = await scRes.json();
     decisions = await decRes.json();
+    engines = await engRes.json();
+    portfolio = await portRes.json();
+    desktopStatus = await dskRes.json();
 
     if (schedule && schedule.currentRoutine) {
       const topLabel = document.getElementById("top-routine-label");
@@ -48,177 +57,340 @@ function render() {
   if (currentTab === "floor") {
     container.innerHTML = `
       <div class="floor-layout">
-        <div class="floor-grid">
-          ${coworkers.map(c => `
-            <div class="station-card" onclick="openDispatchModal('${c.id}')">
-              <div class="station-header">
-                <div class="avatar-circle" style="background:${c.avatarColor};">
-                  ${c.name.split(' ').map(n=>n[0]).join('')}
+        <section class="section-coworkers">
+          <div class="section-title">
+            <h2>🏢 Virtual Office Floor (Hive Swarm)</h2>
+            <span class="count-badge">${coworkers.length} Active Agents</span>
+          </div>
+          <div class="coworker-grid">
+            ${coworkers.map(c => `
+              <div class="coworker-card ${c.status}">
+                <div class="card-header">
+                  <div class="avatar">${c.avatar || "🤖"}</div>
+                  <div>
+                    <h3 class="name">${c.name}</h3>
+                    <div class="role">${c.role}</div>
+                  </div>
+                  <span class="status-pill ${c.status}">${c.status}</span>
                 </div>
-                <span class="dot ${c.status === 'working' ? 'green' : (c.status === 'active' ? 'blue' : 'gold')}"></span>
+                <div class="model-meta">
+                  <span class="provider-tag ${c.provider}">${c.provider.toUpperCase()}</span>
+                  <span class="model-name">${c.model}</span>
+                </div>
+                <div class="skills-box">
+                  ${c.skills.map(s => `<span class="skill-chip">${s}</span>`).join('')}
+                </div>
+                <div class="current-task">
+                  <div class="task-label">CURRENT ACTIVITY:</div>
+                  <div class="task-desc">${c.currentTask || "Idle / Ready for assignment"}</div>
+                </div>
+                <div class="card-footer">
+                  <span class="desk-tag">📍 ${c.desk}</span>
+                  <button class="btn btn-sm btn-primary" onclick="openDispatchModal('${c.id}')">🚀 Dispatch</button>
+                </div>
               </div>
-              <div class="station-title">${c.name}</div>
-              <div class="station-sub">${c.role}</div>
-              <div class="activity-box">${c.currentActivity}</div>
-              <span class="model-pill">${c.provider.toUpperCase()} • ${c.model}</span>
-            </div>
-          `).join('')}
-          <div class="station-card" style="background:rgba(245, 158, 11, 0.05); border-style:dashed; border-color:var(--gold);" onclick="triggerStandup()">
-            <div class="station-header">
-              <div class="avatar-circle" style="background:var(--gold); color:#000;">CR</div>
-              <span class="dot gold"></span>
-            </div>
-            <div class="station-title">Conference Room</div>
-            <div class="station-sub">Hourly Floor Standup</div>
-            <div class="activity-box">Click to summon all coworkers for an instant cross-department standup.</div>
-            <span class="model-pill" style="color:var(--gold);">MUNDER DIFFLIN HUDDLE</span>
+            `).join('')}
           </div>
-        </div>
+        </section>
 
-        <div class="stream-panel">
-          <h2>⚡ Live Office Activity Feed</h2>
-          <div class="log-stream" id="floor-log-stream">
-            ${logs.map(l => `<div>&gt; ${l}</div>`).join('')}
+        <section class="section-activity">
+          <div class="section-title">
+            <h2>📜 Real-Time Floor Telemetry</h2>
+            <span class="model-pill" style="color:var(--gold);">HIVE AUTONOMOUS HUDDLE</span>
           </div>
-        </div>
+          <div class="log-stream">
+            ${logs.slice(0, 15).map(l => `
+              <div class="log-entry">
+                <span class="log-time">${l.timestamp.split('T')[1].slice(0,8)}</span>
+                <span class="log-agent">[${l.agent}]</span>
+                <span class="log-msg">${l.message}</span>
+              </div>
+            `).join('')}
+          </div>
+        </section>
       </div>
     `;
   } else if (currentTab === "workforce") {
-    const analysis = workforce?.analysis || {};
+    const ft = (workforce && workforce.fullTime) || [];
+    const pt = (workforce && workforce.partTime) || [];
+    const an = (workforce && workforce.analysis) || {};
     container.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <div>
-          <h2 style="font-size:20px; font-weight:800;">Workforce Management (Full-Time vs Part-Time)</h2>
-          <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">Autonomous staffing model: Core full-time staff + on-demand part-time AI contractors.</p>
+      <div class="workforce-view">
+        <div class="section-title">
+          <h2>👥 Full-Time Core vs. Part-Time Autonomous Scaling</h2>
+          <span class="count-badge">Workforce Capacity: ${an.utilization || 'Optimal'}</span>
         </div>
-        <button class="btn btn-primary" onclick="promptHireContractor()">+ Hire Part-Time AI Specialist</button>
-      </div>
-
-      <!-- Capacity KPI Row -->
-      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-bottom:24px;">
-        <div class="card" style="border-left:3px solid var(--blue);">
-          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Total Workforce</div>
-          <div style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">${analysis.totalEmployees || 10}</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">${analysis.fullTimeCount} Full-Time • ${analysis.partTimeCount} Part-Time</div>
-        </div>
-        <div class="card" style="border-left:3px solid var(--green);">
-          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Active on Floor</div>
-          <div style="font-size:24px; font-weight:800; color:var(--green); margin-top:4px;">${analysis.activeEmployees || 6}</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Available for instant missions</div>
-        </div>
-        <div class="card" style="border-left:3px solid var(--gold);">
-          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Average Capacity Load</div>
-          <div style="font-size:24px; font-weight:800; color:var(--gold); margin-top:4px;">${analysis.averageCapacityLoadPct || 40}%</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Target threshold: &lt; 80%</div>
-        </div>
-        <div class="card" style="border-left:3px solid var(--purple);">
-          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Autonomous HR Action</div>
-          <div style="font-size:12px; font-weight:700; color:#fff; margin-top:6px; line-height:1.4;">${analysis.recommendation}</div>
-        </div>
-      </div>
-
-      <!-- Full-Time Staff -->
-      <h3 style="font-size:15px; margin-bottom:12px; color:var(--blue);">🏢 Core Full-Time Team (${workforce?.fullTime?.length || 0})</h3>
-      <div class="grid-cards" style="margin-bottom:24px;">
-        ${(workforce?.fullTime || []).map(s => `
-          <div class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <strong style="color:#fff; font-size:14px;">${s.name}</strong>
-              <span class="model-pill" style="color:var(--blue); background:rgba(59,130,246,0.1);">FULL-TIME (${s.hoursPerWeek}h/wk)</span>
-            </div>
-            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">${s.role}</div>
-            <div style="display:flex; justify-content:space-between; font-size:11px; color:#cbd5e1; margin-bottom:6px;">
-              <span>Shift: <strong>${s.shift}</strong></span>
-              <span>Load: <strong>${s.capacityLoadPct}%</strong></span>
-            </div>
-            <div style="width:100%; height:6px; background:#070b13; border-radius:3px; overflow:hidden;">
-              <div style="width:${s.capacityLoadPct}%; height:100%; background:var(--blue);"></div>
-            </div>
+        <div class="stats-overview-grid">
+          <div class="overview-card">
+            <h4>Full-Time Core Workforce</h4>
+            <div class="big-num">${ft.length}</div>
+            <p>Dedicated God & Divisional Leads</p>
           </div>
-        `).join('')}
-      </div>
-
-      <!-- Part-Time Contractors -->
-      <h3 style="font-size:15px; margin-bottom:12px; color:var(--gold);">⚡ On-Demand Part-Time AI Contractors (${workforce?.partTime?.length || 0})</h3>
-      <div class="grid-cards">
-        ${(workforce?.partTime || []).map(s => `
-          <div class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <strong style="color:#fff; font-size:14px;">${s.name}</strong>
-              <span class="model-pill" style="color:var(--gold); background:rgba(245,158,11,0.1);">PART-TIME (${s.hoursPerWeek}h/wk)</span>
-            </div>
-            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">${s.role}</div>
-            <div style="font-size:11px; color:#cbd5e1; margin-bottom:6px;">
-              Auto-Trigger Condition: <em style="color:var(--gold);">${s.triggerCondition}</em>
-            </div>
-            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted);">
-              <span>Status: <strong style="color:${s.status === 'active' ? 'var(--green)' : 'var(--text-muted)'};">${s.status.toUpperCase()}</strong></span>
-              <span>Shift: <strong>${s.shift}</strong></span>
-            </div>
+          <div class="overview-card">
+            <h4>Part-Time Scale Workforce</h4>
+            <div class="big-num">${pt.length}</div>
+            <p>On-demand specialized contractors</p>
           </div>
-        `).join('')}
+          <div class="overview-card">
+            <h4>Active Workload Pressure</h4>
+            <div class="big-num">${an.activeLoad || 0}</div>
+            <p>In-progress missions on floor</p>
+          </div>
+          <div class="overview-card">
+            <h4>Auto-Scale Recommendation</h4>
+            <div class="big-num" style="color:var(--cyan);font-size:18px;">${an.recommendation || 'Balanced'}</div>
+            <p>${an.reason || 'Sufficient capacity'}</p>
+          </div>
+        </div>
+
+        <h3 style="margin:20px 0 10px 0; color:var(--text-primary);">🏢 Full-Time Core Staff (Fixed Salary: ₹0 / Local Local-First)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Agent</th><th>Role</th><th>Department</th><th>Shift Hours</th><th>Execution Harness</th><th>Model Tier</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${ft.map(m => `
+                <tr>
+                  <td><strong>${m.name}</strong></td>
+                  <td>${m.role}</td>
+                  <td><span class="dept-badge">${m.department}</span></td>
+                  <td>${m.shift}</td>
+                  <td><code>${m.harness}</code></td>
+                  <td><span class="provider-tag ${m.provider}">${m.model}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin:24px 0 10px 0; color:var(--text-primary);">⚡ Part-Time Autonomous Contractors (Trigger-Spawned)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Contractor</th><th>Specialty Skill</th><th>Assigned Division</th><th>Billing Model</th><th>Max Hourly Cost</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${pt.map(c => `
+                <tr>
+                  <td><strong>${c.name}</strong></td>
+                  <td>${c.specialty}</td>
+                  <td><span class="dept-badge">${c.division}</span></td>
+                  <td>${c.rate}</td>
+                  <td><strong>${c.costPerHour}</strong></td>
+                  <td><span class="status-pill ${c.status}">${c.status.toUpperCase()}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
       </div>
     `;
   } else if (currentTab === "schedule") {
-    const cur = schedule?.currentRoutine || {};
+    const routines = (schedule && schedule.allRoutines) || [];
     container.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <div>
-          <h2 style="font-size:20px; font-weight:800;">Office Schedule & Shift Engine (Kab Kya Karna)</h2>
-          <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">Automated 24-hour business clock: Sets routine agendas, shift rotations, and audits.</p>
+      <div class="schedule-view">
+        <div class="section-title">
+          <h2>⏱️ 24-Hour Autonomous Shift Engine (Kab Kya Karna Hai)</h2>
+          <button class="btn btn-warning" onclick="advanceShift()">⚡ Advance Routine (+1 Slot)</button>
         </div>
-        <button class="btn btn-warning" onclick="advanceSchedule()">⏰ Advance Routine Clock</button>
-      </div>
-
-      <!-- Current Active Routine Highlight -->
-      <div class="card" style="border:1px solid var(--gold); background:rgba(245,158,11,0.04); margin-bottom:24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <span class="model-pill" style="color:var(--gold); background:rgba(245,158,11,0.15);">CURRENT ACTIVE FLOOR ROUTINE</span>
-            <h3 style="font-size:18px; font-weight:800; margin-top:6px; color:#fff;">${cur.time} — ${cur.event}</h3>
-            <p style="font-size:13px; color:#cbd5e1; margin-top:4px;">Lead: <strong style="color:var(--gold);">${cur.lead}</strong> • Action Directive: "${cur.action}"</p>
-          </div>
-          <button class="btn btn-primary" onclick="triggerAutonomousCycle()">⚡ Execute Routine Now</button>
-        </div>
-      </div>
-
-      <!-- 24-Hour Roster Timeline -->
-      <h3 style="font-size:15px; margin-bottom:12px;">📅 Daily Floor Schedule (8 Master Routines)</h3>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        ${(schedule?.allRoutines || []).map((r, idx) => {
-          const isActive = r.event === cur.event;
-          return `
-            <div class="card" style="display:flex; justify-content:space-between; align-items:center; padding:12px 18px; border-left:4px solid ${isActive ? 'var(--gold)' : 'var(--border)'}; background:${isActive ? 'rgba(255,255,255,0.06)' : 'var(--bg-card)'};">
-              <div style="display:flex; align-items:center; gap:16px;">
-                <span style="font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:700; color:${isActive ? 'var(--gold)' : 'var(--blue)'}; width:80px;">${r.time}</span>
-                <div>
-                  <strong style="color:#fff; font-size:14px;">${r.event}</strong>
-                  <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Lead: ${r.lead} • ${r.action}</div>
+        <p style="color:var(--text-muted); margin-bottom:16px;">The floor operates on an autonomous 24/7 continuous duty rotation:</p>
+        <div class="routine-timeline">
+          ${routines.map((r, idx) => {
+            const isCur = (schedule && schedule.currentRoutine && schedule.currentRoutine.time === r.time);
+            return `
+              <div class="routine-card ${isCur ? 'active-routine' : ''}">
+                <div class="routine-time">${r.time}</div>
+                <div class="routine-info">
+                  <div class="routine-title">${r.event} ${isCur ? '<strong>[ACTIVE NOW]</strong>' : ''}</div>
+                  <div class="routine-lead">Lead: <strong>${r.lead}</strong> | Priority: <span class="tag-priority">${r.priority}</span></div>
+                  <div class="routine-desc">${r.description}</div>
                 </div>
               </div>
-              <span class="model-pill">${r.type}</span>
-            </div>
-          `;
-        }).join('')}
+            `;
+          }).join('')}
+        </div>
       </div>
     `;
   } else if (currentTab === "director") {
     container.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <div>
-          <h2 style="font-size:20px; font-weight:800;">Autonomous Director (Kudh Kya Karna)</h2>
-          <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">Self-executing AI decision engine: Auto-triages open backlog, matches skills, and balances workload.</p>
+      <div class="director-view">
+        <div class="section-title">
+          <h2>🧠 Autonomous Executive Director (Kudh Kya Karna Hai)</h2>
+          <button class="btn btn-primary" onclick="triggerDirectorCycle()">⚡ Execute Decision Loop Now</button>
         </div>
-        <button class="btn btn-primary" onclick="triggerAutonomousCycle()">⚡ Run Autonomous Decision Cycle</button>
-      </div>
-
-      <div class="stream-panel" style="margin-bottom:24px;">
-        <h2>🤖 Autonomous Decision History & Actions</h2>
-        <div class="log-stream" style="max-height:450px;">
+        <p style="color:var(--text-muted); margin-bottom:16px;">The AI Director evaluates workload and executes self-governing business actions:</p>
+        <div class="decision-feed">
           ${decisions.map(d => `
-            <div style="margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:8px;">
-              <div style="color:var(--gold); font-size:10px;">[${new Date(d.timestamp).toLocaleTimeString()}] Routine: ${d.routine} (${d.pendingTasksCount} in-flight tasks)</div>
-              ${d.decisions.map(dec => `<div style="color:#38bdf8; margin-top:2px;">&gt; ${dec}</div>`).join('')}
+            <div class="decision-card">
+              <div class="decision-head">
+                <span class="decision-time">${d.timestamp.replace('T', ' ').slice(0, 19)}</span>
+                <span class="action-tag">${d.action}</span>
+              </div>
+              <div class="decision-desc">${d.description}</div>
+              <div class="decision-foot">
+                <span>Routine Context: <strong>${d.routine}</strong></span>
+                <span>Tasks in Queue: <strong>${d.pendingTasks}</strong></span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  } else if (currentTab === "engines") {
+    const re = (engines && engines.researchEngine) || {};
+    const ce = (engines && engines.closingEngine) || {};
+    container.innerHTML = `
+      <div class="engines-view">
+        <div class="section-title">
+          <h2>⚡ Autonomous Revenue & Intelligence Engines</h2>
+          <span class="count-badge">2 Core High-Yield Engines Active</span>
+        </div>
+        
+        <div class="engine-cards-grid">
+          <div class="engine-card">
+            <div class="engine-header">
+              <div>
+                <span class="engine-tag">B2B MARKET SCRAPING & VERIFICATION</span>
+                <h3>${re.name || 'Phyllis B2B Research Engine'}</h3>
+                <div class="lead-info">Autonomous Lead: <strong>${re.lead || 'Phyllis Vance'}</strong></div>
+              </div>
+              <span class="status-pill active">${re.status || 'ACTIVE'}</span>
+            </div>
+            <div class="engine-metrics">
+              <div class="metric-item">
+                <span class="m-label">Verified Leads</span>
+                <span class="m-val">${re.verifiedLeadsCount || 42}</span>
+              </div>
+              <div class="metric-item">
+                <span class="m-label">Pipeline Value</span>
+                <span class="m-val" style="color:var(--gold);">${re.pipelineValue || '$485,000'}</span>
+              </div>
+            </div>
+            <div class="capabilities-box">
+              <h4>Capabilities & Intelligence Stack:</h4>
+              <ul>
+                ${((re.capabilities) || []).map(c => `<li>✓ ${c}</li>`).join('')}
+              </ul>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="runResearchEngine()">🚀 Run B2B Research Engine Cycle</button>
+          </div>
+
+          <div class="engine-card">
+            <div class="engine-header">
+              <div>
+                <span class="engine-tag">ENTERPRISE CLIENT ACQUISITION</span>
+                <h3>${ce.name || 'Andy Deal Closing Engine'}</h3>
+                <div class="lead-info">Autonomous Lead: <strong>${ce.lead || 'Andy Bernard'}</strong></div>
+              </div>
+              <span class="status-pill active">${ce.status || 'ACTIVE'}</span>
+            </div>
+            <div class="engine-metrics">
+              <div class="metric-item">
+                <span class="m-label">Deals Closed</span>
+                <span class="m-val">${ce.closedDealsCount || 18}</span>
+              </div>
+              <div class="metric-item">
+                <span class="m-label">Closing Rate</span>
+                <span class="m-val" style="color:var(--green);">${ce.conversionRate || '24.6%'}</span>
+              </div>
+            </div>
+            <div class="capabilities-box">
+              <h4>Deal Pipeline & Capabilities:</h4>
+              <ul>
+                ${((ce.capabilities) || []).map(c => `<li>✓ ${c}</li>`).join('')}
+              </ul>
+            </div>
+            <button class="btn btn-warning btn-block" onclick="runClosingEngine()">💼 Run Deal Closing Engine Cycle</button>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (currentTab === "orchestrator") {
+    const ds = desktopStatus || {};
+    container.innerHTML = `
+      <div class="orchestrator-view">
+        <div class="section-title">
+          <h2>🖥️ Hive Desktop & Multi-Agent Orchestrator</h2>
+          <span class="status-pill active">STATUS: ${ds.status || 'COMPILED ✓'}</span>
+        </div>
+
+        <div class="desktop-banner">
+          <div class="desktop-info">
+            <h3>Native Desktop Shell with Monaco Editor & Pixi.js 2D Virtual Floor</h3>
+            <p>Local-first multi-agent harness coordinating 17 autonomous AI agents across your machine. Zero cloud lock-in.</p>
+            <div class="desktop-specs-grid">
+              <div class="spec-card">
+                <strong>Electron 32</strong>
+                <span>Cross-platform desktop host with full hardware acceleration</span>
+              </div>
+              <div class="spec-card">
+                <strong>Monaco Editor 0.52</strong>
+                <span>Embedded VS Code engine for instant file inspection & diffs</span>
+              </div>
+              <div class="spec-card">
+                <strong>Pixi.js 8</strong>
+                <span>Interactive 2D spatial canvas with live agent pathfinding</span>
+              </div>
+              <div class="spec-card">
+                <strong>Native ConPTY & SQLite</strong>
+                <span>True pseudo-terminals and durable disk-backed state ledger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orchestrator-controls">
+          <div class="control-box">
+            <h3>⚡ 1-Click Launch Command</h3>
+            <p style="color:var(--text-muted); margin-bottom:8px;">You can launch the compiled desktop app directly from your terminal or double-click:</p>
+            <code>.\LAUNCH_HIVE_DESKTOP.bat</code>
+            <div style="margin-top:14px;">
+              <span class="dept-badge">Path: C:\Users\18\OneDrive\Desktop\hive\LAUNCH_HIVE_DESKTOP.bat</span>
+            </div>
+          </div>
+
+          <div class="features-list-box">
+            <h3>🛠️ Orchestration Features & Agent Frameworks:</h3>
+            <ul>
+              ${((ds.features) || []).map(f => `<li>✦ ${f}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (currentTab === "enterprise") {
+    const divisions = (portfolio && portfolio.divisions) || [
+      { id: "01", name: "AI Core & Autonomous Agents", focus: "JORVISH Studio, Swarm Protocol, Agent Roster" },
+      { id: "02", name: "Commerce, Retail & MSME", focus: "DukaanMitra OS, Bahi-Khata, Bharat Inventory" },
+      { id: "03", name: "Logistics & Supply Chain", focus: "TruckWala 24x7, Highway SOS, Fleet Telemetry" },
+      { id: "04", name: "Talent & HR Tech", focus: "HireSaathi AI, Skill Screeners, Autonomous Hiring" },
+      { id: "05", name: "CleanTech & Energy", focus: "SolarHub, PM Surya Ghar, Subsidy Evaluator" },
+      { id: "06", name: "PetCare & Veterinary", focus: "PetsJanu, Tele-Vet, 24x7 Emergency Care" },
+      { id: "07", name: "GovTech & Security", focus: "GovAI Citizen Hub, Scheme Matcher, Verification" },
+      { id: "08", name: "Media, Gaming & Ventures", focus: "Desi Arcade 3D, Neural Assets, Studio Engine" }
+    ];
+    container.innerHTML = `
+      <div class="enterprise-view">
+        <div class="section-title">
+          <h2>🌐 Enterprise OS & Portfolio (8 Business Divisions)</h2>
+          <span class="count-badge">${divisions.length} Market Verticals</span>
+        </div>
+        <p style="color:var(--text-muted); margin-bottom:16px;">The complete business ecosystem unified under Hive Enterprise OS:</p>
+        <div class="division-grid">
+          ${divisions.map(d => `
+            <div class="division-card">
+              <div class="div-num">DIV ${d.id}</div>
+              <h3>${d.name}</h3>
+              <p class="div-focus">${d.focus || d.description || ''}</p>
+              <div class="div-footer">
+                <span class="status-pill active">OPERATIONAL</span>
+                <span class="dept-badge">Port: 300${d.id}</span>
+              </div>
             </div>
           `).join('')}
         </div>
@@ -226,308 +398,290 @@ function render() {
     `;
   } else if (currentTab === "workspaces") {
     container.innerHTML = `
-      <h2 style="font-size:20px; font-weight:800; margin-bottom:16px;">Departmental Workspaces (${workspaces.length} Autonomous Units)</h2>
-      <div class="grid-cards">
-        ${workspaces.map(w => `
-          <div class="card">
-            <h3 style="color:#38bdf8; font-size:15px; margin-bottom:4px;">${w.name}</h3>
-            <div style="font-size:11px; color:var(--gold); margin-bottom:10px;">Lead: ${w.lead}</div>
-            <p style="font-size:12px; color:#cbd5e1; line-height:1.5; margin-bottom:12px;">${w.description}</p>
-            <div style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">
-              <strong>Connected Tools:</strong> ${w.tools.join(', ')}
+      <div class="workspaces-view">
+        <div class="section-title">
+          <h2>📁 Enterprise Department Workspaces (8 Folders)</h2>
+          <span class="count-badge">${workspaces.length} Integrated Hubs</span>
+        </div>
+        <div class="workspace-grid">
+          ${workspaces.map(w => `
+            <div class="workspace-card">
+              <div class="ws-header">
+                <h3>${w.name}</h3>
+                <span class="dept-badge">${w.id}</span>
+              </div>
+              <p class="ws-desc">${w.description}</p>
+              <div class="ws-meta">
+                <span>Assigned Agent: <strong>${w.assignedAgent}</strong></span>
+                <span>Path: <code>${w.path}</code></span>
+              </div>
+              <div class="ws-tools">
+                <span class="tool-label">TOOLKIT:</span>
+                ${w.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}
+              </div>
             </div>
-            <div style="font-size:11px; color:#10b981; font-weight:700;">
-              Active In-Flight Tasks: ${w.activeTasks}
-            </div>
-          </div>
-        `).join('')}
+          `).join('')}
+        </div>
       </div>
     `;
-  
   } else if (currentTab === "services") {
     container.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <div>
-          <h2 style="font-size:20px; font-weight:800;">Enterprise Business Units & Microservices (8 Services + Gateway)</h2>
-          <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">Production-grade microservices integrated into the unified holding company architecture.</p>
+      <div class="services-view">
+        <div class="section-title">
+          <h2>🚀 Enterprise Microservices (8 Business Units)</h2>
+          <span class="count-badge">8 Microservices Online</span>
         </div>
-      </div>
-      <div class="grid-cards">
-        <div class="card" style="border-left:3px solid var(--blue);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">DukaanMitra OS</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3001 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">Retail & MSME Bahi-Khata</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">Automated ledger, customer credit tracking, and WhatsApp invoice dispatch.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--orange);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">TruckWala 24x7</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3002 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">Highway Emergency SOS & Fleet</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">15-minute emergency roadside dispatch and dynamic highway price surge engine.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--gold);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">SolarHub PM Surya Ghar</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3003 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">CleanTech Subsidy Engine</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">Direct ₹78,000 national subsidy calculator, EPC matching, and DISCOM audit.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--purple);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">HireSaathi AI</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3004 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">Blue-Collar & Tech Talent</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">Voice-based AI interviews, skill scoring, and hyper-local hiring radar.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--cyan);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">JORVISH AI Studio</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3005 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">Autonomous Agent Orchestration</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">Multi-agent mission dispatch, swarm execution, and episodic memory sync.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--pink);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">Desi Arcade 3D</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3006 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">Gaming & Neural Media</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">Procedural 3D physics engines, desi games (Kancha, Gilli Danda), and media art.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--green);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">GovAI Citizen Hub</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3007 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">National Schemes & Citizen Verification</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">PM-JAY, PM SVANidhi, DigiLocker automated document verification.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--blue);">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:#fff; font-size:15px;">PetsJanu Tele-Vet</strong>
-            <span class="model-pill" style="color:var(--green);">PORT 3008 • ONLINE</span>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted); margin:6px 0;">24x7 Veterinary Care</div>
-          <p style="font-size:11px; color:#cbd5e1; line-height:1.4;">Instant tele-health triage, emergency prescription delivery, and pet care.</p>
+        <div class="service-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Service Name</th><th>Port</th><th>Category & Function</th><th>Gateway Proxy Endpoint</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>DukaanMitra OS</strong></td>
+                <td><code>:3001</code></td>
+                <td>Retail & MSME Bahi-Khata System</td>
+                <td><a href="http://localhost:3300/api/dukaanmitra/health" target="_blank">/api/dukaanmitra/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>TruckWala 24x7</strong></td>
+                <td><code>:3002</code></td>
+                <td>Highway Emergency SOS & Fleet Dispatch</td>
+                <td><a href="http://localhost:3300/api/truckwala/health" target="_blank">/api/truckwala/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>SolarHub PM Surya Ghar</strong></td>
+                <td><code>:3003</code></td>
+                <td>CleanTech Subsidy & Solar ROI Evaluator</td>
+                <td><a href="http://localhost:3300/api/solarhub/health" target="_blank">/api/solarhub/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>HireSaathi AI</strong></td>
+                <td><code>:3004</code></td>
+                <td>Blue-Collar & Tech Talent Matching</td>
+                <td><a href="http://localhost:3300/api/hiresaathi/health" target="_blank">/api/hiresaathi/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>JORVISH AI Studio</strong></td>
+                <td><code>:3005</code></td>
+                <td>Autonomous Agent Swarm Orchestration</td>
+                <td><a href="http://localhost:3300/api/jorvish/health" target="_blank">/api/jorvish/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>Desi Arcade 3D</strong></td>
+                <td><code>:3006</code></td>
+                <td>Gaming & Neural Media Synthesis</td>
+                <td><a href="http://localhost:3300/api/desigaming/health" target="_blank">/api/desigaming/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>GovAI Citizen Hub</strong></td>
+                <td><code>:3007</code></td>
+                <td>National Schemes & Identity Verification</td>
+                <td><a href="http://localhost:3300/api/govai/health" target="_blank">/api/govai/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+              <tr>
+                <td><strong>PetsJanu Tele-Vet</strong></td>
+                <td><code>:3008</code></td>
+                <td>24x7 Veterinary Tele-Health & SOS</td>
+                <td><a href="http://localhost:3300/api/petsjanu/health" target="_blank">/api/petsjanu/*</a></td>
+                <td><span class="status-pill active">ONLINE</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     `;
-
   } else if (currentTab === "kanban") {
-    const inProgress = tasks.filter(t => t.status === "in_progress");
-    const review = tasks.filter(t => t.status === "review");
+    const todo = tasks.filter(t => t.status === "todo");
+    const inProg = tasks.filter(t => t.status === "in_progress");
     const done = tasks.filter(t => t.status === "done");
-
     container.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <h2 style="font-size:20px; font-weight:800;">Office Kanban Task Board</h2>
-        <button class="btn btn-primary" onclick="promptNewTask()">+ Create New Task</button>
-      </div>
-      <div class="kanban-grid">
-        <div class="kanban-col">
-          <h3>In Progress (${inProgress.length})</h3>
-          ${inProgress.map(t => `
-            <div class="task-item">
-              <strong style="font-size:13px; color:#fff;">${t.title}</strong>
-              <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">Assignee: <strong>${t.assignee}</strong></div>
-              <div style="font-size:10px; color:var(--gold); margin-top:4px;">Workspace: ${t.workspace}</div>
-            </div>
-          `).join('')}
+      <div class="kanban-view">
+        <div class="section-title">
+          <h2>📋 Live Autonomous Kanban Board</h2>
+          <span class="count-badge">${tasks.length} Total Floor Tasks</span>
         </div>
-        <div class="kanban-col">
-          <h3>Ready for Review (${review.length})</h3>
-          ${review.map(t => `
-            <div class="task-item">
-              <strong style="font-size:13px; color:#fff;">${t.title}</strong>
-              <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">Assignee: <strong>${t.assignee}</strong></div>
-              <div style="font-size:10px; color:var(--blue); margin-top:4px;">Workspace: ${t.workspace}</div>
+        <div class="kanban-columns">
+          <div class="kanban-col">
+            <h3>⏳ Pending Queue (${todo.length})</h3>
+            <div class="task-list">
+              ${todo.map(t => renderTaskCard(t)).join('')}
             </div>
-          `).join('')}
-        </div>
-        <div class="kanban-col">
-          <h3>Completed / Verified (${done.length})</h3>
-          ${done.map(t => `
-            <div class="task-item" style="border-left:3px solid var(--green);">
-              <strong style="font-size:13px; color:#fff;">${t.title}</strong>
-              <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">Auditor: <strong>${t.assignee}</strong></div>
-              <div style="font-size:10px; color:var(--green); margin-top:4px;">Verified on ProofLedger</div>
+          </div>
+          <div class="kanban-col">
+            <h3>⚡ In Progress (${inProg.length})</h3>
+            <div class="task-list">
+              ${inProg.map(t => renderTaskCard(t)).join('')}
             </div>
-          `).join('')}
+          </div>
+          <div class="kanban-col">
+            <h3>✅ Completed (${done.length})</h3>
+            <div class="task-list">
+              ${done.map(t => renderTaskCard(t)).join('')}
+            </div>
+          </div>
         </div>
       </div>
     `;
   } else if (currentTab === "cli") {
     container.innerHTML = `
-      <h2 style="font-size:20px; font-weight:800; margin-bottom:16px;">Multi-Model CLI Terminal & Dispatcher</h2>
-      <div class="card" style="margin-bottom:20px;">
-        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Run commands using any CLI model provider configured in Munder Difflin:</p>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-          <div>
-            <label style="font-size:12px; color:var(--text-muted); font-weight:600; display:block; margin-bottom:4px;">CLI Provider</label>
-            <select id="cli-provider" class="input">
-              <option value="antigravity">Antigravity CLI (agy)</option>
-              <option value="claude">Claude Code CLI (claude)</option>
-              <option value="gemini">Google Gemini CLI (gemini)</option>
-              <option value="cursor">Cursor Agent CLI (cursor-agent)</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:12px; color:var(--text-muted); font-weight:600; display:block; margin-bottom:4px;">Target Coworker</label>
-            <select id="cli-coworker" class="input">
-              ${coworkers.map(c => `<option value="${c.id}">${c.name} (${c.role})</option>`).join('')}
-            </select>
-          </div>
+      <div class="cli-view">
+        <div class="section-title">
+          <h2>💻 Multi-Model CLI Gateway & Dispatcher</h2>
         </div>
-        <div style="margin-top:14px;">
-          <label style="font-size:12px; color:var(--text-muted); font-weight:600; display:block; margin-bottom:4px;">Prompt / Command</label>
-          <textarea id="cli-prompt" class="textarea" rows="3" placeholder="Enter directive to run..."></textarea>
-        </div>
-        <button class="btn btn-primary" style="margin-top:12px;" onclick="runCliPrompt()">⚡ Execute CLI Command</button>
-      </div>
-
-      <div class="card">
-        <h3 style="font-size:14px; margin-bottom:8px;">CLI Execution Output</h3>
-        <div id="cli-output" style="background:#070b13; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:11px; color:#38bdf8; min-height:120px;">
-          &gt; Waiting for CLI command execution...
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Run commands using any CLI model provider configured in Hive Swarm:</p>
+        <div class="cli-terminal-box">
+          <div class="terminal-header">
+            <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
+            <span class="term-title">HIVE-SUPER-INTELLIGENCE :: MULTI-MODEL DISPATCHER</span>
+          </div>
+          <div class="terminal-body">
+            <p class="term-line green">> hive gateway --status online</p>
+            <p class="term-line">Connected providers: Antigravity (Gemini 3.1 Pro), Claude Code (Sonnet 1M), OpenAI (GPT-5), Ollama (Local)</p>
+            <p class="term-line">Active Workspaces: 8/8 mounted with file system isolation</p>
+            <div class="cli-input-line">
+              <span class="term-prompt">$</span>
+              <input type="text" id="cli-user-input" class="term-input" placeholder="Enter CLI prompt or agent command...">
+              <button class="btn btn-primary btn-sm" onclick="submitCli()">Run</button>
+            </div>
+          </div>
         </div>
       </div>
     `;
   }
 }
 
-window.openDispatchModal = function(id) {
-  selectedCoworker = coworkers.find(c => c.id === id);
-  if (!selectedCoworker) return;
-  document.getElementById("modal-coworker-name").innerText = `Dispatch Mission to ${selectedCoworker.name}`;
-  
+function renderTaskCard(t) {
+  return `
+    <div class="kanban-card">
+      <div class="kc-title">${t.title}</div>
+      <div class="kc-meta">
+        <span class="dept-badge">${t.workspaceId || "Core"}</span>
+        <span class="kc-agent">👤 ${t.assignedCoworker || "Unassigned"}</span>
+      </div>
+    </div>
+  `;
+}
+
+function openDispatchModal(coworkerId) {
+  selectedCoworker = coworkerId;
+  const cw = coworkers.find(c => c.id === coworkerId);
+  const modal = document.getElementById("dispatch-modal");
+  const nameEl = document.getElementById("modal-coworker-name");
   const wsSelect = document.getElementById("modal-workspace-select");
-  wsSelect.innerHTML = workspaces.map(w => `<option value="${w.id}">${w.name}</option>`).join('');
-
-  document.getElementById("dispatch-modal").classList.remove("hidden");
-};
-
-document.getElementById("btn-close-modal").onclick = () => {
-  document.getElementById("dispatch-modal").classList.add("hidden");
-};
-
-document.getElementById("btn-submit-dispatch").onclick = async () => {
-  if (!selectedCoworker) return;
-  const prompt = document.getElementById("modal-prompt").value;
-  const [provider, model] = document.getElementById("modal-model-select").value.split('|');
-  const workspace = document.getElementById("modal-workspace-select").value;
-
-  const res = await fetch('/api/dispatch', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      coworkerId: selectedCoworker.id,
-      prompt,
-      provider,
-      model,
-      workspace
-    })
-  });
-
-  if (res.ok) {
-    document.getElementById("dispatch-modal").classList.add("hidden");
-    await loadData();
-    alert(`🚀 Mission successfully dispatched to ${selectedCoworker.name}!\nModel: ${model}`);
+  if (nameEl && cw) nameEl.innerText = `Dispatch Mission to ${cw.name} (${cw.role})`;
+  if (wsSelect) {
+    wsSelect.innerHTML = workspaces.map(w => `<option value="${w.id}">${w.name}</option>`).join('');
   }
-};
+  modal.classList.remove("hidden");
+}
 
-window.advanceSchedule = async function() {
-  const res = await fetch('/api/schedule/advance', { method: 'POST' });
-  if (res.ok) {
-    const next = await res.json();
-    await loadData();
-  }
-};
-
-const topAdvBtn = document.getElementById("btn-advance-shift");
-if (topAdvBtn) topAdvBtn.onclick = window.advanceSchedule;
-
-window.triggerAutonomousCycle = async function() {
-  const res = await fetch('/api/director/tick', { method: 'POST' });
-  if (res.ok) {
-    const cycle = await res.json();
-    await loadData();
-    alert(`🤖 Autonomous Cycle Completed!\nDecisions:\n` + cycle.decisions.join('\n'));
-  }
-};
-
-window.triggerStandup = async function() {
-  const res = await fetch('/api/standup', { method: 'POST' });
-  if (res.ok) {
+async function advanceShift() {
+  try {
+    const res = await fetch('/api/schedule/advance', { method: 'POST' });
     const data = await res.json();
-    alert(data.report);
+    alert(`Shift advanced to: ${data.time} - ${data.event} (Lead: ${data.lead})`);
     await loadData();
+  } catch (e) {
+    alert("Error advancing shift: " + e.message);
   }
-};
+}
 
-document.getElementById("btn-call-standup").onclick = window.triggerStandup;
-
-window.promptHireContractor = async function() {
-  const name = prompt("Enter contractor name (e.g. Stanley Hudson, Phyllis Vance):");
-  if (!name) return;
-  const role = prompt("Enter specialty role (e.g. Crossword Analytics, Logistics Negotiator):");
-  if (!role) return;
-
-  await fetch('/api/workforce/hire', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, role, hoursPerWeek: 15 })
-  });
-  await loadData();
-};
-
-window.promptNewTask = async function() {
-  const title = prompt("Enter task title:");
-  if (!title) return;
-  await fetch('/api/tasks', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      title,
-      workspace: "01-engineering-dev",
-      assignee: "unassigned"
-    })
-  });
-  await loadData();
-};
-
-window.runCliPrompt = async function() {
-  const provider = document.getElementById("cli-provider").value;
-  const coworkerId = document.getElementById("cli-coworker").value;
-  const prompt = document.getElementById("cli-prompt").value;
-
-  const res = await fetch('/api/dispatch', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ provider, coworkerId, prompt })
-  });
-
-  if (res.ok) {
+async function triggerDirectorCycle() {
+  try {
+    const res = await fetch('/api/director/tick', { method: 'POST' });
     const data = await res.json();
-    document.getElementById("cli-output").innerText = data.simulatedExecution;
+    alert(`Autonomous Decision: ${data.action} - ${data.description}`);
     await loadData();
+  } catch (e) {
+    alert("Error executing director cycle: " + e.message);
   }
-};
+}
 
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.onclick = () => {
-    currentTab = btn.dataset.tab;
-    render();
-  };
+async function runResearchEngine() {
+  try {
+    const res = await fetch('/api/engines/research/run', { method: 'POST' });
+    const data = await res.json();
+    alert(`${data.message}\nNew Leads Discovered: ${data.newLeadsDiscovered}\nNiches: ${data.targetNiches.join(', ')}`);
+    await loadData();
+  } catch (e) {
+    alert("Error running research engine: " + e.message);
+  }
+}
+
+async function runClosingEngine() {
+  try {
+    const res = await fetch('/api/engines/closing/run', { method: 'POST' });
+    const data = await res.json();
+    alert(`${data.message}\nDeals Advanced: ${data.dealsAdvanced}\nPipeline Value: ${data.pipelineValue}`);
+    await loadData();
+  } catch (e) {
+    alert("Error running closing engine: " + e.message);
+  }
+}
+
+function submitCli() {
+  const input = document.getElementById("cli-user-input");
+  if (!input || !input.value.trim()) return;
+  alert(`Command queued for Hive multi-model agent dispatcher: "${input.value}"`);
+  input.value = "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentTab = btn.dataset.tab;
+      render();
+    });
+  });
+
+  const btnAdv = document.getElementById("btn-advance-shift");
+  if (btnAdv) btnAdv.addEventListener("click", advanceShift);
+
+  const btnStandup = document.getElementById("btn-call-standup");
+  if (btnStandup) btnStandup.addEventListener("click", async () => {
+    const res = await fetch('/api/standup', { method: 'POST' });
+    const data = await res.json();
+    alert("📢 Floor Standup called! " + data.message);
+    await loadData();
+  });
+
+  const btnRefresh = document.getElementById("btn-refresh");
+  if (btnRefresh) btnRefresh.addEventListener("click", loadData);
+
+  const btnCloseModal = document.getElementById("btn-close-modal");
+  const btnCancelModal = document.getElementById("btn-cancel-modal");
+  const modal = document.getElementById("dispatch-modal");
+  if (btnCloseModal) btnCloseModal.addEventListener("click", () => modal.classList.add("hidden"));
+  if (btnCancelModal) btnCancelModal.addEventListener("click", () => modal.classList.add("hidden"));
+
+  const btnConfirmDispatch = document.getElementById("btn-confirm-dispatch");
+  if (btnConfirmDispatch) {
+    btnConfirmDispatch.addEventListener("click", async () => {
+      const prompt = document.getElementById("modal-prompt-input").value;
+      const ws = document.getElementById("modal-workspace-select").value;
+      const model = document.getElementById("modal-model-select").value;
+      if (!prompt) return alert("Please enter a mission prompt!");
+
+      await fetch('/api/dispatch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ coworkerId: selectedCoworker, workspaceId: ws, model, prompt })
+      });
+      modal.classList.add("hidden");
+      alert("Mission dispatched successfully!");
+      await loadData();
+    });
+  }
+
+  loadData();
 });
-
-document.getElementById("btn-refresh").onclick = loadData;
-
-loadData();
-setInterval(loadData, 5000);

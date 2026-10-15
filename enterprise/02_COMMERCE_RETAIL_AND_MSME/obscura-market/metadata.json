@@ -1,0 +1,8 @@
+{
+  "name": "Obscura Market",
+  "description": "An e-commerce platform for items that cannot be found anywhere else on the internet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

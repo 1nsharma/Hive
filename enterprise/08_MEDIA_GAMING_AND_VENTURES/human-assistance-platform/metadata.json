@@ -1,0 +1,8 @@
+{
+  "name": "Human Assistance Platform",
+  "description": "An interactive high-fidelity console for the Human Assistance Platform, serving as a live simulator for the Public Frontend, Private Backend Core, and Admin Portal, alongside the full 21-volume Engineering Bible.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitthu / Lagori (7 Stones) - Desi Arcade Studios</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    #header {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #34d399;
+      pointer-events: auto;
+    }
+    .hud-box {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 16px;
+      pointer-events: auto;
+    }
+    .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+    .stat-val { font-size: 18px; font-weight: 800; color: #f8fafc; font-family: monospace; }
+    canvas {
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(16, 185, 129, 0.15);
+      cursor: crosshair;
+    }
+    .btn {
+      background: #10b981;
+      color: #0f172a;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+      transition: all 0.15s ease;
+    }
+    .btn:hover { background: #34d399; transform: translateY(-1px); }
+    #instructions {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="../index.html" class="btn" style="background:#334155; color:#f8fafc;">&larr; Arcade Hub</a>
+      <div class="badge">
+        <span>&#129704; PITTHU / LAGORI</span>
+        <span style="color:#94a3b8; font-weight:normal;">| 7 Stones Action & Dodge</span>
+      </div>
+    </div>
+    <div class="hud-box">
+      <div><div class="stat-label">Phase</div><div id="hud-phase" class="stat-val" style="color:#38bdf8;">KNOCKDOWN</div></div>
+      <div><div class="stat-label">Stones Rebuilt</div><div id="hud-stones" class="stat-val">0 / 7</div></div>
+      <div><div class="stat-label">Lives</div><div id="hud-lives" class="stat-val" style="color:#ef4444;">&#9829;&#9829;&#9829;</div></div>
+      <div><div class="stat-label">Score</div><div id="hud-score" class="stat-val">0</div></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <div id="instructions">
+    <span id="instruction-text">&#128073; <b>Aim & Throw:</b> Drag backward from the red rubber ball to knock down the 7 stones!</span>
+    <button id="btn-restart" class="btn" style="padding:4px 10px; font-size:11px;">Reset</button>
+  </div>
+
+  <script>
+    // WebAudio sound synthesis for stone crash, dodge roll, and victory
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      playStoneClack() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(420, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.1);
+        gain.gain.setValueAtTime(0.5, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      },
+      playRubberBounce() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(160, now);
+        osc.frequency.exponentialRampToValueAtTime(260, now + 0.08);
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      },
+      playLagoriFanfare() {
+        if (!this.ctx) return;
+        const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+        notes.forEach((freq, idx) => {
+          const now = this.ctx.currentTime + idx * 0.12;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.4, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.38);
+        });
+      }
+    };
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const hudPhase = document.getElementById('hud-phase');
+    const hudStones = document.getElementById('hud-stones');
+    const hudLives = document.getElementById('hud-lives');
+    const hudScore = document.getElementById('hud-score');
+    const instructionText = document.getElementById('instruction-text');
+    const btnRestart = document.getElementById('btn-restart');
+
+    let score = 0;
+    let lives = 3;
+    let phase = 'knockdown'; // 'knockdown' | 'rebuilding' | 'won' | 'gameover'
+    let rebuiltCount = 0;
+
+    // Arena Pedestal for 7 Stones
+    const pedestal = { x: canvas.width / 2, y: canvas.height / 2 - 40, radius: 45 };
+
+    // 7 Flat Stones with graduated sizes
+    let stones = [];
+    const STONE_WIDTHS = [70, 62, 54, 46, 38, 30, 22];
+    const STONE_COLORS = ['#64748b', '#78716c', '#94a3b8', '#a8a29e', '#cbd5e1', '#d6d3d1', '#f1f5f9'];
+
+    // Rubber Throwing Ball (Knocker Phase)
+    let ball = {
+      x: canvas.width / 2,
+      y: canvas.height - 70,
+      vx: 0,
+      vy: 0,
+      radius: 12,
+      color: '#ef4444',
+      isFlying: false
+    };
+
+    // Player Avatar (Rebuilding Phase)
+    let player = {
+      x: canvas.width / 2,
+      y: canvas.height - 100,
+      speed: 4.8,
+      radius: 16,
+      carryingStone: null,
+      isDodgeRolling: false,
+      dodgeTimer: 0
+    };
+
+    // Opponent Defenders (Rebuilding Phase - they throw balls at player)
+    let defenders = [
+      { x: 120, y: 150, vx: 2, reloadTimer: 60 },
+      { x: canvas.width - 120, y: 180, vx: -2.2, reloadTimer: 90 }
+    ];
+    let defenderProjectiles = [];
+
+    function initGame() {
+      score = 0;
+      lives = 3;
+      phase = 'knockdown';
+      rebuiltCount = 0;
+      defenderProjectiles = [];
+
+      ball.x = canvas.width / 2;
+      ball.y = canvas.height - 70;
+      ball.vx = 0;
+      ball.vy = 0;
+      ball.isFlying = false;
+
+      player.x = canvas.width / 2;
+      player.y = canvas.height - 100;
+      player.carryingStone = null;
+      player.isDodgeRolling = false;
+
+      stones = [];
+      // Stack 7 flat stones in center
+      for (let i = 0; i < 7; i++) {
+        stones.push({
+          id: i,
+          width: STONE_WIDTHS[i],
+          height: 12,
+          x: pedestal.x,
+          y: pedestal.y - (i * 12),
+          vx: 0,
+          vy: 0,
+          isKnocked: false,
+          isRebuilt: false,
+          color: STONE_COLORS[i]
+        });
+      }
+      updateHUD();
+      instructionText.innerHTML = '&#128073; <b>Aim & Throw:</b> Drag backward from the red ball to knock down the 7 stones!';
+    }
+
+    function updateHUD() {
+      hudScore.textContent = score;
+      hudStones.textContent = `${rebuiltCount} / 7`;
+      hudPhase.textContent = phase.toUpperCase();
+      hudLives.innerHTML = '&#9829;'.repeat(Math.max(0, lives));
+    }
+
+    // Input Tracking
+    let isAiming = false;
+    let dragStartX = 0, dragStartY = 0;
+    let dragCurrentX = 0, dragCurrentY = 0;
+    const keys = {};
+
+    window.addEventListener('keydown', (e) => {
+      keys[e.key] = true;
+      if (e.code === 'Space' && phase === 'rebuilding' && !player.isDodgeRolling) {
+        player.isDodgeRolling = true;
+        player.dodgeTimer = 18; // Frames of invulnerability
+        AudioEngine.playRubberBounce();
+      }
+    });
+    window.addEventListener('keyup', (e) => { keys[e.key] = false; });
+
+    canvas.addEventListener('mousedown', (e) => {
+      AudioEngine.init();
+      if (phase !== 'knockdown' || ball.isFlying) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      if (Math.hypot(mx - ball.x, my - ball.y) < 35) {
+        isAiming = true;
+        dragStartX = ball.x;
+        dragStartY = ball.y;
+        dragCurrentX = mx;
+        dragCurrentY = my;
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isAiming) return;
+      const rect = canvas.getBoundingClientRect();
+      dragCurrentX = e.clientX - rect.left;
+      dragCurrentY = e.clientY - rect.top;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isAiming) return;
+      isAiming = false;
+      const dx = dragStartX - dragCurrentX;
+      const dy = dragStartY - dragCurrentY;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist > 15) {
+        const power = Math.min(dist * 0.16, 24);
+        const angle = Math.atan2(dy, dx);
+        ball.vx = Math.cos(angle) * power;
+        ball.vy = Math.sin(angle) * power;
+        ball.isFlying = true;
+        AudioEngine.playRubberBounce();
+      }
+    });
+
+    // Touch support
+    canvas.addEventListener('touchstart', (e) => {
+      AudioEngine.init();
+      if (phase !== 'knockdown' || ball.isFlying) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.touches[0].clientX - rect.left;
+      const my = e.touches[0].clientY - rect.top;
+      if (Math.hypot(mx - ball.x, my - ball.y) < 45) {
+        isAiming = true;
+        dragStartX = ball.x;
+        dragStartY = ball.y;
+        dragCurrentX = mx;
+        dragCurrentY = my;
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isAiming) return;
+      const rect = canvas.getBoundingClientRect();
+      dragCurrentX = e.touches[0].clientX - rect.left;
+      dragCurrentY = e.touches[0].clientY - rect.top;
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      if (!isAiming) return;
+      isAiming = false;
+      const dx = dragStartX - dragCurrentX;
+      const dy = dragStartY - dragCurrentY;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist > 15) {
+        const power = Math.min(dist * 0.16, 24);
+        const angle = Math.atan2(dy, dx);
+        ball.vx = Math.cos(angle) * power;
+        ball.vy = Math.sin(angle) * power;
+        ball.isFlying = true;
+        AudioEngine.playRubberBounce();
+      }
+    });
+
+    btnRestart.addEventListener('click', initGame);
+
+    function triggerKnockdown() {
+      AudioEngine.playStoneClack();
+      score += 250;
+      stones.forEach(s => {
+        s.isKnocked = true;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 4 + Math.random() * 8;
+        s.vx = Math.cos(angle) * speed;
+        s.vy = Math.sin(angle) * speed;
+      });
+      setTimeout(() => {
+        phase = 'rebuilding';
+        updateHUD();
+        instructionText.innerHTML = '&#9889; <b>REBUILD PHASE:</b> Walk (WASD/Arrows) to scattered stones, bring them to the center pedestal! Press <b>SPACE</b> to Dodge Roll opponent throws!';
+      }, 1000);
+    }
+
+    function update() {
+      if (phase === 'knockdown' && ball.isFlying) {
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+
+        // Check collision with stone stack
+        const distToPedestal = Math.hypot(ball.x - pedestal.x, ball.y - pedestal.y);
+        if (distToPedestal < 45) {
+          ball.isFlying = false;
+          triggerKnockdown();
+        } else if (ball.y < 0 || ball.x < 0 || ball.x > canvas.width || ball.y > canvas.height) {
+          // Missed throw
+          ball.isFlying = false;
+          ball.x = canvas.width / 2;
+          ball.y = canvas.height - 70;
+          instructionText.innerHTML = '&#9888; <b>Missed!</b> Try again: Drag and aim with more power at the center stack!';
+        }
+      }
+
+      // Stone scattering physics
+      stones.forEach(s => {
+        if (s.isKnocked && !s.isRebuilt) {
+          s.x += s.vx;
+          s.y += s.vy;
+          s.vx *= 0.94;
+          s.vy *= 0.94;
+          // Bounds
+          s.x = Math.max(50, Math.min(canvas.width - 50, s.x));
+          s.y = Math.max(80, Math.min(canvas.height - 80, s.y));
+        }
+      });
+
+      // Player Movement & Stone Pickup during Rebuilding
+      if (phase === 'rebuilding') {
+        let mx = 0, my = 0;
+        if (keys['ArrowLeft'] || keys['a'] || keys['A']) mx -= 1;
+        if (keys['ArrowRight'] || keys['d'] || keys['D']) mx += 1;
+        if (keys['ArrowUp'] || keys['w'] || keys['W']) my -= 1;
+        if (keys['ArrowDown'] || keys['s'] || keys['S']) my += 1;
+
+        const len = Math.hypot(mx, my);
+        if (len > 0) {
+          const spd = player.isDodgeRolling ? player.speed * 1.8 : player.speed;
+          player.x += (mx / len) * spd;
+          player.y += (my / len) * spd;
+          player.x = Math.max(30, Math.min(canvas.width - 30, player.x));
+          player.y = Math.max(50, Math.min(canvas.height - 50, player.y));
+        }
+
+        if (player.isDodgeRolling) {
+          player.dodgeTimer--;
+          if (player.dodgeTimer <= 0) player.isDodgeRolling = false;
+        }
+
+        // Pickup next stone in order
+        if (!player.carryingStone) {
+          const nextStone = stones.find(s => s.id === rebuiltCount && !s.isRebuilt);
+          if (nextStone) {
+            const d = Math.hypot(player.x - nextStone.x, player.y - nextStone.y);
+            if (d < 30) {
+              player.carryingStone = nextStone;
+              AudioEngine.playStoneClack();
+            }
+          }
+        } else {
+          // Carry stone
+          player.carryingStone.x = player.x;
+          player.carryingStone.y = player.y - 20;
+
+          // Deposit on pedestal
+          const distToPed = Math.hypot(player.x - pedestal.x, player.y - pedestal.y);
+          if (distToPed < 40) {
+            player.carryingStone.isRebuilt = true;
+            player.carryingStone.x = pedestal.x;
+            player.carryingStone.y = pedestal.y - (rebuiltCount * 12);
+            player.carryingStone = null;
+            rebuiltCount++;
+            score += 150;
+            AudioEngine.playStoneClack();
+            updateHUD();
+
+            if (rebuiltCount === 7) {
+              phase = 'won';
+              score += 1000;
+              AudioEngine.playLagoriFanfare();
+              instructionText.innerHTML = '&#127881; <b>LAGORI!! MATCH WON!</b> You successfully rebuilt all 7 stones!';
+              updateHUD();
+            }
+          }
+        }
+
+        // Defenders throw dodgeballs at player
+        defenders.forEach(d => {
+          d.x += d.vx;
+          if (d.x < 100 || d.x > canvas.width - 100) d.vx *= -1;
+          d.reloadTimer--;
+          if (d.reloadTimer <= 0) {
+            d.reloadTimer = 110 + Math.random() * 40;
+            const angle = Math.atan2(player.y - d.y, player.x - d.x);
+            defenderProjectiles.push({
+              x: d.x,
+              y: d.y,
+              vx: Math.cos(angle) * 5.5,
+              vy: Math.sin(angle) * 5.5
+            });
+            AudioEngine.playRubberBounce();
+          }
+        });
+
+        // Update dodgeballs
+        for (let i = defenderProjectiles.length - 1; i >= 0; i--) {
+          const dp = defenderProjectiles[i];
+          dp.x += dp.vx;
+          dp.y += dp.vy;
+
+          // Hit check on player
+          const hitDist = Math.hypot(dp.x - player.x, dp.y - player.y);
+          if (hitDist < player.radius + 8) {
+            if (!player.isDodgeRolling) {
+              lives--;
+              updateHUD();
+              AudioEngine.playStoneClack();
+              defenderProjectiles.splice(i, 1);
+              if (lives <= 0) {
+                phase = 'gameover';
+                instructionText.innerHTML = '&#128148; <b>TAGGED OUT!</b> Opponents hit you with the ball. Click Reset to retry.';
+                updateHUD();
+              }
+              continue;
+            }
+          }
+
+          if (dp.x < 0 || dp.x > canvas.width || dp.y < 0 || dp.y > canvas.height) {
+            defenderProjectiles.splice(i, 1);
+          }
+        }
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Courtyard Ground (Clay & Cobblestone)
+      const grad = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 50, canvas.width / 2, canvas.height / 2, canvas.width * 0.7);
+      grad.addColorStop(0, '#334155');
+      grad.addColorStop(1, '#0f172a');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Court Lines
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(40, 50, canvas.width - 80, canvas.height - 100);
+
+      // Center Pedestal
+      ctx.fillStyle = '#475569';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(pedestal.x, pedestal.y + 10, pedestal.radius, pedestal.radius * 0.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Render 7 Stones
+      stones.forEach(s => {
+        ctx.save();
+        ctx.fillStyle = s.color;
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(s.x, s.y, s.width / 2, s.height / 2, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Highlight next stone to pick up
+        if (phase === 'rebuilding' && s.id === rebuiltCount && !s.isRebuilt && !player.carryingStone) {
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 2.5;
+          ctx.setLineDash([4, 4]);
+          ctx.stroke();
+          ctx.fillStyle = '#38bdf8';
+          ctx.font = 'bold 10px monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(`PICK #${s.id + 1}`, s.x, s.y - 12);
+        }
+        ctx.restore();
+      });
+
+      // Render Ball (Knockdown Phase)
+      if (phase === 'knockdown') {
+        if (isAiming) {
+          const dx = dragStartX - dragCurrentX;
+          const dy = dragStartY - dragCurrentY;
+          const power = Math.min(Math.hypot(dx, dy) * 0.16, 24);
+          const angle = Math.atan2(dy, dx);
+
+          ctx.strokeStyle = '#ef4444';
+          ctx.lineWidth = 2;
+          ctx.setLineDash([5, 5]);
+          ctx.beginPath();
+          ctx.moveTo(ball.x, ball.y);
+          ctx.lineTo(ball.x + Math.cos(angle) * (power * 16), ball.y + Math.sin(angle) * (power * 16));
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        ctx.fillStyle = ball.color;
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Render Player (Rebuilding Phase)
+      if (phase === 'rebuilding' || phase === 'won' || phase === 'gameover') {
+        ctx.save();
+        ctx.fillStyle = player.isDodgeRolling ? '#f59e0b' : '#3b82f6';
+        ctx.beginPath();
+        ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        if (player.isDodgeRolling) {
+          ctx.fillStyle = '#fef08a';
+          ctx.font = 'bold 9px system-ui';
+          ctx.textAlign = 'center';
+          ctx.fillText('DODGE', player.x, player.y - 20);
+        }
+        ctx.restore();
+
+        // Render Defenders
+        defenders.forEach(d => {
+          ctx.save();
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, 14, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '9px system-ui';
+          ctx.textAlign = 'center';
+          ctx.fillText('OPPONENT', d.x, d.y - 16);
+          ctx.restore();
+        });
+
+        // Render Defender Projectiles
+        defenderProjectiles.forEach(dp => {
+          ctx.fillStyle = '#fb923c';
+          ctx.beginPath();
+          ctx.arc(dp.x, dp.y, 8, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    function loop() {
+      update();
+      render();
+    }
+
+    initGame();
+    loop();
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 @echo off
-TITLE AI HIVE & MUNDER DIFFLIN — MASTER SYSTEM OS
+TITLE AI HIVE - MASTER SYSTEM CORE OS
 COLOR 0B
 CLS
 
@@ -10,11 +10,11 @@ echo      / /| |  / /   / /_/ // /  / / / /   / __/
 echo     / ___ |_/ /   / __  // /  / / / /___/ /___   
 echo    /_/  |_/___/  /_/ /_/___/ /_/ /_____/_____/   
 echo.
-echo    MUNDER DIFFLIN AI COMPANY & ENTERPRISE AUTONOMOUS SYSTEM
+echo    HIVE AI SUPER INTELLIGENCE COMPANY - UNIFIED ENTERPRISE OS
 echo ==============================================================================
 echo.
 echo  [1] Start Web Virtual Office & Dashboard (http://localhost:3300)
-echo  [2] Launch Munder Difflin Desktop App (Electron 32 + Monaco + Pixi.js)
+echo  [2] Launch Hive Desktop Orchestrator (Electron 32 + Monaco + Pixi.js)
 echo  [3] Launch BOTH Web + Desktop App Simultaneously (Full System)
 echo  [4] Run Master System Hub Diagnostics
 echo  [5] Run Phyllis's B2B Research Engine CLI
@@ -23,7 +23,7 @@ echo  [7] Deploy / Sync Web App to Vercel Cloud
 echo  [8] Run Comprehensive Unit Tests
 echo  [0] Exit
 echo.
-set /p opt="Select an option [1-8]: "
+set /p opt="Select an option [0-8]: "
 
 if "%opt%"=="1" goto start_web
 if "%opt%"=="2" goto start_desktop
@@ -44,8 +44,8 @@ pause
 goto exit_app
 
 :start_desktop
-echo Launching Munder Difflin Desktop Engine...
-call "%~dp0LAUNCH_MUNDER_DIFFLIN_DESKTOP.bat"
+echo Launching Hive Desktop Engine...
+call "%~dp0LAUNCH_HIVE_DESKTOP.bat"
 goto exit_app
 
 :start_both
@@ -53,8 +53,8 @@ echo Launching Web Server in background...
 start "AI Hive Web Server" cmd /k "cd /d "%~dp0web" && node server.js"
 timeout /t 2 >nul
 start "" http://localhost:3300
-echo Launching Munder Difflin Desktop App...
-call "%~dp0LAUNCH_MUNDER_DIFFLIN_DESKTOP.bat"
+echo Launching Hive Desktop App...
+call "%~dp0LAUNCH_HIVE_DESKTOP.bat"
 goto exit_app
 
 :run_diag

@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "petjanu-self-runner": {
+      "command": "node",
+      "args": ["scripts/mcp-runner.cjs"],
+      "transport": "stdio",
+      "description": "PetJanu Autonomous Stdio & Code Connect MCP Self Runner"
+    },
+    "petjanu-agentic-core": {
+      "url": "http://localhost:3001/api/v1/mcp/rpc",
+      "transport": "http",
+      "description": "Internal Agentic AI Swarm, Clinical Triage, and Lost Pet Registry MCP Server"
+    },
+    "petjanu-ai-mcp": {
+      "url": "http://localhost:3001/api/v1/mcp/rpc",
+      "transport": "http",
+      "description": "Internal AI MCP Decision Engine for triage reasoning, nutrition formulas, and verification"
+    },
+    "web-fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "description": "Internal Web MCP fetching tool for veterinary and safety data updates"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./"],
+      "description": "Internal sandboxed filesystem MCP tool"
+    }
+  }
+}

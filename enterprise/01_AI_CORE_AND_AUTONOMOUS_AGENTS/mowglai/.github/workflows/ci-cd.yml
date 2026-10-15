@@ -1,0 +1,70 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      # ==========================================
+      # CI (Continuous Integration) Pipeline
+      # ==========================================
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Build
+        run: bun run build
+        env:
+          NEXT_PUBLIC_RAZORPAY_KEY_ID: ${{ secrets.NEXT_PUBLIC_RAZORPAY_KEY_ID }}
+
+      - name: Inject Secrets into .htaccess
+        env:
+          RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
+          RAZORPAY_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          echo "" >> ./out/.htaccess
+          echo "# Injected by CI/CD" >> ./out/.htaccess
+          echo "SetEnv RAZORPAY_KEY_ID $RAZORPAY_KEY_ID" >> ./out/.htaccess
+          echo "SetEnv RAZORPAY_KEY_SECRET $RAZORPAY_KEY_SECRET" >> ./out/.htaccess
+          # Consumed by public/send_email.php via getenv(). The password is
+          # never committed; without this secret the contact form returns 503.
+          echo "SetEnv SMTP_USER $SMTP_USER" >> ./out/.htaccess
+          echo "SetEnv SMTP_PASS $SMTP_PASS" >> ./out/.htaccess
+        shell: bash
+
+      # ==========================================
+      # CD (Continuous Deployment) Pipeline
+      # ==========================================
+      - name: Sync files to Hostinger via SSH
+        # Only deploy on push to main
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        uses: burnett01/rsync-deployments@8.0.4
+        with:
+          switches: "-avzr --exclude '.next' --exclude 'node_modules' --exclude '.git'"
+          path: ./out/
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_port: ${{ secrets.SSH_PORT }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}

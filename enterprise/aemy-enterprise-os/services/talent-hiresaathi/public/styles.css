@@ -1,0 +1,36 @@
+:root {
+  --bg: #090e17;
+  --card: #111928;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+  --purple: #8b5cf6;
+  --indigo: #6366f1;
+  --green: #10b981;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; padding: 24px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 24px; }
+.brand h1 { font-size: 24px; font-weight: 800; color: #fff; margin-top: 4px; }
+.brand p { font-size: 13px; color: var(--text-muted); }
+.badge { background: var(--purple); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+.stats-pills { display: flex; gap: 16px; }
+.pill { background: var(--card); border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-size: 13px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.card h2 { font-size: 18px; margin-bottom: 4px; }
+.card .sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+.form-group { margin-bottom: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+.input, .textarea { width: 100%; background: #060a12; border: 1px solid var(--border); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-family: inherit; }
+.input:focus, .textarea:focus { outline: none; border-color: var(--purple); }
+.btn { border: none; border-radius: 6px; padding: 10px 18px; font-weight: 700; font-size: 13px; cursor: pointer; }
+.btn-talent { background: linear-gradient(135deg, var(--purple), var(--indigo)); color: #fff; width: 100%; margin-top: 8px; }
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+.table th { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+.table td { padding: 10px; border-bottom: 1px solid var(--border); }
+.mt-4 { margin-top: 24px; }

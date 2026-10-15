@@ -1,0 +1,6 @@
+{
+  "name": "Real Estate Developer HQ",
+  "description": "Master the complete Real Estate Developer track from foundation to master developer. Interactive pro-forma financial modeling, deal structuring, capital stack simulations, and AI developer copilot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

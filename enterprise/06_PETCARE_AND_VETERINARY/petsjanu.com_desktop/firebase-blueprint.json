@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profiles",
+      "description": "Registered pet owner profiles in Firebase Auth & Firestore",
+      "properties": {
+        "id": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "pets": {
+      "title": "Pet Profiles",
+      "description": "Digital pet IDs with lost status and QR slug",
+      "properties": {
+        "id": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "name": { "type": "string" },
+        "species": { "type": "string" },
+        "breed": { "type": "string" },
+        "age": { "type": "string" },
+        "isLost": { "type": "boolean" },
+        "slug": { "type": "string" }
+      }
+    },
+    "sightings": {
+      "title": "Lost Pet Sightings",
+      "description": "Community reported sighting locations and photos",
+      "properties": {
+        "id": { "type": "string" },
+        "petId": { "type": "string" },
+        "petName": { "type": "string" },
+        "location": { "type": "string" },
+        "finderPhone": { "type": "string" },
+        "timestamp": { "type": "string" }
+      }
+    },
+    "orders": {
+      "title": "Marketplace Orders",
+      "description": "Product orders processed via Play Billing or Razorpay",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "total": { "type": "number" },
+        "status": { "type": "string" },
+        "paymentGateway": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "analytics_events": {
+      "title": "BigQuery Analytics Stream",
+      "description": "User behavior logs exported to BigQuery for insights",
+      "properties": {
+        "id": { "type": "string" },
+        "eventName": { "type": "string" },
+        "userId": { "type": "string" },
+        "params": { "type": "object" },
+        "timestamp": { "type": "string" }
+      }
+    },
+    "play_billing_transactions": {
+      "title": "Google Play Billing Receipts",
+      "description": "Verified Google Play In-App Purchases and Subscriptions",
+      "properties": {
+        "purchaseToken": { "type": "string" },
+        "productId": { "type": "string" },
+        "userId": { "type": "string" },
+        "status": { "type": "string" },
+        "purchaseTime": { "type": "string" }
+      }
+    }
+  }
+}

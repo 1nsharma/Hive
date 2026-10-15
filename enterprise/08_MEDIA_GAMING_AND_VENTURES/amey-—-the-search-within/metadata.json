@@ -1,0 +1,6 @@
+{
+  "name": "AMEY — The Search Within",
+  "description": "Independent research platform exploring AI, human intelligence, technology, consciousness, and the future of human agency.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

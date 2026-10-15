@@ -1,0 +1,75 @@
+{
+  "name": "PetJanu — India's Pet Safety Super App",
+  "short_name": "PetJanu",
+  "description": "India's most trusted pet safety platform with QR/NFC smart tags, lost pet SOS alerts, 24/7 AI health guidance, pet product store, and vet bookings.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#175741",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "health", "utilities"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.petjanu.app",
+      "url": "https://play.google.com/store/apps/details?id=com.petjanu.app"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Report Lost Pet",
+      "short_name": "Lost Pet",
+      "description": "Activate emergency SOS alert for your lost pet",
+      "url": "/report",
+      "icons": [{ "src": "/icon-lost-pet.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "AI Health Check",
+      "short_name": "Health AI",
+      "description": "Get instant AI-powered pet health guidance",
+      "url": "/health",
+      "icons": [{ "src": "/icon-health.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Shop Products",
+      "short_name": "Store",
+      "description": "Browse pet supplies and accessories",
+      "url": "/marketplace",
+      "icons": [{ "src": "/icon-store.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PetJanu Home Screen"
+    },
+    {
+      "src": "/screenshot-dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Pet Dashboard"
+    }
+  ]
+}

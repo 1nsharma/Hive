@@ -3,7 +3,7 @@
  * Master B2B Client Research & Corporate Authority Verification Engine
  * Authored by Phyllis Vance (`client-research`)
  * Enterprise Client Research & Authority Verification Lead
- * Munder Difflin AI - Autonomous Floor Hive
+ * Hive AI - Autonomous Floor Hive
  */
 
 import fs from 'node:fs';
@@ -159,7 +159,7 @@ export function getResearchStats() {
   const allVerified = allDossiers.every(d => verifyClientAuthority(d).verificationPassed);
 
   return {
-    engine: 'Munder Difflin B2B Client Research & Authority Verification Engine v2.0',
+    engine: 'Hive B2B Client Research & Authority Verification Engine v2.0',
     leadResearcher: 'Phyllis Vance (`worker-client-research`)',
     totalVerifiedDossiers: allDossiers.length,
     verticalBreakdown: byVertical,

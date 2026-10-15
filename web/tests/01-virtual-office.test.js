@@ -15,14 +15,14 @@ test("Office Test 1: Server health and core telemetry", async () => {
     const health = await (await fetch(`${base}/api/health`)).json();
     assert.equal(health.status, "ONLINE");
     assert.equal(health.app, "AI Super Intelligence Company");
-    assert.equal(health.theme, "Munder Difflin Office");
+    assert.equal(health.theme, "Hive Autonomous Office");
     assert.equal(health.coworkersCount, 8);
   } finally {
     server.close();
   }
 });
 
-test("Office Test 2: AI Coworkers Fleet verification (Munder Difflin Roster)", () => {
+test("Office Test 2: AI Coworkers Fleet verification (Hive Swarm Roster)", () => {
   const coworkers = fleetEngine.getCoworkers();
   assert.equal(coworkers.length, 8);
 

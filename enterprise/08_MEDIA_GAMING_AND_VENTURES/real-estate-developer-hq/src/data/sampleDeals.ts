@@ -1,0 +1,116 @@
+import { DealInput } from "../types";
+
+export const SAMPLE_DEALS: DealInput[] = [
+  {
+    id: "deal-1-acre-res",
+    name: "The Meridian: 1-Acre Premium Residential",
+    location: "Sector 82, Gurgaon / Delhi NCR",
+    assetType: "residential",
+    currencyUnit: "crore",
+    plotAreaSqFt: 43560, // 1 Acre
+    baseFar: 2.25,
+    purchasableFar: 0.5,
+    tdrFar: 0.0,
+    groundCoveragePercent: 35,
+    superBuiltUpEfficiencyPercent: 130, // 130% saleable area vs built-up
+    circleRatePerSqFt: 5500,
+    marketAskPriceTotal: 12.0, // ₹12 Cr
+    stampDutyRegistrationPercent: 7.0,
+    approvalAndLiaisonCostPerSqFt: 320,
+    constructionCostPerSqFt: 2450,
+    mepAndFinishingPerSqFt: 650,
+    contingencyPercent: 7.5,
+    expectedSalePricePerSqFt: 7800,
+    expectedRentalYieldPercent: 3.5,
+    projectDurationMonths: 28,
+    equityContributionPercent: 35,
+    debtInterestRateAnnualPercent: 11.0,
+    marketingBrokeragePercent: 3.5,
+    taxesGstPercent: 5.0,
+    notes: "High-absorption growth corridor with upcoming metro link. 60ft arterial road frontage."
+  },
+  {
+    id: "deal-commercial-cbd",
+    name: "Apex Tower: 25,000 sq.ft Boutique Commercial",
+    location: "Outer Ring Road / Whitefield, Bengaluru",
+    assetType: "commercial",
+    currencyUnit: "crore",
+    plotAreaSqFt: 25000,
+    baseFar: 2.75,
+    purchasableFar: 0.75,
+    tdrFar: 0.0,
+    groundCoveragePercent: 45,
+    superBuiltUpEfficiencyPercent: 135,
+    circleRatePerSqFt: 8500,
+    marketAskPriceTotal: 18.5, // ₹18.5 Cr
+    stampDutyRegistrationPercent: 6.5,
+    approvalAndLiaisonCostPerSqFt: 450,
+    constructionCostPerSqFt: 3100,
+    mepAndFinishingPerSqFt: 950,
+    contingencyPercent: 8.0,
+    expectedSalePricePerSqFt: 11500,
+    expectedRentalYieldPercent: 8.2,
+    projectDurationMonths: 24,
+    equityContributionPercent: 40,
+    debtInterestRateAnnualPercent: 10.5,
+    marketingBrokeragePercent: 3.0,
+    taxesGstPercent: 12.0,
+    notes: "Prime IT tech corridor with strong institutional pre-lease demand from Fortune 500 GCCs."
+  },
+  {
+    id: "deal-plotted-subdivision",
+    name: "Greenwood Enclave: 5-Acre Gated Plotted Community",
+    location: "Dehradun / Tier-2 Growth Cluster",
+    assetType: "plotted",
+    currencyUnit: "crore",
+    plotAreaSqFt: 217800, // 5 Acres
+    baseFar: 1.0,
+    purchasableFar: 0.0,
+    tdrFar: 0.0,
+    groundCoveragePercent: 55,
+    superBuiltUpEfficiencyPercent: 65, // 65% net plotted area, 35% roads & greens
+    circleRatePerSqFt: 1800,
+    marketAskPriceTotal: 14.0, // ₹14 Cr
+    stampDutyRegistrationPercent: 7.0,
+    approvalAndLiaisonCostPerSqFt: 90,
+    constructionCostPerSqFt: 550, // Internal roads, drainage, clubhouse, electrification
+    mepAndFinishingPerSqFt: 150,
+    contingencyPercent: 5.0,
+    expectedSalePricePerSqFt: 2850,
+    expectedRentalYieldPercent: 2.0,
+    projectDurationMonths: 16,
+    equityContributionPercent: 30,
+    debtInterestRateAnnualPercent: 12.0,
+    marketingBrokeragePercent: 4.0,
+    taxesGstPercent: 1.0,
+    notes: "Ultra-fast cash turnover with low structural execution risk. 16-month completion target."
+  },
+  {
+    id: "deal-suburban-jda",
+    name: "Sunrise Heights: Suburban JDA Redevelopment",
+    location: "Borivali / Thane Suburban Belt, Mumbai MMR",
+    assetType: "residential",
+    currencyUnit: "crore",
+    plotAreaSqFt: 32000,
+    baseFar: 2.5,
+    purchasableFar: 1.0,
+    tdrFar: 0.5,
+    groundCoveragePercent: 40,
+    superBuiltUpEfficiencyPercent: 135,
+    circleRatePerSqFt: 11000,
+    marketAskPriceTotal: 22.0, // ₹22 Cr (or JDA land contribution valuation)
+    stampDutyRegistrationPercent: 6.0,
+    approvalAndLiaisonCostPerSqFt: 550,
+    constructionCostPerSqFt: 2850,
+    mepAndFinishingPerSqFt: 750,
+    contingencyPercent: 9.0,
+    expectedSalePricePerSqFt: 14200,
+    expectedRentalYieldPercent: 3.2,
+    projectDurationMonths: 36,
+    equityContributionPercent: 30,
+    debtInterestRateAnnualPercent: 11.5,
+    marketingBrokeragePercent: 3.0,
+    taxesGstPercent: 5.0,
+    notes: "Redevelopment project with 4.0 Total FSI via transit corridor bonuses."
+  }
+];

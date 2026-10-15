@@ -1,0 +1,3 @@
+file 'C:/Users/18/OneDrive/Desktop/akafolder/08_MEDIA_GAMING_AND_VENTURES/vox_output/trailer_kanche_20261015_023601/clips/clip_1.mp4'
+file 'C:/Users/18/OneDrive/Desktop/akafolder/08_MEDIA_GAMING_AND_VENTURES/vox_output/trailer_kanche_20261015_023601/clips/clip_2.mp4'
+file 'C:/Users/18/OneDrive/Desktop/akafolder/08_MEDIA_GAMING_AND_VENTURES/vox_output/trailer_kanche_20261015_023601/clips/clip_3.mp4'

@@ -1,0 +1,16 @@
+{
+  "name": "@aura/common",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./errors": "./src/errors/index.js",
+    "./logger": "./src/logger/index.js",
+    "./ctxkeys": "./src/ctxkeys/index.js",
+    "./crypto": "./src/crypto/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

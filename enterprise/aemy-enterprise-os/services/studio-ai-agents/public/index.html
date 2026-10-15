@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Agent Studio & JORVISH WorkOS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">AI CORE & WORKSPACE STUDIO</span>
+        <h1>🧠 AI Agent Studio & J.O.R.V.I.S.H WorkOS</h1>
+        <p>Universal Autonomous Agent Mesh • Voice Operations • Policy Engine • Tool Runtime</p>
+      </div>
+      <div class="stats-pills">
+        <div class="pill"><span class="label">Mesh Neural State:</span> <strong style="color:#10b981;">SYNCHRONIZED</strong></div>
+        <div class="pill"><span class="label">Context Window:</span> <strong style="color:#38bdf8;">1,000,000 Tokens</strong></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Agent Command Terminal -->
+      <section class="card">
+        <h2>⚡ Autonomous Mission Dispatch</h2>
+        <p class="sub">Natural language orchestrator connected to multi-agent mesh</p>
+        <div class="form-group">
+          <label>Select Primary Orchestrator</label>
+          <select id="agent-select" class="input">
+            <option>J.O.R.V.I.S.H Enterprise Voice (Executive Ops)</option>
+            <option>Universal Autonomous Agent (Full-Stack Synthesizer)</option>
+            <option>Mowglai Local Dispatch Swarm</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mission Directive / Prompt</label>
+          <textarea id="agent-prompt" class="textarea" rows="3">Audit cross-unit ledger balances, optimize logistics driver matching, and verify solar DISCOM subsidies.</textarea>
+        </div>
+        <button id="btn-dispatch" class="btn btn-primary">🚀 Execute Autonomous Mission</button>
+
+        <h3 style="margin-top:20px; font-size:14px;">Live Autonomous Swarm Terminal</h3>
+        <div id="terminal" class="terminal-box">Loading stream...</div>
+      </section>
+
+      <!-- Active Agent Grid -->
+      <section class="card">
+        <h2>🤖 Active Agent Fleet & Pipelines</h2>
+        <p class="sub">Autonomous micro-agents running concurrently</p>
+        <div id="agents-list">Loading agents...</div>
+
+        <h3 style="margin-top:20px; font-size:14px;">Self-Healing Automated Pipelines</h3>
+        <div id="pipelines-list" style="margin-top:8px;">Loading pipelines...</div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

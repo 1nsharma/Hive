@@ -1,0 +1,7 @@
+{
+  "name": "Mowglai",
+  "description": "Mowglai is a premium web development and digital agency. We create award-winning websites, 3D experiences, and high-performance web apps.",
+  "prompt": "Mowglai digital agency website",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

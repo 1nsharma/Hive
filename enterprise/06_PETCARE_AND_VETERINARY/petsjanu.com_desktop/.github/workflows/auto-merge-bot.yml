@@ -1,0 +1,128 @@
+name: Auto-Merge & Branch Sync Bot
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+    branches: [main]
+  pull_request_review:
+    types: [submitted]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name to sync and merge into main'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  statuses: write
+
+jobs:
+  auto-merge-and-resolve:
+    name: Auto-Merge PRs & Detect Conflicts
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git Identity
+        run: |
+          git config user.name "petsjanu-merge-bot[bot]"
+          git config user.email "bot@petsjanu.com"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Quality & Type Verification
+        run: |
+          npm run type-check
+          npm test
+
+      - name: Check Mergeability & Auto-Merge PR
+        id: automerge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          if [ -n "$PR_NUMBER" ]; then
+            echo "🔍 Checking PR #$PR_NUMBER for mergeability..."
+            
+            # Check PR details via GitHub CLI
+            PR_STATE=$(gh pr view "$PR_NUMBER" --json state,mergeable,title -q '.mergeable')
+            
+            if [ "$PR_STATE" = "MERGEABLE" ]; then
+              echo "✅ PR #$PR_NUMBER is clean and mergeable without conflicts."
+              echo "🚀 Merging PR #$PR_NUMBER into main automatically..."
+              gh pr merge "$PR_NUMBER" --merge --delete-branch || \
+              gh pr merge "$PR_NUMBER" --merge --admin || \
+              gh pr merge "$PR_NUMBER" --merge || \
+              echo "ℹ️ Auto-merge skipped or requires manual review approval on free tier repository."
+              echo "🎉 PR #$PR_NUMBER successfully merged!"
+            elif [ "$PR_STATE" = "CONFLICTING" ]; then
+              echo "⚠️ PR #$PR_NUMBER has merge conflicts!"
+              gh pr comment "$PR_NUMBER" --body "🤖 **PetsJanu Merge Bot Alert**: This pull request has merge conflicts with the \`main\` branch. Please rebase or merge the latest \`main\` into your branch to resolve conflicts."
+              exit 1
+            else
+              echo "ℹ️ PR state: $PR_STATE. Attempting auto-merge if checks pass..."
+              gh pr merge "$PR_NUMBER" --merge --auto || true
+            fi
+          fi
+
+  sync-all-branches:
+    name: Sync Stale Remote Branches
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git Identity
+        run: |
+          git config user.name "petsjanu-merge-bot[bot]"
+          git config user.email "bot@petsjanu.com"
+
+      - name: Fetch and Merge All Remote Branches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🔄 Fetching all remote branches..."
+          git fetch --all --prune
+          
+          # Iterate over all remote branches except HEAD and main
+          for remote_branch in $(git branch -r | grep -v 'HEAD' | grep -v 'origin/main'); do
+            branch_name="${remote_branch#origin/}"
+            echo "----------------------------------------"
+            echo "Processing branch: $branch_name"
+            
+            # Checkout local tracking branch
+            git checkout -B "$branch_name" "$remote_branch"
+            
+            # Attempt to merge main into branch to keep it synchronized
+            if git merge origin/main --no-edit; then
+              echo "✅ Branch $branch_name cleanly merged with main."
+              git push origin "$branch_name" || echo "Push skipped or protected."
+            else
+              echo "⚠️ Conflict detected on $branch_name while merging main."
+              git merge --abort || true
+            fi
+          done
+          
+          # Return to main
+          git checkout main

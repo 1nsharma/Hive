@@ -1,0 +1,6 @@
+{
+  "name": "MitraOS AI Network",
+  "description": "An India-first AI network for learning APIs/prompting, building custom agents, resolving regional problems, and earning secure rewards with safe OAuth integrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

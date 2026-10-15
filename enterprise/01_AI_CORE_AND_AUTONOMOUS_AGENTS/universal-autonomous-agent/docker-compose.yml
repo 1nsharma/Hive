@@ -1,0 +1,99 @@
+# ==============================================================================
+# AGENT OS: LOCAL-FIRST UNIVERSAL WORK OS
+# Architecture: Ollama + PostgreSQL (pgvector) + Redis + Text Embeddings + Agent Runtime
+# Usage: docker compose up -d
+# ==============================================================================
+
+version: "3.9"
+
+services:
+  # ─────────────────────────────────────────────
+  # LOCAL LLM (Ollama — Free, Zero Cloud Dependency)
+  # ─────────────────────────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: agent-os-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────
+  # PERSISTENT DATABASE (PostgreSQL + pgvector)
+  # ─────────────────────────────────────────────
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: agent-os-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-agentos}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-agentos_local_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-agentos}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────
+  # QUEUE + MEMORY CACHE (Redis)
+  # ─────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: agent-os-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────
+  # LOCAL EMBEDDING ENGINE (Fast Vector Ingestion)
+  # ─────────────────────────────────────────────
+  embeddings:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-latest
+    container_name: agent-os-embeddings
+    ports:
+      - "8080:80"
+    environment:
+      - MODEL_ID=BAAI/bge-small-en-v1.5
+    volumes:
+      - embedding_cache:/data
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────
+  # AGENT OS WORK RUNTIME (Unified Interface)
+  # ─────────────────────────────────────────────
+  agent-os:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-os-runtime
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://agentos:${POSTGRES_PASSWORD:-agentos_local_dev}@postgres:5432/agentos
+      REDIS_URL: redis://redis:6379
+      OLLAMA_URL: http://ollama:11434
+      EMBEDDING_URL: http://embeddings:80
+      VAULT_KEY: ${VAULT_KEY:-agentos-aes256-master-vault-key-2026}
+      NODE_ENV: production
+      PORT: 3000
+    depends_on:
+      - postgres
+      - redis
+      - ollama
+      - embeddings
+    volumes:
+      - ./vault:/app/vault
+      - ./workspace:/app/workspace
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  postgres_data:
+  redis_data:
+  embedding_cache:

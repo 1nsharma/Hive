@@ -1,0 +1,6 @@
+{
+  "name": "Master Knowledge Map",
+  "description": "Multi-layered, interconnected documentation and dependency mapping across engineering domains, powered by server-side Gemini 3.6 Flash.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

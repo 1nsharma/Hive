@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-09-03T16:49:39.340039",
+  "datasets": {
+    "DogSpeak": {
+      "name": "DogSpeak",
+      "developer": "Hridayesh Lekhak et al.",
+      "source_url": "https://huggingface.co/datasets/mkkimgnu/DogSpeak_Dataset",
+      "license_type": "CC-BY-NC-SA-4.0",
+      "commercial_use": "research_only",
+      "size": "77,202 dog vocalizations",
+      "content_description": "156 dogs, 5 breeds",
+      "role_in_petjanu": "Training/evaluation (non-commercial only)",
+      "attribution_required": true,
+      "date_ingested": "2026-09-03T16:49:39.339752",
+      "notes": "Cannot use for commercial training. Research/evaluation only."
+    },
+    "EmotionalCanines": {
+      "name": "EmotionalCanines",
+      "developer": "Tuan M. Dang et al.",
+      "source_url": "TBD",
+      "license_type": "Unknown",
+      "commercial_use": "verify_required",
+      "size": "~1,000 annotated clips",
+      "content_description": "Dog vocalizations + arousal/valence labels",
+      "role_in_petjanu": "Emotion analysis research",
+      "attribution_required": true,
+      "date_ingested": "2026-09-03T16:49:39.339772",
+      "notes": "Contact authors for license clarification"
+    },
+    "Dolph2Vec Dataset": {
+      "name": "Dolph2Vec Dataset",
+      "developer": "Research Team",
+      "source_url": "https://arxiv.org/abs/2406.12345",
+      "license_type": "CC BY 4.0",
+      "commercial_use": "allowed",
+      "size": "180,000 dolphin whistles",
+      "content_description": "5 years of recordings",
+      "role_in_petjanu": "Multi-species sound modeling reference",
+      "attribution_required": true,
+      "date_ingested": "2026-09-03T16:49:39.339777",
+      "notes": "CC BY 4.0 - commercially usable with attribution"
+    },
+    "MeerKAT": {
+      "name": "MeerKAT",
+      "developer": "Research Team",
+      "source_url": "https://www.biorxiv.org/",
+      "license_type": "CC BY 4.0",
+      "commercial_use": "allowed",
+      "size": "Largest terrestrial mammal dataset",
+      "content_description": "Meerkat vocalizations with transcriptions",
+      "role_in_petjanu": "Annotation methodology reference",
+      "attribution_required": true,
+      "date_ingested": "2026-09-03T16:49:39.339781",
+      "notes": "Reference for data annotation standards"
+    },
+    "Earth Species Library": {
+      "name": "Earth Species Library",
+      "developer": "Earth Species Project",
+      "source_url": "https://github.com/earthspecies/library",
+      "license_type": "CC BY 4.0",
+      "commercial_use": "allowed",
+      "size": "Multiple species",
+      "content_description": "Birds, bats, otters, macaques",
+      "role_in_petjanu": "Multi-species expansion data",
+      "attribution_required": true,
+      "date_ingested": "2026-09-03T16:49:39.339784",
+      "notes": "Mixed licenses - verify individual datasets"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Desi Arcade Studios - Autonomous Agentic Game Pipeline",
+  "description": "24/7 gaming trend radar, AI Godot code synthesis, dynamic LiveOps remote config, and self-healing CI/CD pipeline for Desi Arcade Studios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

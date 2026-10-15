@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_upiglobalsvg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#092147" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#080a0f" />
+    </linearGradient>
+    <filter id="glow_upiglobalsvg" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="400" height="320" fill="url(#bg_upiglobalsvg)" rx="12"/>
+  <rect width="396" height="316" x="2" y="2" fill="none" stroke="#4D96FF" stroke-width="1.5" stroke-opacity="0.4" rx="10"/>
+  <g filter="url(#glow_upiglobalsvg)">
+    <rect x="135" y="105" width="130" height="130" rx="16" fill="#0f172a" stroke="#4D96FF" stroke-width="6"/><rect x="150" y="120" width="28" height="28" fill="#4D96FF"/><rect x="222" y="120" width="28" height="28" fill="#4D96FF"/><rect x="150" y="190" width="28" height="28" fill="#4D96FF"/><circle cx="236" cy="204" r="12" fill="#FFD700"/>
+  </g>
+  <text x="200" y="270" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="18" font-weight="700" text-anchor="middle">UPI Global Payments</text>
+  <text x="200" y="295" fill="#A0AEC0" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle">World-Leading Real-Time DPI</text>
+</svg>

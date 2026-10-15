@@ -1,0 +1,9 @@
+{
+  "name": "Zenith AGI - The Robotic Oracle",
+  "description": "A futuristic AGI interface designed for absolute truth and multi-domain AI expertise. Features a neural network visualizer and high-reasoning conversational capabilities.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

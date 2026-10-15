@@ -1,0 +1,28 @@
+{
+  "name": "aura-vision-monorepo",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Aura v1: Enterprise Edge-First Vision & Evidence-Grounded Search Platform",
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "test": "node --test packages/*/test/*.test.js services/*/test/*.test.js",
+    "guard:m0": "node scripts/m0-scope-guard.js",
+    "lint": "node --check packages/common/src/**/*.js services/aura-api/src/**/*.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "hash-wasm": "^4.12.0",
+    "jsonwebtoken": "^9.0.3",
+    "otpauth": "^9.5.2",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8"
+  }
+}

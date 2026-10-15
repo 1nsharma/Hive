@@ -1,0 +1,6 @@
+{
+  "name": "TruckWala 24×7",
+  "description": "Complete Commercial Vehicle Solution Under One Roof — 24×7 truck repair, diagnostics, spare parts, and emergency roadside assistance for commercial vehicles.",
+  "requestFramePermissions": ["geolocation", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

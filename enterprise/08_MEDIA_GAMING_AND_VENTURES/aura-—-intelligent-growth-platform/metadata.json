@@ -1,0 +1,6 @@
+{
+  "name": "Aura — Intelligent Growth Platform",
+  "description": "Production operating system, natural language intent orchestrator, self-healing circuit breaker lab, and enterprise data architecture for Aura.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

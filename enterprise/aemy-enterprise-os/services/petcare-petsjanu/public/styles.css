@@ -1,0 +1,30 @@
+:root {
+  --bg: #090e17;
+  --card: #111928;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+  --teal: #14b8a6;
+  --emerald: #10b981;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; padding: 24px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 24px; }
+.brand h1 { font-size: 24px; font-weight: 800; color: #fff; margin-top: 4px; }
+.brand p { font-size: 13px; color: var(--text-muted); }
+.badge { background: var(--teal); color: #000; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+.stats-pills { display: flex; gap: 16px; }
+.pill { background: var(--card); border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-size: 13px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.card h2 { font-size: 18px; margin-bottom: 4px; }
+.card .sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+.input, .textarea { width: 100%; background: #060a12; border: 1px solid var(--border); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-family: inherit; }
+.input:focus, .textarea:focus { outline: none; border-color: var(--teal); }
+.btn { border: none; border-radius: 6px; padding: 10px 18px; font-weight: 700; font-size: 13px; cursor: pointer; }
+.btn-pet { background: linear-gradient(135deg, var(--teal), var(--emerald)); color: #000; width: 100%; margin-top: 8px; }
+.vet-row { padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; }

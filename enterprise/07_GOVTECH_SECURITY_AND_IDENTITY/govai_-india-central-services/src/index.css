@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-gov-primary: #003366; /* Deep Blue */
+  --color-gov-secondary: #f4f7f9; /* Light Gray Blue */
+  --color-gov-accent: #ff9933; /* Saffron Accent */
+  --color-gov-success: #28a745;
+  --color-gov-warning: #ffc107;
+  --color-gov-danger: #dc3545;
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  --animate-spin-slow: spin-slow 8s linear infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-gov-secondary text-slate-900 font-sans antialiased;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-slate-200 shadow-sm rounded-xl;
+}
+
+.gov-button {
+  @apply px-4 py-2 bg-gov-primary text-white rounded-lg font-medium hover:opacity-90 transition-all active:scale-95;
+}
+
+.gov-input {
+  @apply w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-gov-primary focus:border-transparent outline-none transition-all;
+}

@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-09-03T16:50:38.318633",
+  "clips": {
+    "cue_001": {
+      "clip_id": "cue_001",
+      "file_path": "data/cue_library/dog_come_here_excited_01.wav",
+      "intent": "COME_HERE",
+      "species": "dog",
+      "breed": "Golden Retriever",
+      "age_category": "adult",
+      "emotional_context": "excited",
+      "recording_source": "User recording (consent obtained)",
+      "license_type": "Proprietary",
+      "acoustic_features": {
+        "duration_seconds": 1.2,
+        "mean_frequency_hz": 450,
+        "max_frequency_hz": 1200,
+        "min_frequency_hz": 200,
+        "mean_pitch": 0.65,
+        "energy_level": 0.8,
+        "spectral_centroid": 800
+      },
+      "metadata": {},
+      "created_at": "2026-09-03T16:50:38.317979"
+    },
+    "cue_002": {
+      "clip_id": "cue_002",
+      "file_path": "data/cue_library/dog_come_here_playful_01.wav",
+      "intent": "COME_HERE",
+      "species": "dog",
+      "breed": "Labrador",
+      "age_category": "adult",
+      "emotional_context": "playful",
+      "recording_source": "User recording (consent obtained)",
+      "license_type": "Proprietary",
+      "acoustic_features": {
+        "duration_seconds": 0.9,
+        "mean_frequency_hz": 520,
+        "max_frequency_hz": 1400,
+        "min_frequency_hz": 250,
+        "mean_pitch": 0.7,
+        "energy_level": 0.75,
+        "spectral_centroid": 850
+      },
+      "metadata": {},
+      "created_at": "2026-09-03T16:50:38.318011"
+    },
+    "cue_003": {
+      "clip_id": "cue_003",
+      "file_path": "data/cue_library/dog_stop_sharp_01.wav",
+      "intent": "STOP",
+      "species": "dog",
+      "breed": "German Shepherd",
+      "age_category": "adult",
+      "emotional_context": "urgent",
+      "recording_source": "User recording (consent obtained)",
+      "license_type": "Proprietary",
+      "acoustic_features": {
+        "duration_seconds": 0.6,
+        "mean_frequency_hz": 380,
+        "max_frequency_hz": 900,
+        "min_frequency_hz": 180,
+        "mean_pitch": 0.5,
+        "energy_level": 0.9,
+        "spectral_centroid": 650
+      },
+      "metadata": {},
+      "created_at": "2026-09-03T16:50:38.318031"
+    },
+    "cue_004": {
+      "clip_id": "cue_004",
+      "file_path": "data/cue_library/dog_play_bark_01.wav",
+      "intent": "PLAY",
+      "species": "dog",
+      "breed": "Beagle",
+      "age_category": "adult",
+      "emotional_context": "playful",
+      "recording_source": "User recording (consent obtained)",
+      "license_type": "Proprietary",
+      "acoustic_features": {
+        "duration_seconds": 1.5,
+        "mean_frequency_hz": 600,
+        "max_frequency_hz": 1500,
+        "min_frequency_hz": 300,
+        "mean_pitch": 0.75,
+        "energy_level": 0.85,
+        "spectral_centroid": 950
+      },
+      "metadata": {},
+      "created_at": "2026-09-03T16:50:38.318038"
+    }
+  },
+  "indices": {
+    "intent": {
+      "COME_HERE": [
+        "cue_001",
+        "cue_002"
+      ],
+      "STOP": [
+        "cue_003"
+      ],
+      "PLAY": [
+        "cue_004"
+      ]
+    },
+    "species": {
+      "dog": [
+        "cue_001",
+        "cue_002",
+        "cue_003",
+        "cue_004"
+      ]
+    }
+  }
+}

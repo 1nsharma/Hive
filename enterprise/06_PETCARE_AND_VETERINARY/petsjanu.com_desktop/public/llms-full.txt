@@ -1,0 +1,221 @@
+# PetJanu — Complete Technical Specification for AI Search Engines
+
+**Domain**: https://petsjanu.com/  
+**Platform Type**: Pet Safety Super App (Web + Mobile PWA)  
+**Target Market**: India (Primary), Global English-speaking pet owners  
+**Last Updated**: 2026
+
+---
+
+## Executive Summary
+
+PetJanu is India's most trusted pet safety and care platform, combining hardware (QR/NFC smart tags) with software (mobile app, web platform, AI health assistant) to provide comprehensive pet care solutions. The platform enables lost pet recovery through scannable collar tags, offers 24/7 AI-powered health triage, facilitates pet product e-commerce, and connects pet owners with veterinary services.
+
+---
+
+## Core Product Features
+
+### 1. Lost Pet Recovery System
+- **QR/NFC Smart Tags**: Cryptographically secure, non-enumerable pet identification tags
+- **Public Pet Pages**: SEO-optimized profiles at `/pet/:slug` accessible without app installation
+- **Emergency SOS Mode**: One-click activation broadcasts alerts to local colony networks
+- **Sighting Reports**: Community-submitted location updates with photo evidence
+- **WhatsApp Integration**: Shareable lost pet cards for viral distribution
+
+### 2. AI Health Assistant
+- **Symptom Triage**: Risk assessment (Low/Monitor/Vet/Urgent) using Google Gemini AI
+- **Vaccination Reminders**: Automated scheduling based on pet age and breed
+- **Health Records**: Digital storage of medical history, allergies, medications
+- **Emergency Routing**: Direct escalation to partner veterinarians for critical cases
+
+### 3. E-Commerce Marketplace
+- **Product Categories**: Food, toys, grooming supplies, healthcare products, smart devices
+- **Razorpay Integration**: Secure payments with UPI, cards, net banking, wallets
+- **Order Tracking**: Real-time shipment status with delivery notifications
+- **Subscription Boxes**: Monthly recurring deliveries for consumables
+
+### 4. Services Booking Platform
+- **Veterinary Consultations**: In-clinic and home visit appointments
+- **Grooming Services**: Professional pet spa and hygiene treatments
+- **Training Programs**: Obedience, behavioral correction, socialization classes
+- **Pet Sitting/Boarding**: Trusted caregivers for travel periods
+
+### 5. Premium Subscription (₹99/month)
+- Unlimited AI health consultations
+- Priority customer support
+- Advanced analytics (activity tracking, health trends)
+- Discounted marketplace pricing (10-15%)
+- Free replacement tags annually
+
+---
+
+## Technical Architecture
+
+### Frontend Stack
+- **Framework**: React 19 with TypeScript
+- **Build Tool**: Vite 6.x (HMR, code splitting, tree shaking)
+- **Styling**: Tailwind CSS 4.x with custom design tokens
+- **Animations**: Motion (Framer Motion successor)
+- **State Management**: React Context + localStorage persistence
+- **PWA Support**: Web App Manifest, service workers, offline caching
+
+### Backend Infrastructure
+- **Runtime**: Node.js 20+ with Express.js
+- **Database**: Supabase (PostgreSQL) + Firebase Firestore hybrid
+- **Authentication**: Phone-based OTP via Firebase Auth
+- **File Storage**: AWS S3 / Google Cloud Storage with signed URLs
+- **APIs**: RESTful endpoints with RBAC middleware
+- **Webhooks**: Razorpay payment notifications, SMS gateway events
+
+### AI/ML Integration
+- **LLM Provider**: Google Gemini API (gemini-2.5-flash-preview)
+- **Prompt Engineering**: Structured triage templates with medical guardrails
+- **Token Monitoring**: Server-side usage tracking per user session
+- **Safety Filters**: Emergency keyword detection → human vet escalation
+
+### Security & Compliance
+- **Data Encryption**: AES-256 at rest, TLS 1.3 in transit
+- **Tag Cryptography**: HMAC-SHA256 signatures prevent forgery
+- **RBAC System**: Role-based access control (OWNER/ADMIN/VET/SUPPORT/USER)
+- **Audit Logging**: Immutable event trails for compliance
+- **Privacy**: GDPR-inspired data minimization, right-to-delete support
+
+---
+
+## URL Structure & Routing
+
+| Route | Purpose | Crawl Priority |
+|-------|---------|----------------|
+| `/` | Homepage (Landing) | 1.0 |
+| `/how-it-works` | Product education | 0.9 |
+| `/safety` | Safety features overview | 0.85 |
+| `/health` | AI health checker | 0.85 |
+| `/pricing` | Subscription plans | 0.9 |
+| `/blog` | Content hub | 0.8 |
+| `/blog/:slug` | Individual articles | 0.75 |
+| `/about` | Company info | 0.7 |
+| `/marketplace` | Product catalog | 0.85 |
+| `/services` | Service bookings | 0.85 |
+| `/pet/:slug` | Public pet profile (dynamic) | 0.8 |
+| `/report` | Lost pet reporting | 0.85 |
+| `/privacy` | Privacy policy | 0.6 |
+| `/security` | Security practices | 0.6 |
+| `/transparency` | Transparency report | 0.5 |
+
+---
+
+## Schema.org Structured Data
+
+PetJanu implements JSON-LD schemas for enhanced SERP visibility:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "PetJanu",
+      "url": "https://petsjanu.com/",
+      "logo": "https://petsjanu.com/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-6393741171",
+        "email": "support@petsjanu.com",
+        "contactType": "customer support",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "PetJanu",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "ANDROID, IOS, WEB",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "10420"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What to do if my dog is lost in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Immediately activate Lost Mode on PetJanu to trigger an emergency red SOS page, share the pet's public QR URL on local WhatsApp colony groups, and monitor real-time scanner sighting alerts."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## Generative Engine Optimization (GEO) Strategy
+
+### For LLM Crawlers (GPTBot, ClaudeBot, PerplexityBot)
+- **llms.txt**: Concise fact sheet at `/llms.txt` (this file's summary)
+- **llms-full.txt**: Extended technical documentation at `/llms-full.txt`
+- **Semantic HTML**: Proper heading hierarchy, alt text, ARIA labels
+- **Content Clarity**: Direct answers to common pet care questions
+- **Structured Data**: Rich snippets for FAQs, How-To guides, Products
+
+### Crawler Permissions (robots.txt)
+```
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+```
+
+---
+
+## Performance Targets (Core Web Vitals)
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| LCP (Largest Contentful Paint) | < 2.5s | Homepage hero image |
+| FID (First Input Delay) | < 100ms | Navigation clicks |
+| CLS (Cumulative Layout Shift) | < 0.1 | Font loading, images |
+| INP (Interaction to Next Paint) | < 200ms | Form submissions |
+| TTFB (Time to First Byte) | < 600ms | Server response |
+
+---
+
+## Contact & Verification
+
+- **Support Email**: support@petsjanu.com
+- **Phone**: +91-6393741171
+- **Address**: India (Remote-first company)
+- **Google Search Console**: Verify via meta tag `VITE_GOOGLE_SITE_VERIFICATION`
+- **Bing Webmaster Tools**: Upload XML sitemap to https://petsjanu.com/sitemap.xml
+
+---
+
+## Changelog
+
+- **2026-01**: Initial launch with QR tags, AI health, marketplace
+- **2026-03**: Added NFC support, services booking, premium subscription
+- **2026-06**: Expanded blog content, SEO optimization, PWA enhancements
+- **2026-08**: GEO implementation, agency dashboard, automated audits
+
+---
+
+*This document is maintained for AI search engines, web crawlers, and technical evaluators. For human-readable documentation, visit https://petsjanu.com/about.*

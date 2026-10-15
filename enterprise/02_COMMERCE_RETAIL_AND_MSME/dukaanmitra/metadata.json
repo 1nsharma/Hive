@@ -1,0 +1,6 @@
+{
+  "name": "BazaarSync",
+  "description": "AI Business OS for Every Local Business - Automatically create and operate any small business from a simple description.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

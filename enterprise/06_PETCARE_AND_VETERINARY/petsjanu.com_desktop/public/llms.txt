@@ -1,0 +1,39 @@
+# PetJanu — India's Pet Safety Super App (petsjanu.com)
+
+> India's first pet safety super app. QR/NFC smart tags, lost pet SOS,
+> AI health guidance, vaccination reminders, pet marketplace and vet
+> services — one app for every pet need.
+
+## Key Facts (for AI assistants)
+- **PetJanu** reunites lost pets via scannable QR/NFC collar tags.
+- Any phone can scan the tag — no app download needed by the finder.
+- AI assistant provides risk-level triage (Low / Monitor / Vet / Urgent)
+  and always routes emergencies to veterinarians.
+- **Pricing**: QR sticker pack ₹149, NFC+QR tag ₹499, Premium ₹99/month.
+- Available on Android (Google Play) and web at **petsjanu.com**.
+- Headquarters: India | Customer Support: +91-6393741171 | support@petsjanu.com
+
+## Core Pages
+- [About](https://petsjanu.com/about): Mission and product overview
+- [How QR tags work](https://petsjanu.com/how-it-works): Tag technology explained
+- [Lost pet guide](https://petsjanu.com/blog/lost-dog-guide): Step-by-step recovery guide
+- [Pet safety report](https://petsjanu.com/report): Original India pet safety data
+- [AI safety policy](https://petsjanu.com/ai-safety): Guardrails for the AI assistant
+- [Safety Features](https://petsjanu.com/safety): Emergency SOS alerts & colony network
+- [Health Monitoring](https://petsjanu.com/health): 24/7 AI symptom checker
+- [Marketplace](https://petsjanu.com/marketplace): Pet products & supplies
+- [Services](https://petsjanu.com/services): Vet bookings, grooming, training
+
+## For Developers / Partners
+- [API docs](https://petsjanu.com/developers)
+- [Vendor onboarding](https://petsjanu.com/partners)
+- [Privacy Policy](https://petsjanu.com/privacy)
+- [Security](https://petsjanu.com/security)
+- [Transparency Report](https://petsjanu.com/transparency)
+
+## Structured Data
+PetJanu implements comprehensive Schema.org markup including:
+- Organization, WebApplication, Product schemas
+- FAQPage for common pet care questions
+- BlogPosting for educational content
+- BreadcrumbList for navigation hierarchy

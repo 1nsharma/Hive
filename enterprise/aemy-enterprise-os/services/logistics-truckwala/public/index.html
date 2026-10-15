@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TruckWala 24x7 — Emergency Highway Dispatch</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">LOGISTICS & FREIGHT UNIT</span>
+        <h1>🚛 TruckWala 24×7</h1>
+        <p>Commercial Vehicle Highway SOS • Mobile Workshop Dispatch • Fleet Maintenance</p>
+      </div>
+      <div class="stats-pills">
+        <div class="pill"><span class="label">Emergency Hotline:</span> <strong style="color:#ef4444;">1800-TRUCK-247</strong></div>
+        <div class="pill"><span class="label">Mechanic Dispatch SLA:</span> <strong style="color:#10b981;">&lt; 30 Minutes</strong></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Highway SOS Form -->
+      <section class="card">
+        <h2>🚨 Highway Breakdown SOS Dispatch</h2>
+        <p class="sub">GPS Location Pinning & Voice Note Description</p>
+        <div class="form-group">
+          <label>Truck / Trailer Registration Number</label>
+          <input type="text" id="tw-truck" value="RJ-14-GA-8899" class="input">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Driver Name</label>
+            <input type="text" id="tw-driver" value="Sardar Balwant Singh" class="input">
+          </div>
+          <div class="form-group">
+            <label>Driver Mobile</label>
+            <input type="text" id="tw-phone" value="9829012345" class="input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Current Highway Location / Landmark</label>
+          <input type="text" id="tw-loc" value="NH-48 KM 145 Near Kishangarh Bypass" class="input">
+        </div>
+        <div class="form-group">
+          <label>Breakdown Problem Description</label>
+          <textarea id="tw-issue" class="textarea" rows="2">Air brake pressure failure, engine overheating with heavy load.</textarea>
+        </div>
+        <button id="btn-dispatch" class="btn btn-danger">🚀 Dispatch Emergency Mobile Van</button>
+      </section>
+
+      <!-- Transparent Rate Card & Workshop Network -->
+      <section class="card">
+        <h2>🛠️ Transparent Rate Card & Nearest Garages</h2>
+        <p class="sub">Zero overcharging guarantee on national highways</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Standard Repair Service</th><th>Standard Rate</th></tr></thead>
+            <tbody id="rates-table">
+              <tr><td colspan="2">Loading rates...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 style="margin-top:16px; font-size:14px;">Active Highway Garages</h3>
+        <ul id="workshops-list" style="margin-top:8px; font-size:12px; color:var(--text-muted); list-style:none;">
+          <li>Loading garages...</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Active Dispatches -->
+    <section class="card mt-4">
+      <h2>📋 Live Highway Dispatch Monitor</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Ticket ID</th>
+              <th>Truck No.</th>
+              <th>Driver</th>
+              <th>Highway Location</th>
+              <th>Assigned Partner</th>
+              <th>Cost Est.</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tickets-table">
+            <tr><td colspan="7">Loading tickets...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

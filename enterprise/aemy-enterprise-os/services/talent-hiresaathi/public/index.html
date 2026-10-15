@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HireSaathi AI — Enterprise Talent Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">TALENT & HR TECH UNIT</span>
+        <h1>👥 HireSaathi AI</h1>
+        <p>Enterprise AI Recruitment • Skill Verification • Candidate Matching Engine</p>
+      </div>
+      <div class="stats-pills">
+        <div class="pill"><span class="label">Screening Accuracy:</span> <strong style="color:#10b981;">98.4% Match</strong></div>
+        <div class="pill"><span class="label">Average Turnaround:</span> <strong style="color:#38bdf8;">10 Seconds</strong></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- AI Screening Form -->
+      <section class="card">
+        <h2>⚡ Candidate AI Skill Screener</h2>
+        <p class="sub">Instant resume parsing and automated decision scoring</p>
+        <div class="form-group">
+          <label>Candidate Full Name</label>
+          <input type="text" id="hs-name" value="Priya Sharma" class="input">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" id="hs-phone" value="9829033445" class="input">
+          </div>
+          <div class="form-group">
+            <label>Applying For Job Role</label>
+            <input type="text" id="hs-role" value="Full-Stack AI Developer" class="input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Resume Text / Skills Bio</label>
+          <textarea id="hs-resume" class="textarea" rows="3">Experienced in React 19, TypeScript, Node.js microservices, Python, Gemini AI agent pipelines, SQL, and Git CI/CD.</textarea>
+        </div>
+        <button id="btn-screen" class="btn btn-talent">🎯 Run AI Screening & Skill Extraction</button>
+      </section>
+
+      <!-- Active Job Openings -->
+      <section class="card">
+        <h2>💼 Open Enterprise Requisitions</h2>
+        <p class="sub">Positions across Commerce, Logistics & CleanTech</p>
+        <div id="jobs-list">Loading jobs...</div>
+      </section>
+    </div>
+
+    <!-- Screened Candidates Table -->
+    <section class="card mt-4">
+      <h2>📋 Screened & Verified Candidates</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Candidate</th>
+              <th>Target Role</th>
+              <th>Verified Skills</th>
+              <th>AI Score</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody id="candidates-table">
+            <tr><td colspan="6">Loading candidates...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "J.O.R.V.I.S.H",
+  "description": "Just One Rather Very Intelligent System, Humanity's Helper — An open, personal intelligence system combining real-time Voice Assistant, Desktop Helper HUD, AI Chatbot, and GitHub developer kit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

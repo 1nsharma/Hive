@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url><loc>https://petsjanu.com/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://petsjanu.com/how-it-works</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://petsjanu.com/safety</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://petsjanu.com/health</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://petsjanu.com/pricing</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://petsjanu.com/blog</loc><priority>0.8</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://petsjanu.com/about</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://petsjanu.com/marketplace</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://petsjanu.com/services</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://petsjanu.com/security</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://petsjanu.com/privacy</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  
+  <!-- Blog Articles -->
+  <url><loc>https://petsjanu.com/blog/lost-dog-guide</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://petsjanu.com/blog/pet-vaccination-schedule-india</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://petsjanu.com/blog/qr-nfc-pet-tag-comparison</loc><priority>0.75</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://petsjanu.com/blog/pet-first-aid-essentials</loc><priority>0.75</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://petsjanu.com/blog/monsoon-pet-care-tips</loc><priority>0.7</priority><changefreq>seasonal</changefreq></url>
+  
+  <!-- Report & Dynamic Pages -->
+  <url><loc>https://petsjanu.com/report</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+</urlset>

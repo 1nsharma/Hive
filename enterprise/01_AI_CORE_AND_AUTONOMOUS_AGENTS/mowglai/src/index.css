@@ -1,0 +1,572 @@
+@config "../tailwind.config.ts";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: 'Boldonse';
+  src: url('/fonts/Boldonse-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sloops';
+  src: url('/fonts/Sloops.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Valerie Angel';
+  src: url('/fonts/ValerieAngel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Original Theme Variables */
+    --background: 150 60% 15%;
+    --foreground: 50 100% 95%;
+    --primary: 43 100% 70%;
+    --primary-foreground: 150 60% 5%;
+    --secondary: 150 60% 20%;
+    --secondary-foreground: 43 100% 90%;
+    --card: 150 60% 12%;
+    --card-foreground: 50 100% 95%;
+    --accent: 79 45% 45%;
+    --accent-foreground: 43 100% 90%;
+    --border: 43 100% 70% / 0.2;
+    --ring: 43 100% 70%;
+
+    --glass-bg: 0 0% 100%;
+    --glass-border: 255 255 255;
+    --gradient-candy: linear-gradient(135deg, hsl(320 100% 60%), hsl(45 100% 60%), hsl(190 100% 50%));
+  }
+
+  .light {
+    --background: 34 100% 98%;
+    --foreground: 150 60% 15%;
+    --primary: 43 100% 45%;
+    --primary-foreground: 150 60% 15%;
+    --secondary: 34 100% 92%;
+    --secondary-foreground: 150 60% 15%;
+    --card: 34 100% 96%;
+    --card-foreground: 150 60% 15%;
+    --accent: 43 100% 45%;
+    --accent-foreground: 34 100% 98%;
+    --border: 43 100% 45% / 0.2;
+    --ring: 43 100% 45%;
+  }
+
+  /* Minimal Style Core */
+  body.style-minimal {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 98%;
+    --secondary-foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+    --border: 0 0% 0%;
+    --ring: 0 0% 0%;
+
+    --font-display: 'Valerie Angel', 'Sloops', serif;
+    --font-body: 'Josefin Sans', sans-serif;
+  }
+
+  /* Minimal Dark Mode Inversion */
+  .dark body.style-minimal,
+  body.style-minimal.dark,
+  .dark .style-minimal {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --accent: 0 0% 60%;
+    --accent-foreground: 0 0% 0%;
+    --border: 0 0% 100%;
+    --ring: 0 0% 100%;
+  }
+
+  /* Candy Style Core - Hyper-Vibrant Liquid */
+  body.style-candy {
+    --background: 260 30% 98%;
+    --foreground: 260 50% 5%;
+    --primary: 325 100% 60%;
+    /* Hot Magenta */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 185 100% 45%;
+    /* Electric Cyan */
+    --secondary-foreground: 0 0% 100%;
+    --card: 0 0% 100% / 0.8;
+    --card-foreground: 260 50% 5%;
+    --accent: 45 100% 55%;
+    /* Neon Gold */
+    --accent-foreground: 0 0% 0%;
+    --border: 325 100% 60% / 0.2;
+    --ring: 325 100% 60%;
+
+    --font-display: 'Trap', 'Oswald', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* Dynamic Theme Tokens */
+    --candy-bg-1: 325 100% 60%;
+    --candy-bg-2: 185 100% 45%;
+    --candy-bg-3: 260 100% 60%;
+  }
+
+  /* Candy Dark Mode - Ultraviolet Neon */
+  .dark body.style-candy,
+  body.style-candy.dark,
+  .dark .style-candy {
+    --background: 260 40% 2%;
+    --foreground: 260 100% 95%;
+    --primary: 325 100% 65%;
+    --primary-foreground: 260 40% 2%;
+    --secondary: 185 100% 60%;
+    --secondary-foreground: 260 40% 2%;
+    --card: 260 40% 5% / 0.5;
+    --card-foreground: 260 100% 95%;
+    --accent: 45 100% 65%;
+    --accent-foreground: 260 40% 2%;
+    --border: 260 100% 95% / 0.1;
+    --ring: 325 100% 65%;
+  }
+
+  /* Global Setup */
+  @layer utilities {
+    .animate-spin-slow {
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes trespass {
+      0%,
+      100% {
+        transform: translateX(-7px);
+      }
+
+      50% {
+        transform: translateX(7px);
+      }
+    }
+
+    .animate-trespass {
+      animation: trespass 6s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* GPU hint only. Deliberately no `transform`/`perspective`/`will-change`:
+       any of those would make this box the containing block for every
+       `position: fixed` descendant (floating CTAs, mouse glow, back-to-top)
+       and permanently promote a page-sized layer. GSAP and Framer Motion
+       promote layers themselves while a tween is actually running. */
+    .gpu-accelerate {
+      backface-visibility: hidden;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a, button, input, select, textarea, [role="button"] {
+    touch-action: manipulation;
+  }
+
+  /* Hide the native cursor ONLY where the enhanced cursor actually renders.
+     The JS gate in OriginalLayout uses `(hover: hover) and (pointer: fine)`;
+     the two must match or devices fall through with no cursor at all
+     (e.g. touch-screen Chromebooks, iPads with a trackpad). */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none;
+    }
+  }
+
+  /* Lenis Smooth Scroll System */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
+  html,
+  body {
+    background-color: hsl(var(--background));
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: clip;
+    width: 100%;
+    min-height: 100dvh;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    position: relative;
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* NOTE: a blanket `section { transform: translate3d(0,0,0) }` used to live
+     here. It was a no-op visually but it turned *every* <section> into the
+     containing block for its `position: fixed` children and forced a
+     perspective context on the whole document. Removed intentionally. */
+
+  @media (max-width: 767.98px) {
+    * {
+      text-rendering: optimizeSpeed;
+    }
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes pookie-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes pookie-bounce {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes sparkles {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-pookie-float {
+  animation: pookie-float 5s ease-in-out infinite;
+}
+
+.animate-pookie-bounce {
+  animation: pookie-bounce 3s ease-in-out infinite;
+}
+
+@keyframes marquee-vertical {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical 40s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 12s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.animate-marquee-slow {
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes marquee-hr {
+  0% { transform: translate3d(100%, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes marquee-hr-slow {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(100%, 0, 0); }
+}
+
+.animate-marquee-hr {
+  animation: marquee-hr 16s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-hr-slow {
+  animation: marquee-hr-slow 28s linear infinite;
+  will-change: transform;
+}
+
+/* Continuous marquee: translate half the content width so duplicated content fills the gap */
+@keyframes marquee-hr-continuous {
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee-hr-continuous-reverse {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0%, 0, 0); }
+}
+
+.animate-marquee-hr-continuous {
+  animation: marquee-hr-continuous 18s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-hr-continuous-slow {
+  animation: marquee-hr-continuous-reverse 30s linear infinite;
+  will-change: transform;
+}
+
+/* Strips visibility transitions controlled via root class */
+.mowglai-strips-visible .mowglai-strip {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mowglai-strip {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+/* Inner strip height: reduce by 4px from default h-12 (3rem) and h-16 (4rem) */
+.mowglai-strip-inner {
+  height: calc(3rem - 4px);
+}
+
+@media (min-width: 768px) {
+  .mowglai-strip-inner {
+    height: calc(4rem - 4px);
+  }
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
+@layer components {
+  .glass-card {
+    background: linear-gradient(135deg, hsl(var(--glass-bg) / 0.7), hsl(var(--glass-bg) / 0.4));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--glass-border) / 0.3);
+    border-radius: 1rem;
+  }
+
+  .nav-icon-button {
+    @apply relative p-3 rounded-xl transition-all duration-300 ease-out hover:scale-105 active:scale-95;
+    background: linear-gradient(to right,
+        hsl(var(--primary) / 0.25) 0%,
+        hsl(var(--primary) / 0.1) 25%,
+        hsl(var(--background)) 60%);
+    border: 1px solid transparent;
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  @keyframes border-glow {
+    0% { border-color: rgba(255,255,255,0.1); }
+    50% { border-color: rgba(230, 185, 61, 0.3); } /* Using gold as primary ref */
+    100% { border-color: rgba(255,255,255,0.1); }
+  }
+
+  .animate-border-glow {
+    animation: border-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes refraction {
+    0% { transform: translateX(-200%) skewX(-45deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateX(400%) skewX(-45deg); opacity: 0; }
+  }
+
+  .animate-refraction {
+    animation: refraction 8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  /* --- Utilities referenced by live components but previously undefined --- */
+
+  /* DNA section pills (src/styles/original/DNA.tsx) */
+  .glassmorphism {
+    background: linear-gradient(135deg, hsl(var(--glass-bg) / 0.7), hsl(var(--glass-bg) / 0.35));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px hsl(var(--primary) / 0.08);
+  }
+
+  /* Soft breathing glow used behind hero/orb decorations */
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.06); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 7s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  .animate-text-shimmer {
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Chat transcript / filter drawer scroll areas: keep the element scrollable
+     on desktop (the native bar is suppressed globally) and on touch. */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.25) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary) / 0.2);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary) / 0.4);
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary) / 0.3);
+    border-radius: 9999px;
+  }
+}

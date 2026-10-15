@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PetsJanu — Veterinary & Pet Care Health Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">PETCARE & VETERINARY</span>
+        <h1>🐾 PetsJanu Veterinary Health Hub</h1>
+        <p>Tele-Vet Consultations • Emergency Animal Clinic • Vaccination Tracker</p>
+      </div>
+      <div class="stats-pills">
+        <div class="pill"><span class="label">Verified Vets:</span> <strong style="color:#10b981;">24/7 Available</strong></div>
+        <div class="pill"><span class="label">Emergency Response:</span> <strong style="color:#38bdf8;">&lt; 15 Mins</strong></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Book Vet Consultation -->
+      <section class="card">
+        <h2>🩺 Book Vet Consultation</h2>
+        <p class="sub">Direct video/audio link with licensed BVSc veterinarians</p>
+        <div class="form-group">
+          <label>Pet Name & Breed</label>
+          <input type="text" id="pet-name" value="Leo (Labrador Retriever, 2 yrs)" class="input">
+        </div>
+        <div class="form-group">
+          <label>Pet Parent Name & Mobile</label>
+          <input type="text" id="owner-name" value="Kavita Saxena (9829077889)" class="input">
+        </div>
+        <div class="form-group">
+          <label>Observed Symptoms / Reason</label>
+          <textarea id="pet-issue" class="textarea" rows="2">Skin itching and redness near ears.</textarea>
+        </div>
+        <button id="btn-book-vet" class="btn btn-pet">🐾 Book Immediate Consultation</button>
+      </section>
+
+      <!-- Licensed Vets -->
+      <section class="card">
+        <h2>👨‍⚕️ Empaneled Veterinary Doctors</h2>
+        <p class="sub">Verified doctors on standby</p>
+        <div id="vets-list">Loading doctors...</div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

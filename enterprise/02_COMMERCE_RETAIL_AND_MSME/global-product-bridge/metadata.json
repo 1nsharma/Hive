@@ -1,0 +1,6 @@
+{
+  "name": "Global Product Bridge",
+  "description": "AI-powered Globalization Operating System bridging local talent and manufacturing into globally trusted products, verified compliance, capital, and markets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

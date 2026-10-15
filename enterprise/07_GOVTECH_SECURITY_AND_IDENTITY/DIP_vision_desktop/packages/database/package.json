@@ -1,0 +1,21 @@
+{
+  "name": "@aura/database",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./src/client.js",
+    "./migrator": "./src/migrator.js"
+  },
+  "dependencies": {
+    "@aura/common": "*",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

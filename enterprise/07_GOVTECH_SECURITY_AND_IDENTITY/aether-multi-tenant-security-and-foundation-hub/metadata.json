@@ -1,0 +1,8 @@
+{
+  "name": "Aether - Multi-Tenant Security & Foundation Hub",
+  "description": "Multi-tenant architecture and security foundation with Supabase Postgres RLS, multi-role auth, audit logging, and service_role isolated server-side route handlers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

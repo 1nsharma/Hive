@@ -1,0 +1,79 @@
+"use client";
+
+import { useEffect, Suspense, useState } from "react";
+import dynamic from "next/dynamic";
+import FullScreenNav from "@/components/FullScreenNav";
+import MobileNav from "@/components/MobileNav";
+import SettingsToggle from "@/components/SettingsToggle";
+import ContactToggle from "@/components/ContactToggle";
+
+import ScrollToTop from "@/components/ScrollToTop";
+import SmoothScroll from "@/components/SmoothScroll";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
+const JungleBackground = dynamic(() => import("@/components/JungleBackground"), { ssr: false });
+const BackToTopButton = dynamic(() => import("@/components/BackToTopButton"), { ssr: false });
+// Server-rendered so the footer nav links are present in the static HTML of
+// every page. Nothing here reads the browser during render, so it hydrates
+// cleanly; keeping it `ssr: false` hid the entire footer from crawlers.
+const ImmersiveFooter = dynamic(() => import("@/components/ImmersiveFooter"));
+
+interface PageLayoutProps {
+    children: React.ReactNode;
+}
+
+const OriginalLayout = ({ children }: PageLayoutProps) => {
+    const pathname = usePathname();
+    const [enableEnhancedCursor, setEnableEnhancedCursor] = useState(false);
+
+    useEffect(() => {
+        const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        setEnableEnhancedCursor(supportsFinePointer && !prefersReducedMotion);
+    }, []);
+
+    // AOS is now initialized globally in AOSInit component linked in RootLayout
+
+
+
+    return (
+        <div className="min-h-dvh relative text-foreground transition-colors duration-500">
+            <SmoothScroll />
+            <ScrollToTop />
+            <BackToTopButton />
+            {enableEnhancedCursor ? <CustomCursor /> : null}
+            <SettingsToggle />
+            <ContactToggle />
+
+            {/* Background - Spans entire page height */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <JungleBackground />
+            </div>
+
+            <FullScreenNav onOpenChat={() => {}} />
+            <MobileNav />
+
+            <main className="relative z-10 w-full overflow-x-clip min-h-dvh">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={pathname}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="gpu-accelerate"
+                    >
+                        <Suspense fallback={<div className="w-full h-screen flex items-center justify-center text-primary font-display animate-pulse">Loading Content...</div>}>
+                            {children}
+                            <ImmersiveFooter />
+                        </Suspense>
+                    </motion.div>
+                </AnimatePresence>
+            </main>
+        </div>
+    );
+};
+
+export default OriginalLayout;

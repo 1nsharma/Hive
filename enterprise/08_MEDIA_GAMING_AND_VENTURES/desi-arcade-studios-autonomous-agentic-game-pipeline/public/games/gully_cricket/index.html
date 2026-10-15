@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gully Cricket Pro - Desi Arcade Studios</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    #header {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #38bdf8;
+      pointer-events: auto;
+    }
+    .hud-box {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 16px;
+      pointer-events: auto;
+    }
+    .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+    .stat-val { font-size: 18px; font-weight: 800; color: #f8fafc; font-family: monospace; }
+    canvas {
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+      cursor: pointer;
+    }
+    .btn {
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+      transition: all 0.15s ease;
+    }
+    .btn:hover { background: #38bdf8; transform: translateY(-1px); }
+    #instructions {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="../index.html" class="btn" style="background:#334155;">&larr; Arcade Hub</a>
+      <div class="badge">
+        <span>&#127951; GULLY CRICKET PRO</span>
+        <span style="color:#94a3b8; font-weight:normal;">| Super-Over Street Chase</span>
+      </div>
+    </div>
+    <div class="hud-box">
+      <div><div class="stat-label">Runs Needed</div><div id="hud-needed" class="stat-val" style="color:#38bdf8;">21 off 5</div></div>
+      <div><div class="stat-label">Current Score</div><div id="hud-score" class="stat-val">4 / 0</div></div>
+      <div><div class="stat-label">Balls Left</div><div id="hud-balls" class="stat-val">5</div></div>
+      <div><div class="stat-label">Required RR</div><div id="hud-rrr" class="stat-val">25.2</div></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <div id="instructions">
+    <span id="comm-text">&#127908; <b>Commentary:</b> Press <b>SPACE</b> or <b>CLICK</b> when the ball pitches on the crease to play your shot!</span>
+    <button id="btn-restart" class="btn" style="padding:4px 10px; font-size:11px;">New Match</button>
+  </div>
+
+  <script>
+    // Audio engine for bat crack and crowd cheering
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      playBatCrack(isSix = false) {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(isSix ? 520 : 380, now);
+        osc.frequency.exponentialRampToValueAtTime(80, now + 0.12);
+        gain.gain.setValueAtTime(isSix ? 0.9 : 0.6, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      },
+      playCrowdRoar() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.linearRampToValueAtTime(850, now + 0.25);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.85);
+      }
+    };
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const hudNeeded = document.getElementById('hud-needed');
+    const hudScore = document.getElementById('hud-score');
+    const hudBalls = document.getElementById('hud-balls');
+    const hudRrr = document.getElementById('hud-rrr');
+    const commText = document.getElementById('comm-text');
+    const btnRestart = document.getElementById('btn-restart');
+
+    let targetRuns = 24;
+    let currentRuns = 0;
+    let wickets = 0;
+    let ballsLeft = 6;
+    let matchStatus = 'playing'; // 'playing', 'won', 'lost'
+
+    // Pitch & Crease Coordinates
+    const pitch = {
+      bowlerX: canvas.width / 2,
+      bowlerY: 140,
+      batsmanX: canvas.width / 2,
+      batsmanY: 480
+    };
+
+    // Tennis Ball State
+    let ball = {
+      x: pitch.bowlerX,
+      y: pitch.bowlerY,
+      speedY: 7,
+      speedX: 0,
+      radius: 7,
+      inFlight: false,
+      hit: false,
+      hitSpeedX: 0,
+      hitSpeedY: 0
+    };
+
+    let bowlerCooldown = 50;
+
+    function resetMatch() {
+      targetRuns = 24;
+      currentRuns = 0;
+      wickets = 0;
+      ballsLeft = 6;
+      matchStatus = 'playing';
+      updateHUD();
+      commText.innerHTML = '&#127908; <b>Super Over Chase:</b> Need 24 runs in 6 balls! Space/Click to swing.';
+      spawnDelivery();
+    }
+
+    function spawnDelivery() {
+      if (ballsLeft <= 0) return;
+      ball.x = pitch.bowlerX;
+      ball.y = pitch.bowlerY;
+      ball.speedY = 8 + Math.random() * 3.5;
+      ball.speedX = (Math.random() - 0.5) * 3; // Swing angle
+      ball.inFlight = true;
+      ball.hit = false;
+      bowlerCooldown = 60;
+    }
+
+    function updateHUD() {
+      const runsNeeded = Math.max(0, targetRuns - currentRuns);
+      hudNeeded.textContent = `${runsNeeded} off ${ballsLeft}`;
+      hudScore.textContent = `${currentRuns} / ${wickets}`;
+      hudBalls.textContent = ballsLeft;
+      const rrr = ballsLeft > 0 ? ((runsNeeded / ballsLeft) * 6).toFixed(1) : '0.0';
+      hudRrr.textContent = rrr;
+    }
+
+    function swingBat() {
+      AudioEngine.init();
+      if (!ball.inFlight || ball.hit || matchStatus !== 'playing') return;
+
+      const distToCrease = Math.abs(ball.y - pitch.batsmanY);
+
+      if (distToCrease < 35) {
+        // Perfect Timing -> SIXER!
+        ball.hit = true;
+        AudioEngine.playBatCrack(true);
+        AudioEngine.playCrowdRoar();
+        ball.hitSpeedY = -18;
+        ball.hitSpeedX = (Math.random() - 0.5) * 16;
+        currentRuns += 6;
+        ballsLeft--;
+        commText.innerHTML = '&#127881; <b>CHHAKKA!! 6 RUNS!</b> Ball flew straight over the mohalla terrace!';
+      } else if (distToCrease < 75) {
+        // Good Timing -> FOUR!
+        ball.hit = true;
+        AudioEngine.playBatCrack(false);
+        AudioEngine.playCrowdRoar();
+        ball.hitSpeedY = -12;
+        ball.hitSpeedX = (Math.random() - 0.5) * 12;
+        currentRuns += 4;
+        ballsLeft--;
+        commText.innerHTML = '&#9971; <b>CHAUKA!! 4 RUNS!</b> Beautiful gap through the parked scooter alley!';
+      } else if (distToCrease < 120) {
+        // Edged -> 1 or 2 runs
+        ball.hit = true;
+        AudioEngine.playBatCrack(false);
+        ball.hitSpeedY = -6;
+        ball.hitSpeedX = (Math.random() - 0.5) * 8;
+        currentRuns += 2;
+        ballsLeft--;
+        commText.innerHTML = '&#128079; Edged for a quick double!';
+      } else {
+        // Clean Bowled / Missed!
+        commText.innerHTML = '&#9888; <b>Swung early/late!</b> Dot ball.';
+      }
+
+      checkMatchOutcome();
+      updateHUD();
+    }
+
+    function checkMatchOutcome() {
+      if (currentRuns >= targetRuns) {
+        matchStatus = 'won';
+        commText.innerHTML = '&#127942; <b>VICTORY!!</b> Gully Cricket Championship Won! Click New Match to play again.';
+        AudioEngine.playCrowdRoar();
+      } else if (ballsLeft <= 0 && currentRuns < targetRuns) {
+        matchStatus = 'lost';
+        commText.innerHTML = '&#128148; <b>Short of Target!</b> Lost by ' + (targetRuns - currentRuns) + ' runs. Click New Match to retry.';
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') swingBat();
+    });
+    canvas.addEventListener('click', swingBat);
+    btnRestart.addEventListener('click', resetMatch);
+
+    function update() {
+      if (ball.inFlight) {
+        if (!ball.hit) {
+          ball.y += ball.speedY;
+          ball.x += ball.speedX;
+
+          // Bowled past crease without swinging
+          if (ball.y > pitch.batsmanY + 60) {
+            ball.inFlight = false;
+            ballsLeft--;
+            commText.innerHTML = '&#128532; <b>BEATEN BY SWING!</b> Dot ball outside off-stump.';
+            checkMatchOutcome();
+            updateHUD();
+            setTimeout(spawnDelivery, 1400);
+          }
+        } else {
+          // Ball flying away after hit
+          ball.y += ball.hitSpeedY;
+          ball.x += ball.hitSpeedX;
+          if (ball.y < -50 || ball.x < -50 || ball.x > canvas.width + 50) {
+            ball.inFlight = false;
+            if (matchStatus === 'playing') {
+              setTimeout(spawnDelivery, 1400);
+            }
+          }
+        }
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Night Stadium Floodlight Sky
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      skyGrad.addColorStop(0, '#020617');
+      skyGrad.addColorStop(0.5, '#0f172a');
+      skyGrad.addColorStop(1, '#1e293b');
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Mohalla Buildings on left and right
+      ctx.fillStyle = '#334155';
+      ctx.fillRect(0, 0, 160, canvas.height);
+      ctx.fillRect(canvas.width - 160, 0, 160, canvas.height);
+
+      // Windows
+      ctx.fillStyle = '#fef08a';
+      for (let y = 60; y < canvas.height - 80; y += 90) {
+        ctx.fillRect(30, y, 40, 50);
+        ctx.fillRect(90, y, 40, 50);
+        ctx.fillRect(canvas.width - 130, y, 40, 50);
+        ctx.fillRect(canvas.width - 70, y, 40, 50);
+      }
+
+      // Concrete Street Pitch
+      ctx.fillStyle = '#64748b';
+      ctx.fillRect(200, 80, canvas.width - 400, canvas.height - 140);
+
+      // Crease Lines
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      // Bowling crease
+      ctx.moveTo(220, pitch.bowlerY + 20);
+      ctx.lineTo(canvas.width - 220, pitch.bowlerY + 20);
+      // Batting popping crease
+      ctx.moveTo(220, pitch.batsmanY);
+      ctx.lineTo(canvas.width - 220, pitch.batsmanY);
+      ctx.stroke();
+
+      // Wickets (3 Stumps at batsman end)
+      ctx.fillStyle = '#fef08a';
+      for (let s = -10; s <= 10; s += 10) {
+        ctx.fillRect(pitch.batsmanX + s - 2, pitch.batsmanY + 30, 4, 28);
+      }
+
+      // Bowler Avatar
+      ctx.fillStyle = '#ef4444';
+      ctx.beginPath();
+      ctx.arc(pitch.bowlerX, pitch.bowlerY - 20, 14, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '10px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText('BOWLER', pitch.bowlerX, pitch.bowlerY - 40);
+
+      // Batsman Avatar & Bat
+      ctx.fillStyle = '#38bdf8';
+      ctx.beginPath();
+      ctx.arc(pitch.batsmanX, pitch.batsmanY + 15, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Wooden Bat
+      ctx.save();
+      ctx.translate(pitch.batsmanX + 16, pitch.batsmanY + 10);
+      ctx.rotate(-0.4);
+      ctx.fillStyle = '#d97706';
+      ctx.fillRect(0, -5, 32, 10);
+      ctx.restore();
+
+      // Render Ball (Bright Tennis Ball Green/Yellow)
+      if (ball.inFlight) {
+        ctx.save();
+        ctx.fillStyle = '#84cc16'; // Neon lime tennis ball
+        ctx.shadowColor = '#a3e635';
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    function loop() {
+      update();
+      render();
+    }
+
+    resetMatch();
+    loop();
+  </script>
+</body>
+</html>

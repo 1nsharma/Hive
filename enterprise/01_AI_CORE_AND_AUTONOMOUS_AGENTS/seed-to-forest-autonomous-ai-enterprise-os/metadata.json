@@ -1,0 +1,6 @@
+{
+  "name": "Seed to Forest - Autonomous AI Enterprise OS",
+  "description": "Seed Phase (Day 1-90) blueprint and multi-agent execution cockpit for self-growing autonomous ventures featuring Constitution guardrails, programmable treasury, and Opportunity Engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

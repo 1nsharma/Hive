@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEMY ENTERPRISE OS — Unified Company HQ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-badge">AEMY OS</div>
+        <h2>BHARAT NEXUS</h2>
+        <span class="subtext">One Core • 4 Business Units</span>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-section-title">EXECUTIVE SUITE</div>
+        <button class="nav-item active" data-view="ceo">
+          <span class="icon">👑</span> Founder & CEO View
+        </button>
+        <button class="nav-item" data-view="cto">
+          <span class="icon">⚙️</span> CTO & Core Architecture
+        </button>
+        <button class="nav-item" data-view="pm">
+          <span class="icon">🎯</span> Product Manager Roadmap
+        </button>
+
+        <div class="nav-section-title">BUSINESS UNITS</div>
+        <button class="nav-item" data-view="commerce">
+          <span class="icon">🏪</span> DukaanMitra (Commerce)
+        </button>
+        <button class="nav-item" data-view="logistics">
+          <span class="icon">🚛</span> TruckWala 24x7 (Logistics)
+        </button>
+        <button class="nav-item" data-view="cleantech">
+          <span class="icon">⚡</span> SolarHub (CleanTech)
+        </button>
+        <button class="nav-item" data-view="talent">
+          <span class="icon">👥</span> HireSaathi (Talent OS)
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>Ledger Integrity: VERIFIED</span>
+        </div>
+        <div class="version">Node v24 • ProofLedger Active</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="header-title">
+          <h1 id="view-title">Founder & CEO Executive Command</h1>
+          <p id="view-subtitle">Consolidated cross-unit intelligence, live cashflow and operational health</p>
+        </div>
+        <div class="header-actions">
+          <div class="metric-pill">
+            <span class="pill-label">Total GTV</span>
+            <span class="pill-value" id="header-gtv">₹0</span>
+          </div>
+          <button class="btn-refresh" id="btn-refresh">↻ Refresh Real-time</button>
+        </div>
+      </header>
+
+      <!-- View Containers -->
+      <div id="view-container">
+        <!-- Injected via app.js -->
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

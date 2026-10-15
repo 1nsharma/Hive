@@ -1,0 +1,7 @@
+{
+  "name": "Cultural Verification & Identity OS",
+  "description": "Community-governed cultural intelligence infrastructure, 7-day no-code experiment protocol, and 2026-2028 strategic identity roadmap.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

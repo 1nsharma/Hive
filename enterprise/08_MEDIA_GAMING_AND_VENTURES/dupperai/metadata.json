@@ -1,0 +1,6 @@
+{
+  "name": "Dupperai",
+  "description": "Enterprise AI Content Creation & Distribution OS with Platform Engines, Brand Hub, Headless CMS, and Unified AI Orchestration",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

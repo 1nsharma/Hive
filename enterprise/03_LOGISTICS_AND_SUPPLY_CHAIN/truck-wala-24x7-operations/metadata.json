@@ -1,0 +1,7 @@
+{
+  "name": "Truck Wala 24x7 Operations",
+  "description": "WhatsApp-first data capture, audit engine, and owner administration system for commercial vehicle workshops and fleet management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

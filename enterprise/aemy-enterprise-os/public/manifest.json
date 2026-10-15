@@ -1,0 +1,21 @@
+{
+  "name": "Aemy AI Studio — The Search Within",
+  "short_name": "Aemy Studio",
+  "description": "Independent research platform exploring AI, human intelligence, technology, consciousness, and the future of human agency by Amit Sharma.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c0a09",
+  "theme_color": "#0c0a09",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity", "utilities"],
+  "screenshots": []
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Universal Autonomous Agent",
+  "description": "Local-first Universal AI Work OS orchestrating work across connected platforms (GitHub, Gmail, Calendar, Drive, WhatsApp, LinkedIn) with zero-token-leakage local vault.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

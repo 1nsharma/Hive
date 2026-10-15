@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanche / Goli 3D Shootout - Desi Arcade Studios</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: radial-gradient(circle at center, #1e130c 0%, #0a0604 100%);
+      color: #f1f5f9;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    #header {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fbbf24;
+      pointer-events: auto;
+    }
+    .hud-box {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 20px;
+      pointer-events: auto;
+    }
+    .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+    .stat-val { font-size: 18px; font-weight: 800; color: #f8fafc; font-family: monospace; }
+    canvas {
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.15);
+      cursor: crosshair;
+      touch-action: none;
+    }
+    #footer-instructions {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .btn {
+      background: #f59e0b;
+      color: #0f172a;
+      border: none;
+      padding: 6px 14px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+    }
+    .btn:hover { background: #fbbf24; transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="../index.html" class="btn" style="background:#334155; color:#f8fafc;">&larr; Arcade Hub</a>
+      <div class="badge">
+        <span>&#127918; KANCHE / GOLI</span>
+        <span style="color:#94a3b8; font-weight:normal;">| Desi Street Shooter</span>
+      </div>
+    </div>
+    <div class="hud-box">
+      <div><div class="stat-label">Score</div><div id="hud-score" class="stat-val">0</div></div>
+      <div><div class="stat-label">Strikers Left</div><div id="hud-shots" class="stat-val">5</div></div>
+      <div><div class="stat-label">Rings Out</div><div id="hud-out" class="stat-val">0/5</div></div>
+      <div><div class="stat-label">High Score</div><div id="hud-high" class="stat-val">0</div></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <div id="footer-instructions">
+    <span>&#128073; <b>How to Play:</b> Click & Drag from your Striker marble (White) to aim and charge impulse. Release to strike!</span>
+    <button id="btn-restart" class="btn">&#8635; New Round</button>
+  </div>
+
+  <script>
+    // --- Web Audio Synthesizer (Realistic Glass Marble Collisions) ---
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      playGlassClink(velocity = 1) {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        
+        // Glass fundamental frequency + random resonance
+        const baseFreq = 2200 + Math.random() * 600;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(baseFreq, now);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.5, now + 0.08);
+
+        const vol = Math.min(Math.max(velocity / 12, 0.1), 0.7);
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      },
+      playRingOutSound() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(587.33, now); // D5
+        osc.frequency.setValueAtTime(880, now + 0.08); // A5
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.35);
+      }
+    };
+
+    // --- Game Logic ---
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const hudScore = document.getElementById('hud-score');
+    const hudShots = document.getElementById('hud-shots');
+    const hudOut = document.getElementById('hud-out');
+    const hudHigh = document.getElementById('hud-high');
+    const btnRestart = document.getElementById('btn-restart');
+
+    let score = 0;
+    let shotsLeft = 5;
+    let ringsOutCount = 0;
+    let highScore = parseInt(localStorage.getItem('desi_kanche_high') || '0', 10);
+    hudHigh.textContent = highScore;
+
+    // Arena Properties
+    const arena = {
+      centerX: canvas.width / 2,
+      centerY: canvas.height / 2 - 20,
+      radius: 170, // Chalk Circle
+      dirtColor: '#854d0e',
+      dirtDark: '#713f12'
+    };
+
+    // Striker (Player's propel marble)
+    let striker = {
+      x: arena.centerX,
+      y: canvas.height - 75,
+      vx: 0,
+      vy: 0,
+      radius: 14,
+      color: '#f8fafc',
+      isMoving: false,
+      isCenterJackpot: false,
+      name: 'Striker'
+    };
+
+    // Target Marbles (Inside Chalk Circle)
+    let targets = [];
+    const MARBLE_TYPES = [
+      { color: '#10b981', glow: '#34d399', name: 'Emerald', pts: 100 },
+      { color: '#ef4444', glow: '#f87171', name: 'Ruby', pts: 150 },
+      { color: '#3b82f6', glow: '#60a5fa', name: 'Sapphire', pts: 120 },
+      { color: '#f59e0b', glow: '#fbbf24', name: 'Amber', pts: 100 },
+      { color: '#a855f7', glow: '#c084fc', name: 'Amethyst (Center Jackpot)', pts: 300, isCenter: true }
+    ];
+
+    function initRound() {
+      targets = [];
+      ringsOutCount = 0;
+      striker.x = arena.centerX;
+      striker.y = canvas.height - 75;
+      striker.vx = 0;
+      striker.vy = 0;
+      striker.isMoving = false;
+
+      // Center Jackpot Marble
+      targets.push({
+        x: arena.centerX,
+        y: arena.centerY,
+        vx: 0,
+        vy: 0,
+        radius: 13,
+        color: MARBLE_TYPES[4].color,
+        glow: MARBLE_TYPES[4].glow,
+        pts: MARBLE_TYPES[4].pts,
+        isCenter: true,
+        out: false
+      });
+
+      // 4 Surrounding Marbles inside chalk ring
+      const angles = [0, Math.PI / 2, Math.PI, Math.PI * 1.5];
+      for (let i = 0; i < 4; i++) {
+        const dist = 55 + Math.random() * 30;
+        const a = angles[i] + (Math.random() - 0.5) * 0.4;
+        targets.push({
+          x: arena.centerX + Math.cos(a) * dist,
+          y: arena.centerY + Math.sin(a) * dist,
+          vx: 0,
+          vy: 0,
+          radius: 12,
+          color: MARBLE_TYPES[i].color,
+          glow: MARBLE_TYPES[i].glow,
+          pts: MARBLE_TYPES[i].pts,
+          isCenter: false,
+          out: false
+        });
+      }
+      updateHUD();
+    }
+
+    function updateHUD() {
+      hudScore.textContent = score;
+      hudShots.textContent = shotsLeft;
+      hudOut.textContent = `${ringsOutCount}/5`;
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('desi_kanche_high', highScore);
+        hudHigh.textContent = highScore;
+      }
+    }
+
+    // Input Handling
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragCurrentX = 0;
+    let dragCurrentY = 0;
+
+    function getMousePos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      AudioEngine.init();
+      if (striker.isMoving || shotsLeft <= 0) return;
+      const pos = getMousePos(e);
+      const dist = Math.hypot(pos.x - striker.x, pos.y - striker.y);
+      if (dist < striker.radius + 25) {
+        isDragging = true;
+        dragStartX = striker.x;
+        dragStartY = striker.y;
+        dragCurrentX = pos.x;
+        dragCurrentY = pos.y;
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const pos = getMousePos(e);
+      dragCurrentX = pos.x;
+      dragCurrentY = pos.y;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      // Impulse vector (drag backwards like slingshot)
+      const dx = dragStartX - dragCurrentX;
+      const dy = dragStartY - dragCurrentY;
+      const pullDist = Math.hypot(dx, dy);
+
+      if (pullDist > 10) {
+        const power = Math.min(pullDist * 0.16, 26);
+        const angle = Math.atan2(dy, dx);
+        striker.vx = Math.cos(angle) * power;
+        striker.vy = Math.sin(angle) * power;
+        striker.isMoving = true;
+        shotsLeft--;
+        updateHUD();
+        AudioEngine.playGlassClink(15);
+      }
+    });
+
+    // Touch support
+    canvas.addEventListener('touchstart', (e) => {
+      AudioEngine.init();
+      if (striker.isMoving || shotsLeft <= 0) return;
+      const pos = getMousePos(e);
+      const dist = Math.hypot(pos.x - striker.x, pos.y - striker.y);
+      if (dist < striker.radius + 35) {
+        isDragging = true;
+        dragStartX = striker.x;
+        dragStartY = striker.y;
+        dragCurrentX = pos.x;
+        dragCurrentY = pos.y;
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const pos = getMousePos(e);
+      dragCurrentX = pos.x;
+      dragCurrentY = pos.y;
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      const dx = dragStartX - dragCurrentX;
+      const dy = dragStartY - dragCurrentY;
+      const pullDist = Math.hypot(dx, dy);
+
+      if (pullDist > 10) {
+        const power = Math.min(pullDist * 0.16, 26);
+        const angle = Math.atan2(dy, dx);
+        striker.vx = Math.cos(angle) * power;
+        striker.vy = Math.sin(angle) * power;
+        striker.isMoving = true;
+        shotsLeft--;
+        updateHUD();
+        AudioEngine.playGlassClink(15);
+      }
+    });
+
+    // Physics Engine & Floating Text Particles
+    const particles = [];
+    const floatingTexts = [];
+
+    function addFloatText(text, x, y, color = '#facc15') {
+      floatingTexts.push({ text, x, y, color, life: 60, maxLife: 60 });
+    }
+
+    function addSparkles(x, y, color) {
+      for (let i = 0; i < 12; i++) {
+        const a = Math.random() * Math.PI * 2;
+        const spd = Math.random() * 4 + 1;
+        particles.push({
+          x, y,
+          vx: Math.cos(a) * spd,
+          vy: Math.sin(a) * spd,
+          color,
+          alpha: 1,
+          size: Math.random() * 3 + 2
+        });
+      }
+    }
+
+    function resolveCollisions(m1, m2) {
+      const dx = m2.x - m1.x;
+      const dy = m2.y - m1.y;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < m1.radius + m2.radius) {
+        // Normal & Tangent vectors
+        const nx = dx / dist;
+        const ny = dy / dist;
+
+        // Relative velocity
+        const kx = m1.vx - m2.vx;
+        const ky = m1.vy - m2.vy;
+
+        // Velocity along normal
+        const p = 2 * (nx * kx + ny * ky) / 2; // Equal mass assumption
+
+        // Restitution (Glass marble rebound coefficient)
+        const rebound = 0.88;
+
+        m1.vx -= p * nx * rebound;
+        m1.vy -= p * ny * rebound;
+        m2.vx += p * nx * rebound;
+        m2.vy += p * ny * rebound;
+
+        // Separate overlaps
+        const overlap = (m1.radius + m2.radius - dist) / 2;
+        m1.x -= nx * overlap;
+        m1.y -= ny * overlap;
+        m2.x += nx * overlap;
+        m2.y += ny * overlap;
+
+        const impactSpeed = Math.hypot(kx, ky);
+        AudioEngine.playGlassClink(impactSpeed);
+        addSparkles((m1.x + m2.x) / 2, (m1.y + m2.y) / 2, '#fbbf24');
+      }
+    }
+
+    function update() {
+      const friction = 0.985;
+      const allMarbles = [striker, ...targets];
+
+      // Update positions
+      allMarbles.forEach(m => {
+        if (Math.abs(m.vx) > 0.05 || Math.abs(m.vy) > 0.05) {
+          m.x += m.vx;
+          m.y += m.vy;
+          m.vx *= friction;
+          m.vy *= friction;
+        } else {
+          m.vx = 0;
+          m.vy = 0;
+        }
+
+        // Screen boundary rebound
+        if (m.x - m.radius < 10) { m.x = 10 + m.radius; m.vx = -m.vx * 0.7; }
+        if (m.x + m.radius > canvas.width - 10) { m.x = canvas.width - 10 - m.radius; m.vx = -m.vx * 0.7; }
+        if (m.y - m.radius < 10) { m.y = 10 + m.radius; m.vy = -m.vy * 0.7; }
+        if (m.y + m.radius > canvas.height - 10) { m.y = canvas.height - 10 - m.radius; m.vy = -m.vy * 0.7; }
+      });
+
+      // Collisions between marbles
+      for (let i = 0; i < allMarbles.length; i++) {
+        for (let j = i + 1; j < allMarbles.length; j++) {
+          resolveCollisions(allMarbles[i], allMarbles[j]);
+        }
+      }
+
+      // Check chalk circle ring outs for targets
+      targets.forEach(t => {
+        if (!t.out) {
+          const distFromCenter = Math.hypot(t.x - arena.centerX, t.y - arena.centerY);
+          if (distFromCenter > arena.radius + t.radius) {
+            t.out = true;
+            ringsOutCount++;
+            score += t.pts;
+            AudioEngine.playRingOutSound();
+            addFloatText(`+${t.pts} ${t.name}!`, t.x, t.y - 15, t.glow);
+            addSparkles(t.x, t.y, t.glow);
+            updateHUD();
+          }
+        }
+      });
+
+      // Striker state check
+      if (striker.isMoving) {
+        let anyMoving = allMarbles.some(m => Math.hypot(m.vx, m.vy) > 0.15);
+        if (!anyMoving) {
+          striker.isMoving = false;
+          // Reposition striker back to baseline if needed or let player shoot from current pos
+          if (striker.y < arena.centerY) {
+            striker.x = arena.centerX;
+            striker.y = canvas.height - 75;
+          }
+          if (ringsOutCount === 5) {
+            addFloatText('&#127881; ALL MARBLES CLEARED! +500 BONUS', arena.centerX, arena.centerY, '#22c55e');
+            score += 500;
+            updateHUD();
+            setTimeout(initRound, 1800);
+          } else if (shotsLeft <= 0) {
+            addFloatText('&#127919; ROUND FINISHED!', arena.centerX, arena.centerY, '#f59e0b');
+          }
+        }
+      }
+
+      // Update particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= 0.025;
+        if (p.alpha <= 0) particles.splice(i, 1);
+      }
+
+      // Update floating texts
+      for (let i = floatingTexts.length - 1; i >= 0; i--) {
+        const ft = floatingTexts[i];
+        ft.y -= 0.8;
+        ft.life--;
+        if (ft.life <= 0) floatingTexts.splice(i, 1);
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Warm Dusty Ground Pattern
+      const grad = ctx.createRadialGradient(arena.centerX, arena.centerY, 40, arena.centerX, arena.centerY, canvas.width * 0.7);
+      grad.addColorStop(0, '#78350f');
+      grad.addColorStop(0.7, '#451a03');
+      grad.addColorStop(1, '#1e0f06');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Soil texture speckles
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+      for (let i = 0; i < 40; i++) {
+        const sx = ((i * 137) % canvas.width);
+        const sy = ((i * 223) % canvas.height);
+        ctx.fillRect(sx, sy, 3, 3);
+      }
+
+      // Chalk Circle Ring
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.lineWidth = 3.5;
+      ctx.setLineDash([10, 8]);
+      ctx.beginPath();
+      ctx.arc(arena.centerX, arena.centerY, arena.radius, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // Chalk Label
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.font = '10px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('STREET CHALK RING (TARGET BOUNDARY)', arena.centerX, arena.centerY - arena.radius - 10);
+
+      // Aiming Line (Slingshot drag)
+      if (isDragging) {
+        const dx = dragStartX - dragCurrentX;
+        const dy = dragStartY - dragCurrentY;
+        const pullDist = Math.hypot(dx, dy);
+        const angle = Math.atan2(dy, dx);
+        const aimDist = Math.min(pullDist * 2.8, 380);
+
+        // Aim dotted line
+        ctx.save();
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 2.5;
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath();
+        ctx.moveTo(striker.x, striker.y);
+        ctx.lineTo(striker.x + Math.cos(angle) * aimDist, striker.y + Math.sin(angle) * aimDist);
+        ctx.stroke();
+
+        // Drag pull chord
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([]);
+        ctx.beginPath();
+        ctx.moveTo(striker.x, striker.y);
+        ctx.lineTo(dragCurrentX, dragCurrentY);
+        ctx.stroke();
+
+        // Power arc around striker
+        const powerRatio = Math.min(pullDist / 140, 1.0);
+        ctx.strokeStyle = `hsl(${120 - powerRatio * 120}, 100%, 50%)`;
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(striker.x, striker.y, striker.radius + 8, 0, Math.PI * 2 * powerRatio);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Draw Target Marbles
+      targets.forEach(t => {
+        ctx.save();
+        // Drop shadow
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+        ctx.shadowBlur = 8;
+        ctx.shadowOffsetY = 4;
+
+        // Marble body gradient (3D sphere look)
+        const radGrad = ctx.createRadialGradient(t.x - t.radius * 0.35, t.y - t.radius * 0.35, 1, t.x, t.y, t.radius);
+        radGrad.addColorStop(0, '#ffffff');
+        radGrad.addColorStop(0.3, t.glow);
+        radGrad.addColorStop(0.8, t.color);
+        radGrad.addColorStop(1, '#050505');
+
+        ctx.fillStyle = radGrad;
+        ctx.beginPath();
+        ctx.arc(t.x, t.y, t.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Inner swirl / cat-eye effect
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.ellipse(t.x, t.y, t.radius * 0.6, t.radius * 0.25, 0.8, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Center jackpot badge
+        if (t.isCenter && !t.out) {
+          ctx.fillStyle = '#fef08a';
+          ctx.font = 'bold 9px system-ui';
+          ctx.textAlign = 'center';
+          ctx.fillText('STAR', t.x, t.y - t.radius - 4);
+        }
+        ctx.restore();
+      });
+
+      // Draw Striker Marble
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 5;
+
+      const strikerGrad = ctx.createRadialGradient(striker.x - striker.radius * 0.35, striker.y - striker.radius * 0.35, 1, striker.x, striker.y, striker.radius);
+      strikerGrad.addColorStop(0, '#ffffff');
+      strikerGrad.addColorStop(0.4, '#e2e8f0');
+      strikerGrad.addColorStop(0.9, '#64748b');
+      strikerGrad.addColorStop(1, '#0f172a');
+
+      ctx.fillStyle = strikerGrad;
+      ctx.beginPath();
+      ctx.arc(striker.x, striker.y, striker.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Striker Ring Indicator
+      ctx.strokeStyle = 'rgba(245, 158, 11, 0.8)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(striker.x, striker.y, striker.radius + 3, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // Render Particles
+      particles.forEach(p => {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      // Render Floating Score Texts
+      floatingTexts.forEach(ft => {
+        ctx.save();
+        ctx.globalAlpha = ft.life / ft.maxLife;
+        ctx.fillStyle = ft.color;
+        ctx.font = 'bold 15px system-ui';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(0,0,0,0.8)';
+        ctx.shadowBlur = 4;
+        ctx.fillText(ft.text, ft.x, ft.y);
+        ctx.restore();
+      });
+
+      requestAnimationFrame(loop);
+    }
+
+    function loop() {
+      update();
+      render();
+    }
+
+    btnRestart.addEventListener('click', () => {
+      score = 0;
+      shotsLeft = 5;
+      initRound();
+    });
+
+    initRound();
+    loop();
+  </script>
+</body>
+</html>

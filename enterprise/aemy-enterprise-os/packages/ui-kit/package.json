@@ -1,0 +1,21 @@
+{
+  "name": "@aemy/ui-kit",
+  "version": "1.0.0",
+  "description": "Standardized React 19 + Tailwind CSS v4 design system components for Aemy Enterprise OS",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.546.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "~5.8.2"
+  }
+}

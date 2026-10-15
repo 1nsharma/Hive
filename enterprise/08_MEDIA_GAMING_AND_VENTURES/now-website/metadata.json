@@ -1,0 +1,8 @@
+{
+  "name": "Truck Wala 24×7",
+  "description": "Complete Commercial Vehicle Support — 24×7 roadside breakdown, laptop diagnostics, spare parts, and workshop job lifecycle management.",
+  "requestFramePermissions": ["geolocation", "microphone", "camera"],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

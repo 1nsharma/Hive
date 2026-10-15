@@ -1,0 +1,8 @@
+{
+  "name": "Petsjanu",
+  "description": "Protect your pet with a digital identity, smart reminders, NFC/QR safety tag simulation, and AI-powered care triage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

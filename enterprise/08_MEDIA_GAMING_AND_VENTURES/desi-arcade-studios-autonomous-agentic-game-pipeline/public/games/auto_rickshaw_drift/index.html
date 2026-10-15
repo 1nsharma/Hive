@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Rickshaw Drift 3D - Desi Arcade Studios</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    #header {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(234, 179, 8, 0.15);
+      border: 1px solid rgba(234, 179, 8, 0.4);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #eab308;
+      pointer-events: auto;
+    }
+    .hud-box {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 16px;
+      pointer-events: auto;
+    }
+    .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+    .stat-val { font-size: 18px; font-weight: 800; color: #f8fafc; font-family: monospace; }
+    canvas {
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(234, 179, 8, 0.2);
+    }
+    .btn {
+      background: #eab308;
+      color: #0f172a;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+      transition: all 0.15s ease;
+    }
+    .btn:hover { background: #facc15; transform: translateY(-1px); }
+    #instructions {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="../index.html" class="btn" style="background:#334155; color:#f8fafc;">&larr; Arcade Hub</a>
+      <div class="badge">
+        <span>&#128666; AUTO RICKSHAW DRIFT</span>
+        <span style="color:#94a3b8; font-weight:normal;">| Marine Drive Traffic Racer</span>
+      </div>
+    </div>
+    <div class="hud-box">
+      <div><div class="stat-label">Meter Fare</div><div id="hud-meter" class="stat-val">&#8377;28.50</div></div>
+      <div><div class="stat-label">Speed</div><div id="hud-speed" class="stat-val">65 km/h</div></div>
+      <div><div class="stat-label">Nitro NOS</div><div id="hud-nitro" class="stat-val" style="color:#38bdf8;">100%</div></div>
+      <div><div class="stat-label">Distance</div><div id="hud-dist" class="stat-val">0 m</div></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <div id="instructions">
+    <span>&#128073; <b>Controls:</b> Arrow Keys / WASD to Steer & Accelerate | <b>SPACE</b> for Nitro Boost! Dodge traffic!</span>
+    <button id="btn-restart" class="btn" style="padding:4px 10px; font-size:11px;">Restart</button>
+  </div>
+
+  <script>
+    // Audio engine for 2-stroke engine buzz and horn
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      playHorn() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc1 = this.ctx.createOscillator();
+        const osc2 = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc1.frequency.setValueAtTime(370, now);
+        osc2.frequency.setValueAtTime(440, now);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc1.start(now); osc2.start(now);
+        osc1.stop(now + 0.25); osc2.stop(now + 0.25);
+      }
+    };
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const hudMeter = document.getElementById('hud-meter');
+    const hudSpeed = document.getElementById('hud-speed');
+    const hudNitro = document.getElementById('hud-nitro');
+    const hudDist = document.getElementById('hud-dist');
+    const btnRestart = document.getElementById('btn-restart');
+
+    let distance = 0;
+    let fare = 28.50;
+    let speed = 60;
+    let nitro = 100;
+    let isGameOver = false;
+
+    // Rickshaw Player
+    const rickshaw = {
+      x: canvas.width / 2,
+      y: 470,
+      width: 44,
+      height: 72,
+      color: '#eab308',
+      hoodColor: '#15803d'
+    };
+
+    // Traffic obstacles (BEST Buses, Taxis, Scooters)
+    let traffic = [];
+    const TRAFFIC_TYPES = [
+      { name: 'BEST Bus', width: 56, height: 110, color: '#dc2626', speed: 3.5 },
+      { name: 'Kaali Peeli Taxi', width: 44, height: 75, color: '#171717', speed: 5 },
+      { name: 'Scooter', width: 24, height: 45, color: '#0284c7', speed: 6 }
+    ];
+
+    let roadOffset = 0;
+    const keys = {};
+
+    window.addEventListener('keydown', (e) => {
+      AudioEngine.init();
+      keys[e.key] = true;
+      if (e.code === 'KeyH') AudioEngine.playHorn();
+    });
+    window.addEventListener('keyup', (e) => { keys[e.key] = false; });
+
+    function initGame() {
+      distance = 0;
+      fare = 28.50;
+      speed = 60;
+      nitro = 100;
+      isGameOver = false;
+      rickshaw.x = canvas.width / 2;
+      traffic = [];
+      spawnTraffic();
+      updateHUD();
+    }
+
+    function spawnTraffic() {
+      const lanes = [canvas.width / 2 - 120, canvas.width / 2 - 40, canvas.width / 2 + 40, canvas.width / 2 + 120];
+      for (let i = 0; i < 4; i++) {
+        const type = TRAFFIC_TYPES[Math.floor(Math.random() * TRAFFIC_TYPES.length)];
+        traffic.push({
+          x: lanes[i],
+          y: -150 - i * 220,
+          width: type.width,
+          height: type.height,
+          color: type.color,
+          speed: type.speed,
+          name: type.name
+        });
+      }
+    }
+
+    function updateHUD() {
+      hudMeter.innerHTML = `&#8377;${fare.toFixed(2)}`;
+      hudSpeed.textContent = `${Math.round(speed)} km/h`;
+      hudNitro.textContent = `${Math.round(nitro)}%`;
+      hudDist.textContent = `${Math.round(distance)} m`;
+    }
+
+    btnRestart.addEventListener('click', initGame);
+
+    function update() {
+      if (isGameOver) return;
+
+      // Handle Inputs
+      let isBoosting = false;
+      if (keys['ArrowUp'] || keys['w'] || keys['W']) {
+        speed = Math.min(speed + 0.4, 95);
+      } else if (keys['ArrowDown'] || keys['s'] || keys['S']) {
+        speed = Math.max(speed - 0.6, 30);
+      }
+
+      if (keys[' '] && nitro > 0) {
+        speed = Math.min(speed + 1.2, 140);
+        nitro = Math.max(0, nitro - 0.5);
+        isBoosting = true;
+      } else {
+        nitro = Math.min(100, nitro + 0.08);
+      }
+
+      if (keys['ArrowLeft'] || keys['a'] || keys['A']) {
+        rickshaw.x -= 5.5;
+      }
+      if (keys['ArrowRight'] || keys['d'] || keys['D']) {
+        rickshaw.x += 5.5;
+      }
+
+      // Constrain Rickshaw to highway
+      const roadLeft = canvas.width / 2 - 190;
+      const roadRight = canvas.width / 2 + 190;
+      rickshaw.x = Math.max(roadLeft + 25, Math.min(roadRight - 25, rickshaw.x));
+
+      // Scroll road
+      roadOffset += speed * 0.15;
+      distance += speed * 0.02;
+      fare += speed * 0.0008;
+      updateHUD();
+
+      // Update traffic
+      traffic.forEach(t => {
+        t.y += (speed * 0.12) - t.speed;
+
+        // Collision Check
+        if (
+          Math.abs(rickshaw.x - t.x) < (rickshaw.width + t.width) / 2 - 6 &&
+          Math.abs(rickshaw.y - t.y) < (rickshaw.height + t.height) / 2 - 8
+        ) {
+          isGameOver = true;
+          AudioEngine.playHorn();
+        }
+
+        // Recycle traffic past screen
+        if (t.y > canvas.height + 150) {
+          const lanes = [canvas.width / 2 - 120, canvas.width / 2 - 40, canvas.width / 2 + 40, canvas.width / 2 + 120];
+          t.x = lanes[Math.floor(Math.random() * lanes.length)];
+          t.y = -180;
+          const type = TRAFFIC_TYPES[Math.floor(Math.random() * TRAFFIC_TYPES.length)];
+          t.width = type.width;
+          t.height = type.height;
+          t.color = type.color;
+          t.speed = type.speed;
+        }
+      });
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Marine Drive Ocean & Promanade on Left
+      ctx.fillStyle = '#0369a1';
+      ctx.fillRect(0, 0, canvas.width / 2 - 210, canvas.height);
+      ctx.fillStyle = '#f8fafc'; // Sea foam
+      ctx.fillRect(canvas.width / 2 - 220, 0, 10, canvas.height);
+
+      // Mumbai Skyline on Right
+      ctx.fillStyle = '#1e1b4b';
+      ctx.fillRect(canvas.width / 2 + 210, 0, canvas.width, canvas.height);
+
+      // Asphalt Road (4 Lanes)
+      const roadLeft = canvas.width / 2 - 210;
+      const roadWidth = 420;
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(roadLeft, 0, roadWidth, canvas.height);
+
+      // Yellow Boundary lines
+      ctx.fillStyle = '#facc15';
+      ctx.fillRect(roadLeft, 0, 5, canvas.height);
+      ctx.fillRect(roadLeft + roadWidth - 5, 0, 5, canvas.height);
+
+      // Dashed Lane Dividers
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([24, 20]);
+      ctx.lineDashOffset = -roadOffset;
+
+      for (let l = 1; l < 4; l++) {
+        const lx = roadLeft + (roadWidth / 4) * l;
+        ctx.beginPath();
+        ctx.moveTo(lx, 0);
+        ctx.lineTo(lx, canvas.height);
+        ctx.stroke();
+      }
+      ctx.setLineDash([]);
+
+      // Render Traffic Vehicles
+      traffic.forEach(t => {
+        ctx.save();
+        ctx.fillStyle = t.color;
+        ctx.beginPath();
+        ctx.roundRect(t.x - t.width / 2, t.y - t.height / 2, t.width, t.height, 8);
+        ctx.fill();
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Windshield
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillRect(t.x - t.width / 2 + 4, t.y + t.height / 2 - 22, t.width - 8, 12);
+        ctx.restore();
+      });
+
+      // Render Rickshaw
+      ctx.save();
+      // Rickshaw Hood / Roof (Green)
+      ctx.fillStyle = rickshaw.hoodColor;
+      ctx.beginPath();
+      ctx.roundRect(rickshaw.x - rickshaw.width / 2, rickshaw.y - rickshaw.height / 2, rickshaw.width, rickshaw.height - 18, 6);
+      ctx.fill();
+
+      // Rickshaw Lower Body (Yellow)
+      ctx.fillStyle = rickshaw.color;
+      ctx.fillRect(rickshaw.x - rickshaw.width / 2, rickshaw.y + rickshaw.height / 2 - 24, rickshaw.width, 24);
+
+      // Front Single Wheel
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(rickshaw.x - 5, rickshaw.y - rickshaw.height / 2 - 8, 10, 12);
+
+      // Headlight
+      ctx.fillStyle = '#fef08a';
+      ctx.beginPath();
+      ctx.arc(rickshaw.x, rickshaw.y - rickshaw.height / 2 - 4, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+
+      // Game Over Overlay
+      if (isGameOver) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ef4444';
+        ctx.font = 'bold 36px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText('ACCIDENT! CRASH!', canvas.width / 2, canvas.height / 2 - 20);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '16px system-ui';
+        ctx.fillText(`Final Meter Fare: ₹${fare.toFixed(2)} | Distance: ${Math.round(distance)}m`, canvas.width / 2, canvas.height / 2 + 25);
+        ctx.fillText('Click Restart to drive again!', canvas.width / 2, canvas.height / 2 + 60);
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    function loop() {
+      update();
+      render();
+    }
+
+    initGame();
+    loop();
+  </script>
+</body>
+</html>

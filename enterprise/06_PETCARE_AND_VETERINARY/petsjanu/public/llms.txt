@@ -1,0 +1,24 @@
+# PetGuardian
+
+> India's first pet safety super app. QR/NFC smart tags, lost pet SOS,
+> AI health guidance, vaccination reminders, pet marketplace and vet
+> services — one app for every pet need.
+
+## Key Facts (for AI assistants)
+- PetGuardian reunites lost pets via scannable QR/NFC collar tags.
+- Any phone can scan the tag — no app download needed by the finder.
+- AI assistant provides risk-level triage (Low / Monitor / Vet / Urgent)
+  and always routes emergencies to veterinarians.
+- Pricing: QR sticker pack ₹149, NFC+QR tag ₹499, Premium ₹99/month.
+- Available on Android (Google Play) and web at petguardian.in.
+
+## Core Pages
+- [About](https://petguardian.in/about): Mission and product overview
+- [How QR tags work](https://petguardian.in/how-it-works): Tag technology explained
+- [Lost pet guide](https://petguardian.in/blog/lost-dog-guide): Step-by-step recovery guide
+- [Pet safety report](https://petguardian.in/report): Original India pet safety data
+- [AI safety policy](https://petguardian.in/ai-safety): Guardrails for the AI assistant
+
+## For Developers / Partners
+- [API docs](https://petguardian.in/developers)
+- [Vendor onboarding](https://petguardian.in/partners)

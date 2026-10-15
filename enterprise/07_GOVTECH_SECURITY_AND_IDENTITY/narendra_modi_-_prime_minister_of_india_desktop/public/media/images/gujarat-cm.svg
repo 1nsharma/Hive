@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_gujaratcmsvg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3c38" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#080a0f" />
+    </linearGradient>
+    <filter id="glow_gujaratcmsvg" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="400" height="320" fill="url(#bg_gujaratcmsvg)" rx="12"/>
+  <rect width="396" height="316" x="2" y="2" fill="none" stroke="#4ECDC4" stroke-width="1.5" stroke-opacity="0.4" rx="10"/>
+  <g filter="url(#glow_gujaratcmsvg)">
+    <rect x="110" y="140" width="40" height="100" fill="#4ECDC4"/><rect x="165" y="105" width="40" height="135" fill="#FFD700"/><rect x="220" y="150" width="40" height="90" fill="#4ECDC4"/><path d="M90,240 L280,240" stroke="#ffffff" stroke-width="6"/>
+  </g>
+  <text x="200" y="270" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="18" font-weight="700" text-anchor="middle">Gujarat Development</text>
+  <text x="200" y="295" fill="#A0AEC0" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle">Chief Minister 2001 - 2014</text>
+</svg>

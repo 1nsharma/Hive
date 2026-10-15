@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gilli Danda Street Strike - Desi Arcade Studios</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: radial-gradient(circle at top, #1c1917 0%, #0c0a09 100%);
+      color: #f5f5f4;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    #header {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(234, 88, 12, 0.15);
+      border: 1px solid rgba(234, 88, 12, 0.4);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fb923c;
+      pointer-events: auto;
+    }
+    .hud-box {
+      background: rgba(28, 25, 23, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      gap: 20px;
+      pointer-events: auto;
+    }
+    .stat-label { font-size: 10px; color: #a8a29e; text-transform: uppercase; font-weight: 600; }
+    .stat-val { font-size: 18px; font-weight: 800; color: #fafaf9; font-family: monospace; }
+    canvas {
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(234, 88, 12, 0.15);
+      cursor: pointer;
+    }
+    .btn {
+      background: #ea580c;
+      color: #fafaf9;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+      transition: all 0.15s ease;
+    }
+    .btn:hover { background: #f97316; transform: translateY(-1px); }
+    #instructions {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #d6d3d1;
+      background: rgba(28, 25, 23, 0.7);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="../index.html" class="btn" style="background:#44403c;">&larr; Arcade Hub</a>
+      <div class="badge">
+        <span>&#129699; GILLI DANDA</span>
+        <span style="color:#a8a29e; font-weight:normal;">| Precision Timing Strike</span>
+      </div>
+    </div>
+    <div class="hud-box">
+      <div><div class="stat-label">Last Distance</div><div id="hud-dist" class="stat-val">0.0 m</div></div>
+      <div><div class="stat-label">Best Record</div><div id="hud-best" class="stat-val">142.5 m</div></div>
+      <div><div class="stat-label">Strikes</div><div id="hud-tries" class="stat-val">0</div></div>
+      <div><div class="stat-label">Accuracy</div><div id="hud-acc" class="stat-val">--</div></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <div id="instructions">
+    <span id="instruction-text">&#128073; <b>Step 1:</b> Click anywhere to flick the wooden Gilli into the air!</span>
+    <button id="btn-reset" class="btn" style="padding:4px 10px; font-size:11px;">Reset</button>
+  </div>
+
+  <script>
+    // Audio synthesis for wooden bat smash & crowd cheers
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      playWoodenHit(isSolid = true) {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(isSolid ? 340 : 180, now);
+        osc.frequency.exponentialRampToValueAtTime(80, now + 0.12);
+        gain.gain.setValueAtTime(isSolid ? 0.8 : 0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.16);
+      },
+      playCheer() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.linearRampToValueAtTime(950, now + 0.3);
+        osc.frequency.linearRampToValueAtTime(700, now + 0.6);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.75);
+      }
+    };
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const hudDist = document.getElementById('hud-dist');
+    const hudBest = document.getElementById('hud-best');
+    const hudTries = document.getElementById('hud-tries');
+    const hudAcc = document.getElementById('hud-acc');
+    const instructionText = document.getElementById('instruction-text');
+    const btnReset = document.getElementById('btn-reset');
+
+    let tries = 0;
+    let bestDist = parseFloat(localStorage.getItem('desi_gilli_best') || '142.5');
+    hudBest.textContent = `${bestDist.toFixed(1)} m`;
+
+    // Game States: 'idle', 'flicked', 'hit', 'flying', 'landed'
+    let state = 'idle';
+    let gilli = {
+      x: 180,
+      y: 450,
+      vx: 0,
+      vy: 0,
+      angle: -0.3,
+      vAngle: 0,
+      length: 50,
+      width: 14
+    };
+
+    let timingMeter = {
+      pos: 0,
+      dir: 1,
+      speed: 0.035,
+      sweetSpotMin: 0.42,
+      sweetSpotMax: 0.58
+    };
+
+    let flightDistance = 0;
+    let cameraX = 0;
+    let targetCameraX = 0;
+
+    function resetGilli() {
+      state = 'idle';
+      gilli.x = 180;
+      gilli.y = 450;
+      gilli.vx = 0;
+      gilli.vy = 0;
+      gilli.angle = -0.3;
+      gilli.vAngle = 0;
+      cameraX = 0;
+      targetCameraX = 0;
+      flightDistance = 0;
+      timingMeter.pos = 0;
+      instructionText.innerHTML = '&#128073; <b>Step 1:</b> Click or Tap anywhere to flip the Gilli airborne!';
+    }
+
+    function flickGilli() {
+      AudioEngine.init();
+      AudioEngine.playWoodenHit(false);
+      state = 'flicked';
+      gilli.vy = -13.5;
+      gilli.vx = 2.2;
+      gilli.vAngle = 0.16;
+      instructionText.innerHTML = '&#127919; <b>Step 2:</b> Time your swing! Click when the slider is inside the <span style="color:#22c55e;">GREEN SWEET SPOT</span>!';
+    }
+
+    function strikeGilli() {
+      const accuracy = 1.0 - Math.min(Math.abs(timingMeter.pos - 0.5) / 0.5, 1.0);
+      hudAcc.textContent = `${Math.round(accuracy * 100)}%`;
+      tries++;
+      hudTries.textContent = tries;
+
+      if (accuracy > 0.3) {
+        // Solid or Monster hit
+        AudioEngine.playWoodenHit(true);
+        state = 'flying';
+        const power = 22 + accuracy * 28;
+        const launchAngle = -0.45 - (accuracy * 0.15);
+        gilli.vx = Math.cos(launchAngle) * power;
+        gilli.vy = Math.sin(launchAngle) * power;
+        gilli.vAngle = 0.25 * accuracy;
+
+        if (accuracy > 0.85) {
+          AudioEngine.playCheer();
+          instructionText.innerHTML = '&#127881; <b>MONSTER SMASH!</b> That gilli is soaring across the mohalla!';
+        } else {
+          instructionText.innerHTML = '&#9971; <b>Clean Hit!</b> Flying down the street...';
+        }
+      } else {
+        // Miss / Edge
+        AudioEngine.playWoodenHit(false);
+        state = 'flying';
+        gilli.vx = 6;
+        gilli.vy = -3;
+        instructionText.innerHTML = '&#128532; <b>Edge / Glancing Blow!</b> Minimal distance.';
+      }
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+
+      if (state === 'idle') {
+        flickGilli();
+      } else if (state === 'flicked') {
+        strikeGilli();
+      } else if (state === 'landed') {
+        resetGilli();
+      }
+    });
+
+    btnReset.addEventListener('click', resetGilli);
+
+    // Particle Trail
+    const particles = [];
+
+    function update() {
+      // Oscillate timing meter
+      if (state === 'flicked') {
+        timingMeter.pos += timingMeter.dir * timingMeter.speed;
+        if (timingMeter.pos >= 1) { timingMeter.pos = 1; timingMeter.dir = -1; }
+        if (timingMeter.pos <= 0) { timingMeter.pos = 0; timingMeter.dir = 1; }
+
+        // Gilli vertical physics while airborne waiting for hit
+        gilli.y += gilli.vy;
+        gilli.x += gilli.vx;
+        gilli.vy += 0.42; // Gravity
+        gilli.angle += gilli.vAngle;
+
+        // If player waited too long and missed the strike
+        if (gilli.y > 450) {
+          gilli.y = 450;
+          state = 'landed';
+          instructionText.innerHTML = '&#9888; <b>Missed apex!</b> Gilli hit the ground. Click to try again.';
+        }
+      } else if (state === 'flying') {
+        gilli.x += gilli.vx;
+        gilli.y += gilli.vy;
+        gilli.vy += 0.38; // Gravity
+        gilli.vx *= 0.992; // Air resistance
+        gilli.angle += gilli.vAngle;
+
+        // Smoke / speed trail
+        if (Math.random() < 0.6) {
+          particles.push({
+            x: gilli.x,
+            y: gilli.y,
+            alpha: 1,
+            size: Math.random() * 4 + 2
+          });
+        }
+
+        // Camera follow
+        targetCameraX = gilli.x - 280;
+        cameraX += (targetCameraX - cameraX) * 0.12;
+
+        flightDistance = Math.max(0, (gilli.x - 180) * 0.15);
+        hudDist.textContent = `${flightDistance.toFixed(1)} m`;
+
+        // Ground hit
+        if (gilli.y >= 450) {
+          gilli.y = 450;
+          if (Math.abs(gilli.vy) > 3) {
+            gilli.vy = -gilli.vy * 0.45; // Bounce
+            gilli.vx *= 0.7;
+            AudioEngine.playWoodenHit(false);
+          } else {
+            gilli.vy = 0;
+            gilli.vx = 0;
+            gilli.vAngle = 0;
+            state = 'landed';
+
+            if (flightDistance > bestDist) {
+              bestDist = flightDistance;
+              localStorage.setItem('desi_gilli_best', bestDist.toFixed(1));
+              hudBest.textContent = `${bestDist.toFixed(1)} m`;
+              instructionText.innerHTML = `&#127942; <b>NEW GULLY RECORD: ${flightDistance.toFixed(1)} METERS!</b> Click anywhere to play again.`;
+              AudioEngine.playCheer();
+            } else {
+              instructionText.innerHTML = `&#128079; Landed at <b>${flightDistance.toFixed(1)} m</b>. Click to try another shot!`;
+            }
+          }
+        }
+      }
+
+      // Update particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].alpha -= 0.03;
+        if (particles[i].alpha <= 0) particles.splice(i, 1);
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+
+      // Sky gradient
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, 450);
+      skyGrad.addColorStop(0, '#0c4a6e');
+      skyGrad.addColorStop(0.6, '#38bdf8');
+      skyGrad.addColorStop(1, '#fed7aa');
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(cameraX, 0, canvas.width, 450);
+
+      // Parallax Buildings & Street Wall
+      const wallStart = Math.floor(cameraX / 120) * 120 - 240;
+      for (let bx = wallStart; bx < cameraX + canvas.width + 240; bx += 140) {
+        // Building silhouettes
+        const bHeight = 180 + ((Math.sin(bx * 0.05) * 60) + 60);
+        ctx.fillStyle = '#44403c';
+        ctx.fillRect(bx, 450 - bHeight, 130, bHeight);
+
+        // Windows
+        ctx.fillStyle = '#fef08a';
+        ctx.fillRect(bx + 20, 450 - bHeight + 30, 20, 25);
+        ctx.fillRect(bx + 70, 450 - bHeight + 30, 20, 25);
+        ctx.fillRect(bx + 45, 450 - bHeight + 80, 20, 25);
+      }
+
+      // Overhead electric wires
+      ctx.strokeStyle = '#1c1917';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(cameraX, 120);
+      ctx.bezierCurveTo(cameraX + 400, 160, cameraX + 500, 160, cameraX + canvas.width, 120);
+      ctx.stroke();
+
+      // Street Asphalt / Pavement
+      ctx.fillStyle = '#292524';
+      ctx.fillRect(cameraX, 450, canvas.width, 150);
+
+      // Distance markers on street
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      ctx.font = 'bold 12px monospace';
+      for (let m = 0; m < 5000; m += 200) {
+        const distM = (m * 0.15).toFixed(0);
+        ctx.fillRect(m + 180, 450, 4, 30);
+        ctx.fillText(`${distM}m`, m + 185, 490);
+      }
+
+      // Launch Pad Pit / Pivot Stone
+      ctx.fillStyle = '#78716c';
+      ctx.fillRect(170, 450, 40, 10);
+
+      // Render Particles
+      particles.forEach(p => {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = '#f97316';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      // Render Gilli (Tapered wood cylinder)
+      ctx.save();
+      ctx.translate(gilli.x, gilli.y);
+      ctx.rotate(gilli.angle);
+
+      // Tapered diamond / wooden shape
+      ctx.fillStyle = '#d97706'; // Wooden amber
+      ctx.strokeStyle = '#78350f';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(-gilli.length / 2, 0);
+      ctx.lineTo(-gilli.length / 3, -gilli.width / 2);
+      ctx.lineTo(gilli.length / 3, -gilli.width / 2);
+      ctx.lineTo(gilli.length / 2, 0);
+      ctx.lineTo(gilli.length / 3, gilli.width / 2);
+      ctx.lineTo(-gilli.length / 3, gilli.width / 2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Wood grain lines
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.beginPath();
+      ctx.moveTo(-gilli.length / 4, -gilli.width / 4);
+      ctx.lineTo(gilli.length / 4, -gilli.width / 4);
+      ctx.stroke();
+
+      ctx.restore();
+
+      ctx.restore(); // Restore camera translation
+
+      // HUD Timing Bar Overlay (during 'flicked' state)
+      if (state === 'flicked') {
+        const barWidth = 320;
+        const barHeight = 24;
+        const barX = (canvas.width - barWidth) / 2;
+        const barY = 80;
+
+        // Container
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+        ctx.fillRect(barX - 4, barY - 4, barWidth + 8, barHeight + 8);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.strokeRect(barX - 4, barY - 4, barWidth + 8, barHeight + 8);
+
+        // Sweet Spot Zone
+        const sweetX = barX + barWidth * timingMeter.sweetSpotMin;
+        const sweetW = barWidth * (timingMeter.sweetSpotMax - timingMeter.sweetSpotMin);
+        ctx.fillStyle = 'rgba(34, 197, 94, 0.6)';
+        ctx.fillRect(sweetX, barY, sweetW, barHeight);
+
+        // Indicator Slider
+        const sliderX = barX + barWidth * timingMeter.pos;
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(sliderX - 3, barY - 6, 6, barHeight + 12);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 11px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText('STRIKE SWEET SPOT', barX + barWidth / 2, barY - 10);
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    function loop() {
+      update();
+      render();
+    }
+
+    resetGilli();
+    loop();
+  </script>
+</body>
+</html>

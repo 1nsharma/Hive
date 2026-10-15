@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users collection
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Pets collection - Public read, owner write
+    match /pets/{petId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        request.auth.uid == resource.data.ownerId;
+      allow create: if request.auth != null && 
+        request.resource.data.ownerId == request.auth.uid;
+    }
+    
+    // Products collection - Public read, vendor write
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'vendor';
+    }
+    
+    // Orders collection - Owner only
+    match /orders/{orderId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Bookings collection - Owner only
+    match /bookings/{bookingId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Subscriptions collection - Owner only
+    match /subscriptions/{subscriptionId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+    }
+    
+    // Sightings collection
+    match /sightings/{sightingId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Analytics Events collection
+    match /analytics/{docId} {
+      allow create: if true;
+      allow read: if false;
+    }
+    match /analytics_events/{eventId} {
+      allow create: if true;
+      allow read: if false;
+    }
+
+    // Play Billing Transactions collection
+    match /play_billing_transactions/{txId} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AEMY ENTERPRISE OS — Unified Master Command Shell</title>
+  <link rel="stylesheet" href="shell.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="shell-layout">
+    <!-- Top Enterprise Navigation Header -->
+    <header class="shell-header">
+      <div class="shell-brand">
+        <div class="brand-tag">AEMY OS</div>
+        <h2>BHARAT NEXUS ENTERPRISE GATEWAY</h2>
+        <span class="sub">Unified Multi-Studio & Service Mesh (8 Full-Stack Services)</span>
+      </div>
+
+      <!-- Service Health Bar -->
+      <div class="service-indicators">
+        <div class="svc-status" id="stat-commerce"><span class="dot"></span> Commerce :3001</div>
+        <div class="svc-status" id="stat-logistics"><span class="dot"></span> Logistics :3002</div>
+        <div class="svc-status" id="stat-cleantech"><span class="dot"></span> CleanTech :3003</div>
+        <div class="svc-status" id="stat-talent"><span class="dot"></span> Talent :3004</div>
+        <div class="svc-status" id="stat-ai_agents"><span class="dot"></span> AI Agents :3005</div>
+        <div class="svc-status" id="stat-gaming_arcade"><span class="dot"></span> Arcade :3006</div>
+        <div class="svc-status" id="stat-govtech"><span class="dot"></span> GovAI :3007</div>
+        <div class="svc-status" id="stat-petcare"><span class="dot"></span> PetsJanu :3008</div>
+      </div>
+
+      <div class="shell-actions">
+        <div class="gtv-box">
+          <span class="gtv-label">Total GTV</span>
+          <span class="gtv-val" id="top-gtv">₹0</span>
+        </div>
+        <button class="btn-refresh" id="btn-shell-refresh">↻ Refresh</button>
+      </div>
+    </header>
+
+    <!-- Shell Body: Sidebar + Viewport -->
+    <div class="shell-body">
+      <aside class="shell-sidebar">
+        <div class="section-title">COMMAND SUITE</div>
+        <button class="tab-btn active" data-tab="overview">👑 Executive Overview</button>
+        <button class="tab-btn" data-tab="architecture">⚙️ ProofLedger Cryptographic Audit</button>
+
+        <div class="section-title">BUSINESS UNITS (4)</div>
+        <button class="tab-btn" data-tab="commerce">🏪 DukaanMitra OS (:3001)</button>
+        <button class="tab-btn" data-tab="logistics">🚛 TruckWala 24×7 (:3002)</button>
+        <button class="tab-btn" data-tab="cleantech">⚡ SolarHub CleanTech (:3003)</button>
+        <button class="tab-btn" data-tab="talent">👥 HireSaathi AI (:3004)</button>
+
+        <div class="section-title">WORKSPACE STUDIOS & SERVICES (4)</div>
+        <button class="tab-btn" data-tab="ai_agents">🧠 AI Agent & JORVISH Studio (:3005)</button>
+        <button class="tab-btn" data-tab="gaming_arcade">🎮 Desi Arcade Gaming Studio (:3006)</button>
+        <button class="tab-btn" data-tab="govtech">🏛️ GovAI Citizen Services (:3007)</button>
+        <button class="tab-btn" data-tab="petcare">🐾 PetsJanu Veterinary Care (:3008)</button>
+
+        <div class="direct-links">
+          <div class="section-title">ALL 8 DEDICATED PORTS</div>
+          <a href="http://localhost:3001" target="_blank" class="port-link">↗ :3001 DukaanMitra</a>
+          <a href="http://localhost:3002" target="_blank" class="port-link">↗ :3002 TruckWala</a>
+          <a href="http://localhost:3003" target="_blank" class="port-link">↗ :3003 SolarHub</a>
+          <a href="http://localhost:3004" target="_blank" class="port-link">↗ :3004 HireSaathi</a>
+          <a href="http://localhost:3005" target="_blank" class="port-link">↗ :3005 AI Studio / JORVISH</a>
+          <a href="http://localhost:3006" target="_blank" class="port-link">↗ :3006 Desi Arcade</a>
+          <a href="http://localhost:3007" target="_blank" class="port-link">↗ :3007 GovAI Services</a>
+          <a href="http://localhost:3008" target="_blank" class="port-link">↗ :3008 PetsJanu Care</a>
+        </div>
+      </aside>
+
+      <!-- Main Shell Display Area -->
+      <main class="shell-main" id="shell-main">
+        <!-- Rendered via shell.js -->
+      </main>
+    </div>
+  </div>
+
+  <script src="shell.js"></script>
+</body>
+</html>

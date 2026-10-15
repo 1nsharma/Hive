@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_pmoath2024svg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d3815" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#080a0f" />
+    </linearGradient>
+    <filter id="glow_pmoath2024svg" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="400" height="320" fill="url(#bg_pmoath2024svg)" rx="12"/>
+  <rect width="396" height="316" x="2" y="2" fill="none" stroke="#6BCB77" stroke-width="1.5" stroke-opacity="0.4" rx="10"/>
+  <g filter="url(#glow_pmoath2024svg)">
+    <path d="M155,240 L200,105 L245,240 Z" stroke="#6BCB77" stroke-width="8" fill="none"/><circle cx="200" cy="170" r="24" fill="#FFD700"/><text x="200" y="179" font-family="sans-serif" font-size="24" font-weight="bold" fill="#000" text-anchor="middle">3</text>
+  </g>
+  <text x="200" y="270" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="18" font-weight="700" text-anchor="middle">Historic Third Term</text>
+  <text x="200" y="295" fill="#A0AEC0" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle">Viksit Bharat 2047 Roadmap</text>
+</svg>

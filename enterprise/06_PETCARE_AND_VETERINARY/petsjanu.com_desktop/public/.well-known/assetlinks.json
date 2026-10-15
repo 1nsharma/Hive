@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.petsjanu.app",
+      "sha256_cert_fingerprints": [
+        "14:6D:E9:B6:58:65:B2:91:02:18:78:E8:4A:25:FB:E2:EA:6C:54:99:99:99:99:99:99:99:99:99:99:99:99:99"
+      ]
+    }
+  }
+]
