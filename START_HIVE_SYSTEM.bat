@@ -81,7 +81,7 @@ goto exit_app
 
 :run_tests
 cd /d "%~dp0web"
-node --test tests/company.test.js
+npm test
 pause
 goto exit_app
 

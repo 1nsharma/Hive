@@ -1,0 +1,120 @@
+{
+  "providers": {
+    "antigravity": {
+      "name": "Antigravity Engine (Zero Cost / Built-in)",
+      "cli": "agy",
+      "models": [
+        {
+          "id": "Gemini 3.1 Pro (High)",
+          "label": "Gemini 3.1 Pro (Ultra Reasoning)",
+          "recommendedFor": "Architecture & Strategy"
+        },
+        {
+          "id": "Gemini 3.8 Flash (High)",
+          "label": "Gemini 3.8 Flash (Ultra Fast)",
+          "recommendedFor": "Live Chat & Realtime"
+        },
+        {
+          "id": "Gemini 3.7 Flash (Medium)",
+          "label": "Gemini 3.7 Flash (Balanced)",
+          "recommendedFor": "Customer & Docs"
+        },
+        {
+          "id": "Gemini 3.1 Pro (Low)",
+          "label": "Gemini 3.1 Pro (Analytical Low-Temp)",
+          "recommendedFor": "Finance & Audit"
+        },
+        {
+          "id": "Claude Sonnet 4.6 (Thinking)",
+          "label": "Claude Sonnet 4.6 (Extended Thinking)",
+          "recommendedFor": "Deep Code Refactor"
+        },
+        {
+          "id": "Claude Opus 4.6 (Thinking)",
+          "label": "Claude Opus 4.6 (Max Precision)",
+          "recommendedFor": "System Design"
+        }
+      ]
+    },
+    "claude": {
+      "name": "Claude Code CLI",
+      "cli": "claude",
+      "models": [
+        {
+          "id": "claude-opus-5-5",
+          "label": "Claude Opus 5.5",
+          "recommendedFor": "Complex Systems"
+        },
+        {
+          "id": "claude-sonnet-5-5",
+          "label": "Claude Sonnet 5.5",
+          "recommendedFor": "Autonomous Coding"
+        },
+        {
+          "id": "claude-sonnet-4-6[1m]",
+          "label": "Claude Sonnet (1M Context)",
+          "recommendedFor": "Full Codebase Ingestion"
+        }
+      ]
+    },
+    "gemini": {
+      "name": "Google Gemini CLI",
+      "cli": "gemini",
+      "models": [
+        {
+          "id": "gemini-2.5-pro",
+          "label": "Gemini 2.5 Pro",
+          "recommendedFor": "Multi-Modal Reasoning"
+        },
+        {
+          "id": "gemini-2.5-flash",
+          "label": "Gemini 2.5 Flash",
+          "recommendedFor": "Instant Speed"
+        }
+      ]
+    },
+    "cursor": {
+      "name": "Cursor Agent CLI",
+      "cli": "cursor-agent",
+      "models": [
+        {
+          "id": "composer-2.5",
+          "label": "Composer 2.5",
+          "recommendedFor": "Multi-File Edits"
+        },
+        {
+          "id": "gpt-5.6-sol-high",
+          "label": "GPT-5.6 Sol High",
+          "recommendedFor": "Fast Edits"
+        }
+      ]
+    },
+    "codex": {
+      "name": "OpenAI Codex / GPT CLI",
+      "cli": "codex",
+      "models": [
+        {
+          "id": "gpt-6-astra",
+          "label": "GPT-6 Astra",
+          "recommendedFor": "Frontier Synthesis"
+        },
+        {
+          "id": "gpt-5.6-terra",
+          "label": "GPT-5.6 Terra",
+          "recommendedFor": "Tool Execution"
+        }
+      ]
+    },
+    "grok": {
+      "name": "xAI Grok CLI",
+      "cli": "grok",
+      "models": [
+        {
+          "id": "grok-4.6",
+          "label": "Grok 4.6 Reasoning",
+          "recommendedFor": "Realtime Web Scrape"
+        }
+      ]
+    }
+  }
+}

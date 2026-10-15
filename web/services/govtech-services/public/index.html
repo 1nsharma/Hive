@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GovAI — India Central Services & Scheme Verification</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">GOVTECH & PUBLIC SERVICES</span>
+        <h1>🏛️ GovAI India Central Portal</h1>
+        <p>National Scheme Discovery • Direct Benefit Verification • Vernacular Citizen Assistant</p>
+      </div>
+      <div class="stats-pills">
+        <div class="pill"><span class="label">Integrated Schemes:</span> <strong style="color:#10b981;">100% Central Portals</strong></div>
+        <div class="pill"><span class="label">Identity Auth:</span> <strong style="color:#38bdf8;">Aadhaar/DigiLocker Compliant</strong></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Citizen Scheme Eligibility Check -->
+      <section class="card">
+        <h2>🔍 Scheme Eligibility & Direct Application</h2>
+        <p class="sub">Check benefits for PM SVANidhi, PM Surya Ghar, Ayushman</p>
+        <div class="form-group">
+          <label>Citizen Full Name</label>
+          <input type="text" id="cit-name" value="Mahesh Chandra Verma" class="input">
+        </div>
+        <div class="form-group">
+          <label>Select Government Scheme</label>
+          <select id="cit-scheme" class="input">
+            <option>PM Surya Ghar Muft Bijli Yojana (MNRE)</option>
+            <option>PM SVANidhi Micro-Credit (MoHUA)</option>
+            <option>PM Kisan Samman Nidhi</option>
+            <option>Ayushman Bharat PM-JAY</option>
+          </select>
+        </div>
+        <button id="btn-verify" class="btn btn-gov">🇮🇳 Verify Citizen Eligibility</button>
+      </section>
+
+      <!-- Central Schemes Directory -->
+      <section class="card">
+        <h2>📜 Active Central Government Schemes</h2>
+        <p class="sub">Live official allocations and benefits</p>
+        <div id="schemes-list">Loading schemes...</div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

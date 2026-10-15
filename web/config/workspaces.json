@@ -1,0 +1,102 @@
+{
+  "workspaces": [
+    {
+      "id": "01-engineering-dev",
+      "name": "Software Engineering & Architecture",
+      "lead": "dwight-schrute",
+      "description": "Full-stack web, micro-frontends, API gateways, database schemas, and continuous delivery.",
+      "tools": [
+        "git",
+        "node",
+        "python",
+        "docker",
+        "npm"
+      ],
+      "activeTasks": 4
+    },
+    {
+      "id": "02-sales-crm",
+      "name": "Sales, B2B Growth & Client CRM",
+      "lead": "jim-halpert",
+      "description": "Lead generation, enterprise contracts, merchant acquisition for DukaanMitra and TruckWala.",
+      "tools": [
+        "crm_pipeline",
+        "email_dispatch",
+        "rate_calculator"
+      ],
+      "activeTasks": 2
+    },
+    {
+      "id": "03-finance-ledger",
+      "name": "Finance, Accounting & ProofLedger",
+      "lead": "oscar-martinez",
+      "description": "SHA-256 transaction hashing, Bahi Khata credit balances, UPI settlement, and financial reporting.",
+      "tools": [
+        "proof_ledger",
+        "gst_calculator",
+        "invoice_generator"
+      ],
+      "activeTasks": 3
+    },
+    {
+      "id": "04-creative-media-games",
+      "name": "Media, Creative Design & Game Studio",
+      "lead": "pam-beesly",
+      "description": "Desi Arcade 3D games, brand identity, UI components, audio synthesis, and marketing assets.",
+      "tools": [
+        "asset_synthesizer",
+        "audio_engine",
+        "trend_radar"
+      ],
+      "activeTasks": 2
+    },
+    {
+      "id": "05-cleantech-energy",
+      "name": "CleanTech & Solar Energy Operations",
+      "lead": "raja-ca",
+      "description": "PM Surya Ghar \u20b978,000 subsidy calculations, rooftop solar feasibility, and DISCOM vendor empaneled networks.",
+      "tools": [
+        "solar_audit_tool",
+        "subsidy_engine",
+        "epc_directory"
+      ],
+      "activeTasks": 2
+    },
+    {
+      "id": "06-logistics-supplychain",
+      "name": "Logistics & Highway SOS Dispatch",
+      "lead": "kevin-malone",
+      "description": "TruckWala 24x7 emergency mechanics, highway breakdown geocoding, and transparent rate dispatch.",
+      "tools": [
+        "gps_geocoder",
+        "mechanic_radar",
+        "sos_dispatcher"
+      ],
+      "activeTasks": 3
+    },
+    {
+      "id": "07-govtech-compliance",
+      "name": "GovTech, Compliance & Legal Services",
+      "lead": "raja-ca",
+      "description": "National central schemes discovery, Aadhaar/DigiLocker verification, and regulatory compliance.",
+      "tools": [
+        "scheme_verifier",
+        "compliance_checker",
+        "legal_drafter"
+      ],
+      "activeTasks": 1
+    },
+    {
+      "id": "08-customer-support",
+      "name": "Omnichannel Support & PetsJanu Care",
+      "lead": "pam-beesly",
+      "description": "24/7 tele-vet consultations, WhatsApp store support, and customer ticket resolution.",
+      "tools": [
+        "tele_vet_linker",
+        "ticket_resolver",
+        "satisfaction_tracker"
+      ],
+      "activeTasks": 2
+    }
+  ]
+}

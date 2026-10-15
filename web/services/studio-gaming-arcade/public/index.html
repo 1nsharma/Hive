@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Desi Arcade Studio — Autonomous Gaming Pipeline</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">MEDIA & GAMING STUDIO</span>
+        <h1>🎮 Desi Arcade Studio</h1>
+        <p>Autonomous Agentic Game Pipeline • Trend Radar • LiveOps Discord Mesh</p>
+      </div>
+      <div class="stats-pills">
+        <div class="pill"><span class="label">Total Daily Active Users:</span> <strong style="color:#f59e0b;">510,000+</strong></div>
+        <div class="pill"><span class="label">Pipeline Synthesis Speed:</span> <strong style="color:#10b981;">&lt; 60 Secs</strong></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Game Synthesis Engine -->
+      <section class="card">
+        <h2>⚡ AI Game Synthesizer & Concept Lab</h2>
+        <p class="sub">Generate Indian culture & nostalgia game prototypes</p>
+        <div class="form-group">
+          <label>Game Title / Concept</label>
+          <input type="text" id="game-title" value="Kite Flying Basant Utsav 3D" class="input">
+        </div>
+        <div class="form-group">
+          <label>Genre / Mechanics</label>
+          <select id="game-genre" class="input">
+            <option>Heritage Sports & Action</option>
+            <option>Physics Puzzle & Arcade</option>
+            <option>Real-Time Multiplayer PvP</option>
+          </select>
+        </div>
+        <button id="btn-synth" class="btn btn-arcade">🎯 Synthesize Game Assets & Architecture</button>
+
+        <h3 style="margin-top:20px; font-size:14px;">Viral Trend Radar (AI Synthesized)</h3>
+        <div id="trends-list" style="margin-top:8px;">Loading trends...</div>
+      </section>
+
+      <!-- Live Games Catalog -->
+      <section class="card">
+        <h2>🕹️ Live Games & Community Ops</h2>
+        <p class="sub">Production games in active tournament cycles</p>
+        <div id="games-list">Loading games...</div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

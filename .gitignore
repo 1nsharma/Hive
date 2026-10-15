@@ -24,3 +24,6 @@ __pycache__/
 facts.db-shm
 facts.db-wal
 /mtime-test-*/
+
+# Ignore legacy duplicate folder
+AI Super intellegnce*

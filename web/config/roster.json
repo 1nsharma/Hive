@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "coworkers": [
+    {
+      "id": "michael-scott",
+      "name": "Michael Scott",
+      "character": "michael",
+      "role": "Chief Executive Officer & Floor Boss (God Agent)",
+      "department": "Executive Management",
+      "avatarColor": "#f59e0b",
+      "station": "executive_desk",
+      "status": "active",
+      "currentActivity": "Triaging cross-department initiatives & assigning priority tasks",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "skills": [
+        "Strategic Direction",
+        "Team Morale",
+        "Triage & Escalation",
+        "Mission Control"
+      ]
+    },
+    {
+      "id": "dwight-schrute",
+      "name": "Dwight Schrute",
+      "character": "dwight",
+      "role": "Assistant to the Regional Manager & 1M-Token Code Enforcer",
+      "department": "Engineering & Security",
+      "avatarColor": "#84cc16",
+      "station": "code_enforcer_desk",
+      "status": "working",
+      "currentActivity": "Deep code refactor, security audit, and zero-trust verification",
+      "provider": "claude",
+      "model": "claude-sonnet-4-6[1m]",
+      "command": "claude --model \"claude-sonnet-4-6[1m]\" --dangerously-skip-permissions",
+      "skills": [
+        "1M Context Analysis",
+        "AST Code Refactor",
+        "Zero-Trust Guardrails",
+        "Security Auditing"
+      ]
+    },
+    {
+      "id": "jim-halpert",
+      "name": "Jim Halpert",
+      "character": "jim",
+      "role": "Lead Solutions Architect & Partner Integrations",
+      "department": "Engineering & Sales",
+      "avatarColor": "#38bdf8",
+      "station": "architecture_desk",
+      "status": "working",
+      "currentActivity": "Designing REST & WebSocket APIs and cross-vertical integrations",
+      "provider": "antigravity",
+      "model": "Gemini 3.8 Flash (High)",
+      "command": "agy --model \"Gemini 3.8 Flash (High)\" --dangerously-skip-permissions",
+      "skills": [
+        "Micro-Frontend Arch",
+        "API Contracts",
+        "Client Solutions",
+        "Fast Prototyping"
+      ]
+    },
+    {
+      "id": "pam-beesly",
+      "name": "Pam Beesly",
+      "character": "pam",
+      "role": "Chief of Staff, UX Design & Operations Coordination",
+      "department": "Operations & UX",
+      "avatarColor": "#ec4899",
+      "station": "reception_desk",
+      "status": "active",
+      "currentActivity": "Orchestrating daily standups and refining executive command shell UI",
+      "provider": "antigravity",
+      "model": "Gemini 3.7 Flash (Medium)",
+      "command": "agy --model \"Gemini 3.7 Flash (Medium)\" --dangerously-skip-permissions",
+      "skills": [
+        "UX / Visual Design",
+        "Standup Coordination",
+        "Documentation",
+        "Stakeholder Comms"
+      ]
+    },
+    {
+      "id": "oscar-martinez",
+      "name": "Oscar Martinez",
+      "character": "oscar",
+      "role": "Head of Accounting & Cryptographic Ledger Audit",
+      "department": "Finance & Audit",
+      "avatarColor": "#06b6d4",
+      "station": "accounting_desk",
+      "status": "working",
+      "currentActivity": "Verifying SHA-256 ProofLedger blocks and tracking company GTV",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (Low)",
+      "command": "agy --model \"Gemini 3.1 Pro (Low)\" --dangerously-skip-permissions",
+      "skills": [
+        "Cryptographic Audit",
+        "GST & Tax Reconciliation",
+        "Bahi Khata Verification",
+        "Cashflow Analysis"
+      ]
+    },
+    {
+      "id": "raja-ca",
+      "name": "Raja CA",
+      "character": "raja",
+      "role": "Chartered Accountant & Release Governor",
+      "department": "Finance & Compliance",
+      "avatarColor": "#10b981",
+      "station": "compliance_desk",
+      "status": "active",
+      "currentActivity": "Auditing DISCOM solar subsidies and government scheme disbursements",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "command": "agy --dangerously-skip-permissions",
+      "skills": [
+        "Statutory Audit",
+        "Govt Scheme Validation",
+        "Release Management",
+        "Legal Contracts"
+      ]
+    },
+    {
+      "id": "angela-martin",
+      "name": "Angela Martin",
+      "character": "angela",
+      "role": "Head of Quality Assurance & Policy Enforcement",
+      "department": "QA & Guardrails",
+      "avatarColor": "#a855f7",
+      "station": "qa_enforcer_desk",
+      "status": "working",
+      "currentActivity": "Enforcing prompt safety guardrails and anti-jailbreak filters",
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
+      "command": "claude --model \"claude-sonnet-5-5\" --dangerously-skip-permissions",
+      "skills": [
+        "CI Test Execution",
+        "Anti-Injection Guardrails",
+        "Policy Compliance",
+        "Purity Auditing"
+      ]
+    },
+    {
+      "id": "kevin-malone",
+      "name": "Kevin Malone",
+      "character": "kevin",
+      "role": "Hyperlocal Analytics & Dispatch Specialist",
+      "department": "Operations & Logistics",
+      "avatarColor": "#f97316",
+      "station": "logistics_desk",
+      "status": "idle",
+      "currentActivity": "Monitoring highway SOS tickets and pizza / order fulfillment",
+      "provider": "antigravity",
+      "model": "Gemini 3.8 Flash (High)",
+      "command": "agy --model \"Gemini 3.8 Flash (High)\" --dangerously-skip-permissions",
+      "skills": [
+        "Highway SOS Routing",
+        "Fast Metric Aggregation",
+        "Simple Logic",
+        "Order Dispatch"
+      ]
+    }
+  ]
+}

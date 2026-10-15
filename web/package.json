@@ -1,0 +1,19 @@
+{
+  "name": "ai-super-intelligence-company",
+  "version": "1.0.0",
+  "description": "Autonomous AI Super Intelligence Company with Virtual Coworkers, Floor Workspaces, and Multi-Model CLI Gateway (Inspired by Munder Difflin)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/01-virtual-office.test.js tests/02-workforce-schedule.test.js tests/03-blueprint-contracts.test.js services/commerce-dukaanmitra/service.test.js services/logistics-truckwala/service.test.js services/cleantech-solarhub/service.test.js services/talent-hiresaathi/service.test.js services/studio-ai-agents/service.test.js services/studio-gaming-arcade/service.test.js services/govtech-services/service.test.js services/petcare-petsjanu/service.test.js gateway/gateway.test.js",
+    "test:office": "node --test tests/01-virtual-office.test.js",
+    "test:workforce": "node --test tests/02-workforce-schedule.test.js",
+    "test:contracts": "node --test tests/03-blueprint-contracts.test.js",
+    "test:services": "node --test services/*/*.test.js gateway/*.test.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {}
+}

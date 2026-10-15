@@ -1,0 +1,21 @@
+{
+  "companyName": "AI Super Intelligence Holding Corporation",
+  "codename": "Munder Difflin Nexus",
+  "theme": "the-office-retro-glass",
+  "port": 3300,
+  "harnessHome": "C:\\Users\\18\\OneDrive\\Desktop\\AI Super intellegnce company with coworks and employe with workspacees for ervy types of works using all types of models cli anitgravity run your company free",
+  "defaultProvider": "antigravity",
+  "defaultModel": "Gemini 3.1 Pro (High)",
+  "godAgent": "michael-scott",
+  "autoStandupMinutes": 60,
+  "heartbeatIntervalSeconds": 120,
+  "telemetry": {
+    "freeTier": true,
+    "unlimitedWorkers": true,
+    "localExecution": true
+  },
+  "guardrails": {
+    "zeroTrust": true,
+    "circuitBreaker": true
+  }
+}
