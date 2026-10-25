@@ -2,33 +2,10 @@
   "note": "Written by the app. Read only; to change anything, see README.md.",
   "webhookServer": {
     "running": false,
-    "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net"
+    "url": ""
   },
   "webhookResponder": "",
-  "webhooks": [
-    {
-      "id": "wh-mv8e073f-9xfrnw",
-      "name": "GitHub",
-      "source": "github",
-      "to": "",
-      "enabled": true,
-      "mode": "strict",
-      "description": "",
-      "hasPrompt": false,
-      "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net/wh-mv8e073f-9xfrnw"
-    },
-    {
-      "id": "wh-mv8ggcdo-ab0h8w",
-      "name": "GitHub",
-      "source": "github",
-      "to": "",
-      "enabled": true,
-      "mode": "strict",
-      "description": "",
-      "hasPrompt": true,
-      "url": "https://tq0fhq-ip-49-43-113-119.tunnelmole.net/wh-mv8ggcdo-ab0h8w"
-    }
-  ],
+  "webhooks": [],
   "missions": [
     {
       "id": "ops-standup",
@@ -39,23 +16,23 @@
       "intervalMs": 3600000,
       "kind": "dispatch",
       "createdBy": "",
-      "lastFiredAt": "2026-10-14T21:25:46.204Z"
+      "lastFiredAt": "2026-10-25T16:45:37.887Z"
     },
     {
       "id": "heartbeat",
       "label": "Floor heartbeat",
       "to": "god",
       "body": "Floor heartbeat: the team has gone quiet. Review the digest in your inbox, re-engage anyone stalled or blocked, and keep the board accurate — or rest if the work is genuinely done.",
-      "enabled": true,
+      "enabled": false,
       "intervalMs": 120000,
       "kind": "heartbeat",
       "createdBy": "",
-      "lastFiredAt": "2026-10-14T21:25:08.181Z"
+      "lastFiredAt": "2026-10-25T16:45:36.565Z"
     }
   ],
   "slack": {
-    "enabled": true,
-    "mode": "polling",
+    "enabled": false,
+    "mode": "",
     "channelId": "",
     "responder": "",
     "botTokenSet": false,
