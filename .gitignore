@@ -44,3 +44,9 @@ build/AuthKey_*.p8
 
 # Ignore legacy duplicate folder
 AI Super intellegnce*
+
+# Environment secrets
+.env.local
+.env.*.local
+.env.development
+.env.production
